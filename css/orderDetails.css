@@ -1,0 +1,203 @@
+@charset "UTF-8";
+/*全局公用样式 start*/
+/* line 5, ../sass/orderDetails.scss */
+body {
+  font-family: 'Open Sans', Helvetica, Arial, Sans-serif, SimHei, "Microsoft YaHei";
+  font-size: 14px;
+  background: #efefef;
+  color: #999999;
+}
+
+/* line 12, ../sass/orderDetails.scss */
+html,
+body,
+div,
+p,
+ol,
+ul,
+li,
+dl,
+dt,
+dd,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+form,
+input,
+select,
+button,
+textarea,
+iframe,
+table,
+th,
+td,
+header,
+section,
+article,
+nav,
+footer {
+  margin: 0;
+  padding: 0;
+}
+
+/* line 46, ../sass/orderDetails.scss */
+a {
+  color: #666;
+  text-decoration: none;
+  outline: none;
+  cursor: pointer;
+}
+
+/* line 53, ../sass/orderDetails.scss */
+a:hover {
+  text-decoration: none;
+  color: #d70b30;
+}
+
+/* line 58, ../sass/orderDetails.scss */
+a:focus {
+  outline: none;
+}
+
+/*全局公用样式 start end*/
+/* line 5, ../sass/layout/orderDetails-root.scss */
+#root {
+  position: absolute;
+  width: 100%;
+  overflow-y: auto;
+}
+
+/* line 11, ../sass/layout/orderDetails-root.scss */
+.float-r {
+  float: right;
+  display: inline-block;
+}
+
+/* line 16, ../sass/layout/orderDetails-root.scss */
+#order-box {
+  background-color: #fff;
+}
+/* line 19, ../sass/layout/orderDetails-root.scss */
+#order-box > div {
+  padding: 0px 10px;
+}
+
+/* line 25, ../sass/layout/orderDetails-root.scss */
+.info-box > span {
+  display: inline-block;
+  padding: 6px 0px 3px 0px;
+  font-size: 14px;
+}
+/* line 30, ../sass/layout/orderDetails-root.scss */
+.info-box .info-title {
+  width: 100px;
+}
+
+/* line 35, ../sass/layout/orderDetails-root.scss */
+.module-title {
+  font-size: 17px;
+  line-height: 34px;
+  background-color: #f6f6f9;
+  color: #666;
+}
+/* line 40, ../sass/layout/orderDetails-root.scss */
+.module-title a {
+  color: #2792e4;
+  font-size: 15px;
+}
+
+/* line 46, ../sass/layout/orderDetails-root.scss */
+#record-box {
+  background-color: #fff;
+  padding-top: 15px;
+}
+/* line 49, ../sass/layout/orderDetails-root.scss */
+#record-box .module-title {
+  margin-bottom: 16px;
+  padding: 0px 10px;
+  color: #222;
+}
+/* line 54, ../sass/layout/orderDetails-root.scss */
+#record-box .nextData-box {
+  font-size: 11px;
+  color: #999;
+}
+/* line 58, ../sass/layout/orderDetails-root.scss */
+#record-box > div {
+  padding-left: 10px;
+}
+/* line 61, ../sass/layout/orderDetails-root.scss */
+#record-box .oneRecord-box {
+  margin-left: 13px;
+  padding: 0px 0px 50px 30px;
+  /* margin-top: -3px; */
+}
+/* line 65, ../sass/layout/orderDetails-root.scss */
+#record-box .oneRecord-box .failed {
+  color: #2792e4;
+}
+/* line 69, ../sass/layout/orderDetails-root.scss */
+#record-box .oneRecord-box:not(:last-child) {
+  border-left: 2px solid #2792e4;
+}
+/* line 72, ../sass/layout/orderDetails-root.scss */
+#record-box .icon-circle,
+#record-box .icon-circle2 {
+  height: 18px;
+  width: 16px;
+  display: inline-block;
+  float: left;
+  margin-left: -38px;
+  background-repeat: no-repeat;
+  background-size: 16px;
+  background-position: 0px 3px;
+  background-color: #fff;
+}
+/* line 84, ../sass/layout/orderDetails-root.scss */
+#record-box .icon-circle {
+  background-image: url("../images/yuan_icon.jpg");
+}
+/* line 87, ../sass/layout/orderDetails-root.scss */
+#record-box .icon-circle2 {
+  background-image: url("../images/yuan2_icon.jpg");
+}
+/* line 90, ../sass/layout/orderDetails-root.scss */
+#record-box .recordDate-box {
+  font-size: 16px;
+  color: #222;
+}
+
+/* line 1, ../sass/components/_header.scss */
+header {
+  line-height: 44px;
+  background-color: #2792e4;
+  text-align: center;
+  color: #fff;
+  font-size: 18px;
+  width: 100%;
+}
+
+/* line 9, ../sass/components/_header.scss */
+.icons-fanhui {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  float: left;
+  margin-left: 10px;
+  line-height: 24px;
+  text-align: center;
+  margin-top: 12px;
+  background-image: url("../images/fanhui.png");
+  background-repeat: no-repeat;
+  background-size: 24px 24px;
+}
+
+/* line 67, ../sass/orderDetails.scss */
+#billText {
+  margin-left: -24px;
+}
+
+/*# sourceMappingURL=orderDetails.css.map */
