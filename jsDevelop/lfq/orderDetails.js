@@ -2,7 +2,7 @@ $(function() {
     init();
     getData();
 });
-
+ 
 function init() {
     var rootHeight = ($("body")[0].scrollHeight - 44) + "px";
     $("#root").css("height", rootHeight);
@@ -12,27 +12,50 @@ function getData() {
     //模拟订单详情数据
     var data = {
         "lft_orderinfo_response": {
-            "res_timestamp": 20160425100505,
-            "res_sign": "46FDE86A894DD752EDDE8934518F5C19",
-            "resp_msg": "完成成功 ",
+            "res_timestamp": 20160504112459,
+            "res_sign": "E0EED619710F0CB0A7F883394C0F3604",
+            "resp_msg": "查询成功",
             "resp_code": "0000",
+
+            "lfqRepayNotices_arrays": {
+                "lfqRepayNotices": [{
+                    "stageCount": 6,
+                    "instalmentTime": 20160427091212,
+                    "respcode": "0003",
+                    "instalmentTimeString": 20160427091212,
+                    "noticeCount": 0,
+                    "respmsg": "好的",
+                    "transAmt": 100,
+                    "respState": "01",
+                    "contractsNo": 1231231231223
+                }, {
+                    "stageCount": 6,
+                    "instalmentTime": 20160427091212,
+                    "respcode": "0003",
+                    "instalmentTimeString": 20160427091212,
+                    "noticeCount": 0,
+                    "respmsg": "好的",
+                    "transAmt": 100,
+                    "respState": "01",
+                    "contractsNo": 1231231231223
+                }]
+            },
+            "serial_no": "011462327882108040",
+
             "lfqorderInfo_arrays": {
                 "lfqorderInfo": [{
-                    "apply_time": "090221",
+                    "cust_name": "测试",
+                    "apply_time": 152044,
                     "out_stage_count": 0,
-                    "open_id": "oUhu9uC7pg6EEAgDAGkiFAXKZErw",
                     "order_state": "01",
+                    "open_id": "oUhu9uNU4ZlL7F-GAwt_uP6gwy30",
+                    "apply_date": 20160503,
                     "stage_count": 0,
-                    "order_id": "011461546141355270407",
-                    "total_stage_count": -1,
-                    "credit_card_no": 234092988091824,
-                    "serial_no": "011461546141357878",
-                    "cust_name": "胡国荣",
-                    "cvn2": 213,
-                    "apply_date": 20160425,
-                    "serial_no_time": 20160425090221,
-                    "stage_amt": 10000.0,
-                    "id_no": 320922198510165410
+                    "order_id": "011462260044210329006",
+                    "total_stage_count": 12,
+                    "serial_no_time": 20160504101122,
+                    "serial_no": "011462327882108040",
+                    "stage_amt": 600.0
                 }]
             }
         }
@@ -59,19 +82,42 @@ function getData() {
         showRecord(data2.recordData, data2.nextPayDate);
     }
 
-    /*  正式代码
-        getAjax(url, param, function(data) {
-            // 验证一些请求是否成功
-            if(data.lft_orderinfo_response && data.lft_orderinfo_response.lfqorderInfo_arrays.lfqorderInfo){
-               setOrder(data.lft_orderinfo_response.lfqorderInfo_arrays.lfqorderInfo[0]);
-           }else{
-                console.log("没有查询结果集");
-           }
-            
-        });*/
-    
+}
+
+function doQuerySingle(openid, serial_no) {
+    var param = {
+        open_id: openid,
+        serial_no: serial_no,
+        servlet_type: "query_orderByOrderId"
+    };
+
+    var url = LFQ_ORDER_CREATE_URL;
+    getAjax(url, param, function(msg) {
+        if (msg.error_response != undefined) {
+            alert(msg.error_response.sub_msg);
+            return;
+        }
+
+        if (msg.lft_orderinfo_response.resp_code != "0000") {
+            alert(msg.bind_response.resp_msg);
+            return;
+        }
+
+        if (msg.lft_orderinfo_response.resp_code == "0000") { //如果成功 
+            reserial_no = msg.serial_no;
+            if (msg.lft_orderinfo_response.lfqorderInfo_arrays.lfqorderInfo) {
+                setOrder(msg.lft_orderinfo_response.lfqorderInfo_arrays.lfqorderInfo[0]);
+            }
+            if (msg.lft_orderinfo_response.lfqorderInfo_arrays.lfqRepayNotices && msg.lft_orderinfo_response.lfqorderInfo_arrays.lfqRepayNotices != "") {
+
+            }
+        }
+    });
+
+
 
 }
+
 
 // 取得订单信息后 设置订单信息
 function setOrder(orderDate) {
