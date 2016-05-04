@@ -1,0 +1,55 @@
+@charset "utf-8";
+@import "../mixins/border-forge";
+$type-name-fontSize: 16px;
+$time-small-fontSize: 11px;
+$number-big-fontSzie: 18px;
+$upline-height: 27px;
+$small-color: #666;
+.oneRcord {
+    @include border-forge(#d7d7d7, "bottom");
+    height: 44px;
+    padding: 3px 10px;
+    >div {
+        display: inline-block;
+    }
+    .w1 {
+        width: 35%;
+    }
+    .w2 {
+        width: 40%;
+        text-align: center;
+    }
+    .w3 {
+        float: right;
+        .succeed,
+        .failed {
+            background-position: -34px 0px;
+            width: 16px;
+        }
+    }
+    .type-name {
+        font-size: $type-name-fontSize;
+        line-height: $upline-height;
+    }
+    .time-small {
+        font-size: $time-small-fontSize;
+        color: $small-color;
+    }
+    .number-big {
+        font-size: $number-big-fontSzie;
+        line-height: $upline-height;
+    }
+    .stage-box {
+        font-size: $time-small-fontSize;
+        color: $small-color;
+    }
+    .fukuan_icon {
+        width: 50px;
+        height: 31px;
+        display: inline-block;
+        margin-top: 7px;
+        background-image: url('../images/fukuan_icon.png');
+        background-size: 50px 31px;
+        background-repeat: no-repeat;
+    }
+}

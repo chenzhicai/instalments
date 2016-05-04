@@ -1,0 +1,94 @@
+@charset "utf-8";
+@import "../mixins/border-forge";
+$module-title-fontSzie: 17px;
+$module-title-color: #666;
+#root {
+    position: absolute;
+    width: 100%;
+    overflow-y: auto;
+}
+
+.float-r {
+    float: right;
+    display: inline-block;
+}
+
+#order-box,
+{
+    background-color: #fff;
+    >div {
+        padding: 0px 10px;
+    }
+}
+
+.info-box {
+    >span {
+        display: inline-block;
+        padding: 6px 0px 3px 0px;
+        font-size: 14px;
+    }
+    .info-title {
+        width: 100px;
+    }
+}
+
+.module-title {
+    font-size: $module-title-fontSzie;
+    line-height: 34px;
+    background-color: #f6f6f9;
+    color: $module-title-color;
+    a {
+        color: #2792e4;
+        font-size: 15px;
+    }
+}
+
+#record-box {
+    background-color: #fff;
+    padding-top: 15px;
+    .module-title {
+        margin-bottom: 16px;
+        padding: 0px 10px;
+        color: #222;
+    }
+    .nextData-box {
+        font-size: 11px;
+        color: #999;
+    }
+    >div {
+        padding-left: 10px;
+    }
+    .oneRecord-box {
+        margin-left: 13px;
+        padding: 0px 0px 50px 30px;
+        /* margin-top: -3px; */
+        .failed {
+            color: #2792e4;
+        }
+    }
+    .oneRecord-box:not(:last-child) {
+        border-left: 2px solid #2792e4;
+    }
+    .icon-circle,
+    .icon-circle2 {
+        height: 18px;
+        width: 16px;
+        display: inline-block;
+        float: left;
+        margin-left: -38px;
+        background-repeat: no-repeat;
+        background-size: 16px;
+        background-position: 0px 3px;
+        background-color: #fff;
+    }
+    .icon-circle {
+        background-image: url("../images/yuan_icon.jpg");
+    }
+    .icon-circle2 {
+        background-image: url("../images/yuan2_icon.jpg");
+    }
+    .recordDate-box {
+        font-size: 16px;
+        color: #222;
+    }
+}

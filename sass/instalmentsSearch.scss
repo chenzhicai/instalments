@@ -1,0 +1,11 @@
+@charset "utf-8";
+@import "./layout/all-init";
+@import "./components/header";
+@import "./layout/instalmentsSearch-root";
+body{
+    color: #222;
+}
+
+#wrapper{
+    top: 44px;
+}

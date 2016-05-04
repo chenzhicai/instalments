@@ -1,0 +1,26 @@
+@charset "utf-8";
+@import "./helpers/apply-variables";
+@import "./layout/all-init";
+@import "./components/header";
+@import "./layout/instalments-root";
+@import "./layout/instalments-footer";
+@import "./layout/modals-mobile";
+@import "./layout/applyNextStep";
+html,
+body {
+    height: 100%;
+}
+
+body {
+    color: $default-color;
+    font-size: $default-fontSzie;
+}
+
+input {
+    border-width: 0px;
+}
+
+#billText {
+    margin-left: -24px;
+}
+

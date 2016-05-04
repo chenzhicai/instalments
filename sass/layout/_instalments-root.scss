@@ -1,0 +1,133 @@
+@charset "utf-8";
+@import "../mixins/border-forge";
+@import "compass/css3/border-radius";
+@import "../../../skinSass/sass/base/mixin/setOnepx";
+input[type=number] {
+    //  font-family: "Helvetica-Light,Regular-Light"; 
+}
+
+.float-r {
+    float: right;
+    display: inline-block;
+}
+
+.prompt {
+    color: #999;
+}
+
+#instalments-box,
+#personal-box {
+    background-color: #fff;
+    >div {
+        position: relative;
+        &:after {
+            @include setBottomLine(#d7d7d7);
+        }
+    }
+    >div.margin_rl10 {
+        margin: 0px 10px;
+    }
+    >div:not(.margin_rl10) {
+        padding: 0px 10px;
+    }
+}
+
+
+#instalments-box {
+    .explain {
+        font-size: 12px;
+        margin-left: 5px;
+    }
+    input{
+      text-align: right;  
+    }
+}
+
+#personal-box {
+    #user-name,
+    #user-id,
+    #verify-code {
+        width: 100%;
+    }
+    .verifyBtn {
+        height: 30px;
+        width: 110px;
+        border-width: 0px;
+        display: inline-block;
+        text-align: center;
+        color: #2792e4;
+        font-size: 15px;
+        background: #fff;
+        @include border-afterforge(110px, 30px, #2792e4);
+        &:after {
+            left: -57px;
+            top: -8px;
+            @include border-radius(3px);
+        }
+    }
+    a.disabled {
+        color: #d2d2d2;
+        background: fff;
+        &:after {
+            border-color: #ccc;
+        }
+    }
+}
+
+#applyNum-box {
+    width: 85%;
+    text-align: right;
+    #applyInstalmentNum {
+        width: 85%;
+    }
+}
+
+#stageNumberBox {
+    >span {
+        display: inline-block;
+        width: 78px;
+        height: 33px;
+        margin: 4px 0px 0px 7px;
+        padding-left: 10px;
+        line-height: 33px;
+    }
+    >span.checked {
+        background-image: url("../images/kuang_icon.png");
+        background-repeat: no-repeat;
+        background-size: 88px 33px;
+    }
+    >span:not(.checked) {
+        @include border-afterforge(88px,
+        35px,
+        #d7d7d7);
+        &:after {
+            height: 65px;
+            left: -45px;
+            top: -17px;
+        }
+    }
+}
+
+.info-box {
+    line-height: 44px;
+    >div {
+        display: inline-block;
+    }
+}
+
+.module-title {
+    font-size: $module-title-fontSzie;
+    line-height: 34px;
+    background-color: #f6f6f9;
+    color: $module-title-color;
+}
+
+.input-erro {
+    @extend .module-title;
+    color: red;
+    font-size: 15px;
+}
+
+#repayment-num {
+    width: 100px;
+}

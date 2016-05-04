@@ -1,0 +1,13 @@
+@charset "utf-8";
+
+/*全局公用样式 start*/
+body{
+    font-family:'Open Sans',Helvetica,Arial,Sans-serif,SimHei,"Microsoft YaHei";font-size:14px; background: #efefef;
+}
+html, body, div, p,ol, ul, li, dl, dt, dd, h1, h2, h3, h4, h5, h6, form, input, select, button, textarea, iframe, table, th,td,
+header,section,article,nav,footer{margin: 0;padding: 0; }
+
+/*全局公用样式 start end*/
+@import "./components/header";
+@import "./layout/qrcodePay-root";
+

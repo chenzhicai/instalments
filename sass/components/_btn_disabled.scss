@@ -1,0 +1,11 @@
+@charset "utf-8";
+$btnDisabledFontColor: #fff;
+$btnDefaultDisabledFontColor: #fff;
+
+.btn_disabled {
+    color: $btnDisabledFontColor;
+    background-color: #ccc;
+    &.btn_default {
+        color: $btnDefaultDisabledFontColor;
+    }
+}
