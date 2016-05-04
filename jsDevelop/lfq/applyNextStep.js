@@ -115,6 +115,7 @@ function initCVN2Event() {
     $cvn2Num = $("#cvn2Num");
     $cvn2Num.on("change", changeCvn2Num);
     $cvn2Num.on("keyup", function() {
+        this.value = this.value.replace(/[^\d]/g,"");
         var cvn2NumVal = new String($cvn2Num.val());
         if (cvn2NumVal.length > 3) {
             $cvn2Num.val(cvn2NumVal.substr(0, 3));

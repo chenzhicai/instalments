@@ -255,7 +255,7 @@ function initKeyup() {
 
     });
     $("#user-phone").on("keyup", function() {
-        this.value = obj.value.replace(/[^\d]/g,"");
+        this.value = this.value.replace(/[^\d]/g,"");
         if (getVerifyCodeDJS == 60 && $("#user-phone").val().length == 11) {
             $("#verifyBtn").removeClass("disabled");
         }
