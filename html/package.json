@@ -1,0 +1,22 @@
+{
+  "name": "instalments",
+  "version": "1.0.0",
+  "main": "apply.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "chenzhicai",
+  "license": "ISC",
+  "dependencies": {
+    "node-sass": "^3.4.2",
+    "jsx-loader": "^0.13.2",
+    "sass-loader": "^3.2.0",
+    "style-loader": "^0.13.1",
+    "url-loader": "^0.5.7",
+    "file-loader": "^0.8.5",
+    "webpack": "^1.12.14",
+    "css-loader": "^0.23.1"
+  },
+  "devDependencies": {},
+  "description": ""
+}

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="keywords" content="通联商务">
+    <meta name="description" content="通联商务">
+    <title>订单详情</title>
+    <link rel="stylesheet" type="text/css" href="../css/orderDetails.css">
+    <script type="text/javascript" src="../js/lfq/zepto.js"></script>
+    <script type="text/javascript" src="../js/lfq/orderDetails.js"></script>
+</head>
+
+<body>
+    <header>
+        <span id="billText">订单详情</span>
+        <span id="fanhui" class="icons-fanhui"></span>
+    </header>
+    <div id="root">
+        <div id="order-box">
+            <div class="module-title"><span>分期信息</span><a class="float-r">查看合同</a></div>
+            <div class="info-box">
+                <span class="info-title">定单号</span>
+                <span id="order-id">132324s</span>
+            </div>
+            <div class="info-box">
+                <span class="info-title">订单状态</span>
+                <span id="order-state">分期成功</span>
+            </div>
+            <div class="info-box">
+                <span class="info-title">分期金额</span>
+                <span id="instalments-num">5000.00</span>
+            </div>
+            <div class="info-box">
+                <span class="info-title">分期日期</span>
+                <span id="instalments-date">2016-01-01 12:55</span>
+            </div>
+            <div class="info-box">
+                <span class="info-title">分期卡号</span>
+                <span id="card-number">1234567890123456789</span>
+            </div>
+            <div class="info-box">
+                <span class="info-title">消费商户</span>
+                <span id="merchant-name">消费商户消费商户名称</span>
+            </div>
+            <div class="info-box">
+                <span class="info-title">分期期数</span>
+                <span id="stage-number">12期</span>
+            </div>
+            <div class="info-box">
+                <span class="info-title">已出账期数</span>
+                <span id="paied-number">3期</span>
+            </div>
+        </div>
+        <div id="record-box"></div>
+    </div>
+</body>
+
+</html>

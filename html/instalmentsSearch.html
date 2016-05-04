@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="keywords" content="通联卡">
+    <meta name="description" content="通联卡">
+    <title>汇分期</title>
+    <link rel="stylesheet" type="text/css" href="../css/instalmentsSearch.css">
+</head>
+
+<body>
+    <div id="all-box">
+        <div id="root">
+            <header>
+                <span id="billText">汇分期查询</span>
+            </header>
+            <section>
+                <div id="wrapper">
+                    <div id="scroller">
+                        <div id="pulldown">
+                            <span class="pulldown-icon"></span><span id="pulldown-label"></span>
+                        </div>
+                        <div id="detail"></div>
+                        <div id="pullup">
+                            <span class="pullup-icon"></span><span id="pullup-label"></span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <div id="pay_Box" style="background:rgba(0,0,0,.5); position:fixed; top:0;bottom:0;left:0;right:0; z-index:10002;display:none">
+            <div class="pop_con_zf">
+                <div class="clo_Box_zf">
+                    <div style="width: 10%;float:left;">
+                        <!-- <a id="clo_btn" class="clo_btn_zf"><img src="images/key_close.jpg" style="width:14px;height:14px;margin-left: 0px;margin-top: 2px;"/></a> -->
+                        <a id="clo_btn" style="width:14px;height:14px; background:url(../images/key_close.jpg) no-repeat center center; background-size:14px 14px; display:inline-block;"></a>
+                    </div>
+                    <div style="width: 90%;">信用卡号后六位</div>
+                </div>
+                <span class="fail_zf" id="wrongPwdSpan" style="display: none;">密码输入错误，请重新输入！<br>你还可以输入<label id="wrongNum1"></label>次</span>
+                <br>
+                <div class="payCodeBox_zf">
+                    <div class="pwdDiv_div_zf">
+                        <table class="pwdDiv_zf">
+                            <tr>
+                                <td id="pwdOne" onclick="PayBox.winShow()">&nbsp;</td>
+                                <td id="pwdTwo" onclick="PayBox.winShow()">&nbsp;</td>
+                                <td id="pwdThree" onclick="PayBox.winShow()">&nbsp;</td>
+                                <td id="pwdFour" onclick="PayBox.winShow()">&nbsp;</td>
+                                <td id="pwdFive" onclick="PayBox.winShow()">&nbsp;</td>
+                                <td id="pwdSix" onclick="PayBox.winShow()">&nbsp;</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <br>
+                <p>
+                    <a id="payBoxSure" class="btn btn_disabled btn_default">确定</a>
+                </p>
+            </div>
+            <!-- 数字键盘 -->
+            <div id="popDiv" class="popDiv">
+                <div style="padding-bottom: 8px;">
+                    <table>
+                        <tr>
+                            <td style="width: 33%;background-color: #FFFFFF;border-bottom: 0px;text-align: center;border-top: 1px solid #dedee1;" colspan="3"><span style="width: 50px;height: 30px;font-size: 16px;text-align: center;" onclick="PayBox.winHide();"><img src="../images/open_bottom.jpg" style="width:60px;height:20px;"/></span></td>
+                        </tr>
+                        <tr>
+                            <td class="key" style="width: 33%;">1</td>
+                            <td class="key" style="width: 33%;">2</td>
+                            <td class="key" style="width: 33%;">3</td>
+                        </tr>
+                        <tr>
+                            <td class="key">4</td>
+                            <td class="key">5</td>
+                            <td class="key">6</td>
+                        </tr>
+                        <tr>
+                            <td class="key">7</td>
+                            <td class="key">8</td>
+                            <td class="key">9</td>
+                        </tr>
+                        <tr>
+                            <td style="background-color: #bdc0c7;font-weight: bold;"></td>
+                            <td class="key">0</td>
+                            <td onclick="PayBox.delKey();" style="background-color: #bdc0c7">
+                                <div style="width: 22px;height: 16px;text-align:center;margin:auto;">
+                                    <img width="22px" height="16px" src="../images/key_del.png" />
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div id="bg" class="bg" style="display:none;"></div>
+            <iframe id='popIframe' class='popIframe' frameborder='0'></iframe>
+        </div>
+    </div>
+    <script type="text/javascript" src="../js/lfq/iscroll5.js"></script>
+    <script type="text/javascript" src="../js/lfq/zepto.min.js"></script>
+    <script type="text/javascript" src="../js/lfq/common.js"></script> 
+    <script type="text/javascript" src="../js/lfq/instalmentsSearch.min.js"></script>
+    <!--
+    
+    <script type="text/javascript" src="../js/lfq/zepto.js"></script>
+    <script type="text/javascript" src="../js/lfq/zeptoCommon.js"></script>
+    <script type="text/javascript" src="../js/lfq/pwdKeyBoard.js"></script>
+    <script type="text/javascript" src="../js/lfq/iscrollAssist.js"></script>
+    <script type="text/javascript" src="../js/lfq/instalmentsSearch.js"></script>
+    -->
+</body>
+
+</html>

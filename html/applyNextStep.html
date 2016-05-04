@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="keywords" content="通联卡">
+    <meta name="description" content="通联卡">
+    <title>汇分期</title>
+    <link rel="stylesheet" type="text/css" href="../css/applyInstalment.css">
+</head>
+
+<body>
+    <div id="all-box">
+        <div id="root">
+            <header>
+                <span id="billText">申请分期</span>
+                <span id="fanhui" class="icons-fanhui"></span>
+            </header>
+            <div id="instalments-box">
+                <div class="module-title">分期信用卡信息</div>
+                <div class="info-box">
+                    <span class="info-title">信用卡</span>
+                    <div id="creditCard-box" class="float-r">
+                        <input id="creditCard" class="light" type="number" placeholder="分期信用卡号">
+                    </div>
+                </div>
+                <div class="info-box margin_rl10">
+                    <span class="info-title">CVN2</span>
+                    <div id="cvn2Num-box" class="float-r">
+                        <input id="cvn2Num" class="light" type="password" placeholder="卡片背面签名条的三位数字">
+                        <span class="yanjing_icon"></span>
+                    </div>
+                </div>
+                <div class="info-box margin_rl10">
+                    <span class="info-title">有效期</span>
+                    <div id="timeNum-box" class="float-r">
+                        <input id="timeNum" class="light" type="number" placeholder="MMYY,2016年3月到期即0316">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="footer">
+            <div>
+                <a id="submitA" class="btn btn_disabled btn_default" href="javascript:;">提交申请</a>
+            </div>
+        </div>
+
+    </div>
+    <!-- 提示弹框 -->
+    <div class="modal" id="tishuModal">
+        <div id="back"></div>
+        <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h4 class="modal-title">提示</h4>
+              </div>
+              <div class="modal-body">
+            <span id="msg_lable" class="prompt"></span> 
+              </div>
+              <div class="modal-footer">
+                <button type="button" id="modalButton">确认</button>
+              </div>
+            </div>
+            <div class="modal-content2">
+                <p>您的申请信息</p>
+                <P>已提交!</P>
+                <P class="small">将自动跳转到付款码</P>
+            </div>
+        </div>
+    </div>   
+    <script type="text/javascript" src="../js/lfq/zepto.min.js"></script>
+    <script type="text/javascript" src="../js/lfq/common.js"></script>
+    <script type="text/javascript" src="../js/lfq/applyNextStep.min.js"></script> 
+    <!--
+    <script type="text/javascript" src="../js/lfq/zepto.js"></script>
+    <script type="text/javascript" src="../js/lfq/authentication.js"></script>
+    <script type="text/javascript" src="../js/lfq/zeptoCommon.js"></script>
+    <script type="text/javascript" src="../js/lfq/myDialog.js"></script>
+    <script type="text/javascript" src="../js/lfq/applyNextStep.js"></script>
+    -->
+</body>
+
+</html>
