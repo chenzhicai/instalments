@@ -1,15 +1,3 @@
-
-//调用服务器链接
-var BASE_URL = window.location.protocol + "//wxtest.ulinkpay.com/";
-
-//调用服务器链接
-//var BASE_URL = window.location.protocol + "//www.ulinkpay.com/";
-window.LFQ_ORDER_CREATE_URL = BASE_URL+"FuLiBao/LFQCreateOrderServlet";
-window.LFQ_SMS_SEND_URL = BASE_URL+"FuLiBao/LFQSendSMSServlet";
-window.LFQ_ORDER_CREATE_URL = BASE_URL+"FuLiBao/LFQCreateOrderServlet";
-
-
-
 (function init() {
     $("input").on("keyup", function() {
         if ($(event.target).val() != "") {
@@ -19,6 +7,7 @@ window.LFQ_ORDER_CREATE_URL = BASE_URL+"FuLiBao/LFQCreateOrderServlet";
         }
     })
 })();
+
 function getAjax(url, param, callBack) {
     $.ajax({
         type: 'post',
@@ -77,7 +66,7 @@ window.QueryString = {
 function checkBrowser() {
     var u = navigator.userAgent.toLowerCase();
     if (u.indexOf('mobile') == -1 && u.indexOf('iphone') == -1) {
-        window.location.href = "error_browser.html";
+        window.location.href = "../error_browser.html";
     }
 }
 
@@ -92,24 +81,27 @@ function registerReallyClick($selector) {
     });
     $selector.on('touchend', function() {
         if (!falg) {
-            $selector.trigger("reallyClick",[$(event.target)]);
+            $selector.trigger("reallyClick", [$(event.target)]);
         }
     });
 }
 
-function clearNoNum(obj){
-obj.value = obj.value.replace(/[^\d.]/g,""); //清除"数字"和"."以外的字符
-obj.value = obj.value.replace(/^\./g,""); //验证第一个字符是数字而不是
-obj.value = obj.value.replace(/\.{2,}/g,"."); //只保留第一个. 清除多余的
-obj.value = obj.value.replace(".","$#$").replace(/\./g,"").replace("$#$",".");
-obj.value = obj.value.replace(/^(\-)*(\d+)\.(\d\d).*$/,'$1$2.$3'); //只能输入两个小数
-}
+/*
+// 不打包形式
+require.register("./zeptoCommon.js", function(module, exports, require) {
+    module.exports = {
+        getAjax: getAjax,
+        getUrlAjax: getUrlAjax,
+        checkBrowser: checkBrowser,
+        registerReallyClick: registerReallyClick
+    }
+});
+*/
 
+// 打包形式
 module.exports = {
     getAjax: getAjax,
     getUrlAjax: getUrlAjax,
-    getUrlAjax: getUrlAjax,
     checkBrowser: checkBrowser,
-    registerReallyClick: registerReallyClick,
-    clearNoNum: clearNoNum
+    registerReallyClick: registerReallyClick
 }

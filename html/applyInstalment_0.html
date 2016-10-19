@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="keywords" content="通联卡">
+    <meta name="description" content="通联卡">
+    <title>小通分期</title>
+    <link rel="stylesheet" type="text/css" href="../css/applyInstalment.css">
+    <script type="text/javascript" src="../js/lfq/urlVar.js"></script>
+</head>
+
+<body>
+    <form id="all-box">
+        <div id="root">
+            <header>
+                <span>申请分期</span>
+            </header>
+            <div id="instalments-box">
+                <div class="module-title">分期信息</div>
+                <div class="info-box margin_rl10">
+                    <span class="info-title">商品金额</span>
+                    <div id="applyNum-box" class="float-r">
+                        <input id="applyInstalmentNum" class="light" name="lfq_amt" type="number" placeholder="目前只支持600-20000" type="text">
+                        <span>元</span>
+                    </div>
+                </div>
+                <div class="info-box margin_rl10">
+                    <span class="info-title">分期期数</span>
+                    <div id="stageNumberBox" class="float-r">
+                        <span data-number="6" class="checked"><span>6期免息</span></span>
+                        <span data-number="12"><span>12期免息</span></span>
+                    </div>
+                </div>
+                <div class="info-box margin_rl10">
+                    <span class="info-title">分期费率</span>
+                    <div class="float-r">
+                        <span>每期仅需</span><span>0.5%</span><span>,共3%</span>
+                    </div>
+                </div>
+                <div class="info-box">
+                    <span class="info-title">每期还款金额</span>
+                    <div class="float-r">
+                        <span id="eachPayNumber" class="prompt">预计0.00</span>
+                        <span class="prompt">元</span>
+                    </div>
+                </div>
+            </div>
+            <div id="personal-box">
+                <div class="module-title">分期信用卡信息</div>
+                <div class="info-box margin_rl10">
+                    <input id="creditCard" class="light" type="tel" maxlength="22" name="creditCard" oninput="if(value.length>22)value=value.slice(0,22)" placeholder="信用卡号">
+                </div>
+                <div class="info-box margin_rl10">
+                    <input id="user-phone" type="tel" class="light" name="hp_no" maxLength="15" onKeypress="if (event.keyCode < 48 || event.keyCode > 57) event.returnValue = false" placeholder="银行预留手机号">
+                    <div class="float-r"><a id="verifyBtn" class="verifyBtn disabled">获取验证码</a></div>
+                </div>
+                <div class="info-box">
+                    <input id="verify-code" class="light" name="verify_code" type="tel" maxlength="4" placeholder="验证码">
+                </div>
+            </div>
+            <!--        <div id="root_footer"></div>  -->
+        </div>
+        <div id="footer">
+            <div id="agreement-box">
+                <div id="checkButton">
+                    <div class="icheckbox-blue">
+                        <input type="checkbox" id="agreement-check" class="light" name="agreement" value="agreement" />
+                    </div>
+                    <label>我已阅读并同意</label>
+                </div>
+                <a id="contract" href="contract.html">《个人消费分期支付合同》</a>
+            </div>
+            <div>
+                <a id="next-step" class="btn btn_disabled btn_default" href="javascript:;">下一步</a>
+            </div>
+        </div>
+        <!-- 提示弹框 -->
+        <div class="modal" id="tishuModal">
+            <div id="back"></div>
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">提示</h4>
+                    </div>
+                    <div id="msg_lable" class="modal-body">
+                        您输入的验证码错误
+                    </div>
+                    <div class="modal-footer">
+                        <a type="button" id="modalButton">确认</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    <script type="text/javascript" src="../js/lfq/zepto.min.js"></script>
+    
+    <script type="text/javascript" src="../js/lfq/common.min.js"></script>
+    <script type="text/javascript" src="../js/lfq/apply.min.js"></script>
+    
+    <!--
+    <script type="text/javascript" src="../jsDevelop/lfq/require.js"></script>
+    <script type="text/javascript" src="../jsDevelop/lfq/zeptoCommon.js"></script>
+    <script type="text/javascript" src="../jsDevelop/lfq/views/applyView.js"></script>
+    <script type="text/javascript" src="../jsDevelop/lfq/cmodal.js"></script>
+    <script type="text/javascript" src="../jsDevelop/lfq/authentication.js"></script>
+    <script type="text/javascript" src="../jsDevelop/lfq/apply.js"></script>
+    -->
+</body>
+
+</html>

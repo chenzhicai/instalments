@@ -17,6 +17,18 @@ function showModals(modalIs) {
 
 }
 
+// 不打包形式
+/*
+require.register("./myDialog.js", function(module, exports, require) {
+    module.exports = {
+        hideModal: hideModal,
+        showModals: showModals
+    }
+});
+*/
+
+
+// 打包形式
 module.exports = {
     hideModal: hideModal,
     showModals: showModals

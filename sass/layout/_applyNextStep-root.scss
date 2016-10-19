@@ -1,0 +1,138 @@
+@import "../../../skinSass/sass/componets/cell/cell_global";
+@import "../../../skinSass/sass/componets/cell/form/form_common";
+@import "../../../skinSass/sass/componets/button/button";
+@import "../mixins/border-forge";
+@import "compass/css3/border-radius";
+html,
+body {
+    height: 100%;
+}
+
+#billText {
+    margin-left: -24px;
+}
+
+.input-erro {
+    font-size: 17px;
+    line-height: 34px;
+    background-color: #f6f6f9;
+    color: red;
+    padding-left: 10px;
+}
+
+.mt0 {
+    margin-top: 0px;
+}
+
+.pl {
+    padding-left: 10px;
+}
+
+.tar {
+    text-align: right;
+}
+
+.verifyBtn {
+    height: 30px;
+    width: 110px;
+    border-width: 0px;
+    display: inline-block;
+    text-align: center;
+    color: #2792e4;
+    font-size: 15px;
+    background: #fff;
+    position: relative;
+    top: 4px;
+    margin-left: 10px;
+    @include border-afterforge(100px, 30px, #2792e4);
+    &:after {
+        left: -47px;
+        top: -20px;
+        @include border-radius(3px);
+    }
+}
+
+.modal-content2 {
+    text-align: center;
+}
+
+#orderTiShi .modal-body {
+    padding-bottom: 0px;
+}
+
+#orderTiShi {
+    .modal-footer {
+        text-align: center;
+        > button {
+            width: 90%;
+            display: inline-block;
+            padding: 5px 0px;
+            /*      &:last-child {
+           margin-left: 10%;
+       } */
+        }
+        &:before {
+            border-top: 1px solid #fff;
+        }
+    }
+    .modal-dialog {
+        margin-top: 25%;
+    }
+    .cells {
+        margin-top: 0px;
+    }
+    h4 {
+        font-size: 20px;
+    }
+}
+
+#submitA:after {
+    border: 0px solid rgba(0, 0, 0, 0.2);
+}
+
+#submitApply {
+    background-color: #00aaee;
+    color: #fff;
+}
+
+#submitCancel:after {
+    border: 1px solid #00aaee;
+}
+
+.modal-footer > button {
+    font-size: 20px;
+}
+
+.tg22 {
+    font-size: 22px;
+}
+
+.yanjing_icon {
+    background-image: url("../images/yanjing_icon.png");
+    background-size: 23px 14px;
+    background-repeat: no-repeat;
+    background-position: 0px 5px;
+    width: 33px;
+    height: 24px;
+    display: inline-block;
+    position: absolute;
+    top: 10px;
+    right: 7px;
+}
+
+#mqsxf {
+    padding-top: 0px;
+    margin-top: -5px;
+    font-size: 14px;
+    &:before {
+        border-top: 0px solid #D9D9D9;
+    }
+}
+
+.ts_p {
+    font-size: 14px;
+    line-height: 21px;
+    text-align: left;
+    padding: 5px 15px;
+    color: #999;
+}

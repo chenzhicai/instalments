@@ -2,6 +2,7 @@
 @import "./layout/all-init";
 @import "./components/header";
 @import "./layout/instalmentsSearch-root";
+@import "./layout/modals-mobile";
 body{
     color: #222;
 }
@@ -9,3 +10,22 @@ body{
 #wrapper{
     top: 44px;
 }
+
+#tishiwudingdan {
+    position: fixed;
+    z-index: 2;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    padding-top: 80px;
+    background: #efefef;
+    >img {
+        width: 103px;
+        margin-left: 32px;
+    }
+    >p {
+        margin-top: 20px;
+        color: #ccc;
+    }
+}
+

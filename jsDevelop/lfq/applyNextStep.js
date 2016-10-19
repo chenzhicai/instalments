@@ -1,9 +1,12 @@
-var zcom = require("./zeptoCommon.js");
-var myDialog = require("./myDialog.js");
+var zcom = require("../components/winLocation.js");
+var myDialog = require("./cmodal.js");
 var authentication = require("./authentication.js");
+var merId = '';
+var cardFeeRate = '';
 $(function() {
+    zcom.checkBrowser();
     $("#fanhui").on("touchstart", function() {
-        location = "./applyInstalment.html";
+        history.back();
     });
     initCreditCardEvent();
     initCVN2Event();
@@ -15,7 +18,10 @@ $(function() {
         myDialog.hideModal();
         event.preventDefault();
     });
-
+    merId = QueryString.GetValue("merId");
+    cardFeeRate = QueryString.GetValue("cardFeeRate");
+    $('#merId').val(merId);
+    $('#cardFeeRate').val(cardFeeRate);
 });
 
 function applyLfqOrder() {
@@ -30,8 +36,15 @@ function applyLfqOrder() {
     console.log(param); //把字符串打印到控制台 调试用的  
 
 
-    
-    zcom.getAjax(LFQ_ORDER_CREATE_URL, param, retnFunc);
+    try {
+        zcom.getAjax(LFQ_ORDER_CREATE_URL, param, retnFunc);
+    } catch (e) {
+        $("#msg_lable").text("网络无法连接");
+        $(".modal-content").show();
+        $(".modal-content2").hide();
+        myDialog.showModals(); // 显示提示框
+    }
+
     //    retnFunc({});
 }
 
@@ -40,7 +53,7 @@ function retnFunc(retn) {
     var tipmsg = "init";
     if (retn.lft_orderinfo_response != undefined) {
         if (retn.lft_orderinfo_response.resp_code == "0000") { //如果成功 
-            window.location.href = "qrcodePay.html?payCode=" + retn.serial_no;
+            window.location.href = "qrcodePay.html?payCode=" + retn.lft_orderinfo_response.serial_no + '&card_6th=' + card_6th + '&open_id=' + QueryString.GetValue("open_id");
         } else {
             tipmsg = retn.lft_orderinfo_response.resp_msg;
         }
@@ -50,7 +63,6 @@ function retnFunc(retn) {
 
     if (tipmsg != "init") {
         $("#msg_lable").text(tipmsg);
-        $("#verifyBtn").removeClass("disabled");
         $(".modal-content").show();
         $(".modal-content2").hide();
         myDialog.showModals(); // 显示提示框
@@ -59,6 +71,7 @@ function retnFunc(retn) {
 
 // 拼接请求参数
 function getParameters() {
+    var CardNum = $("#creditCard").val();
     var parameters = [{
         name: "open_id",
         value: QueryString.GetValue("open_id")
@@ -79,7 +92,7 @@ function getParameters() {
         value: QueryString.GetValue("lfq_amt")
     }, {
         name: "creditCard",
-        value: $("#creditCard").val()
+        value: CardNum
     }, {
         name: "cvn2Num",
         value: $("#cvn2Num").val()
@@ -89,8 +102,15 @@ function getParameters() {
     }, {
         name: "servlet_type",
         value: "create_order"
+    }, {
+        name: "merId",
+        value: $("#merId").val()
+    }, {
+        name: "cardFeeRate",
+        value: $("#cardFeeRate").val()
     }]; //请求参数
 
+    card_6th = CardNum.substr(CardNum.length - 6); // 传到付款码页面用于重新生成串码
     return $.param(parameters);
 }
 
@@ -114,8 +134,8 @@ function isDisabledSubmit() {
 function initCVN2Event() {
     $cvn2Num = $("#cvn2Num");
     $cvn2Num.on("change", changeCvn2Num);
-    $cvn2Num.on("keyup", function() {
-        this.value = this.value.replace(/[^\d]/g,"");
+    $cvn2Num.on("input", function() {
+        this.value = this.value.replace(/[^\d]/g, "");
         var cvn2NumVal = new String($cvn2Num.val());
         if (cvn2NumVal.length > 3) {
             $cvn2Num.val(cvn2NumVal.substr(0, 3));
@@ -128,7 +148,7 @@ function initCVN2Event() {
 function initTimeNumEvent() {
     $timeNum = $("#timeNum");
     $timeNum.on("change", changeTimeNum);
-    $timeNum.on("keyup", function() {
+    $timeNum.on("input", function() {
         var timeNumVal = new String($timeNum.val());
         if (timeNumVal.length > 4) {
             $timeNum.val(timeNumVal.substr(0, 4));
@@ -141,7 +161,7 @@ function initTimeNumEvent() {
 function initCreditCardEvent() {
     $creditCard = $("#creditCard");
     $creditCard.on("change", changeCreditCard);
-    $creditCard.on("keyup", function() {
+    $creditCard.on("input", function() {
         isDisabledSubmit();
     })
 }
@@ -175,13 +195,13 @@ function initYanjingIconEvent() {
     $(".yanjing_icon").on("touchstart", function() {
         setBackground("yanjing2_icon.png");
         $("#cvn2Num").attr("type", "number");
-        
+
     });
     $(".yanjing_icon").on("touchend", function() {
         setTimeout(function() {
             setBackground("yanjing_icon.png");
             $("#cvn2Num").attr("type", "password");
-        },3000)
+        }, 3000)
 
     });
 

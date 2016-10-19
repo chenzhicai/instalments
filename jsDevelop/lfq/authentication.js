@@ -12,8 +12,9 @@ function isSFZNo(card) {
 
 // 验证信用卡格式
 function isXYKNum(sText) {
-    if (sText.length > 12 && sText.length < 17) {
-        return true;
+    if (sText.length >= 13 && sText.length <= 16) {
+        var numStr2 = sText.match(/\d*/i)[0];
+        return numStr2 == sText ? true : false;
     } else {
         return false;
     }
@@ -24,29 +25,35 @@ function isTimeNum(timeNum) {
     var istNum = true;
     if (timeNum.length < 4 || parseInt(timeNum.substr(0, 2)) > 12 || parseInt(timeNum.substr(0, 2)) < 1) {
         istNum = false;
+    } else {
+        //验证是否 大于现在
+        istNum = isNextYearMonth(timeNum.substr(2, 2), timeNum.substr(0, 2));
     }
 
-    //验证是否 大于现在
-//    istNum = isNextYearMonth(timeNum.substr(0, 2),timeNum.substr(2, 2));
+
     return istNum;
 }
 
 // 年份大于现在 参数字符串数字'16':2016 ,16:2016。年份相同也是大于
 function isNextYear(yearStr) {
-    var isNext = true;
+    var isNext = "more"; // 默认年大于现在
     var theNow = new Date();
     yearStr = yearStr.toString();
 
     if (yearStr.length == 4) {
         if (theNow.getFullYear() > parseInt(yearStr)) {
-            isNext = false;
+            isNext = "less"; // 年份小于现在
+        } else if (theNow.getFullYear() == parseInt(yearStr)) {
+            isNext == "same" // 同样年份
         }
     } else if (yearStr.length > 4 || yearStr.length == 0) {
-        isNext = false;
+        isNext = "erro"; // 位数错误
     } else {
         theYear2 = theNow.getFullYear().toString().substr(2, 4);
         if (parseInt(theYear2) > parseInt(yearStr)) {
-            isNext = false;
+            isNext = "less";
+        } else if (parseInt(theYear2) == parseInt(yearStr)) {
+            isNext = "same" // 同样年份
         }
     }
 
@@ -60,17 +67,22 @@ function isNextMonth(monthStr) {
     if (theNow.getMonth() > parseInt(monthStr) - 1) {
         isNext = false;
     }
+    return isNext;
 }
 
 function isNextYearMonth(yearStr, monthStr) {
-    var isNext = false;
-    if (isNextYear(yearStr)) {
+    var isMoreYear = isNextYear(yearStr);
+    if (isMoreYear == "more") {
+        return true;
+    } else if (isMoreYear == "less") {
+        return false;
+    } else if (isMoreYear == "same") {
         if (isNextMonth(monthStr)) {
-            isNext = true;
+            return true;
         }
+    } else {
+        return false;
     }
-
-    return isNext;
 }
 
 //验证手机号
@@ -87,11 +99,20 @@ function isPhoneNumber(phoneNumber) {
 function isCnName(cnName) {
     var cnNameLength = cnName.length;
     var mathArrayLength = cnName.match(/[\u4e00-\u9fa5]/g) ? cnName.match(/[\u4e00-\u9fa5]/g).length : 0;
-    if (cnNameLength == mathArrayLength && cnNameLength < 9 && cnNameLength != 0) {
+    if (cnNameLength == mathArrayLength && cnNameLength != 0 && mathArrayLength < 9) {
         return true;
     } else {
         return false;
     }
+}
+
+// 验证输入是否为整数
+function isNum(numStr, numLength) {
+    if (numStr != null && numStr.length == numLength) {
+        var numStr2 = numStr.match(/\d*/i)[0];
+        return numStr2 == numStr ? true : false;
+    }
+    return false;
 }
 
 // 添加或移除错误提示
@@ -106,11 +127,28 @@ function addOrRemoveErro(isErro, erroId, erroText, $eventTargetParentNode) {
     }
 }
 
+//   不打包形式
+/*
+require.register("./authentication.js", function(module, exports, require) {
+    module.exports = {
+        isSFZNo: isSFZNo,
+        isXYKNum: isXYKNum,
+        isTimeNum: isTimeNum,
+        isPhoneNumber: isPhoneNumber,
+        isCnName: isCnName,
+        addOrRemoveErro: addOrRemoveErro,
+        isNum: isNum
+    }
+});
+*/
+// 打包形式
+
 module.exports = {
     isSFZNo: isSFZNo,
     isXYKNum: isXYKNum,
     isTimeNum: isTimeNum,
     isPhoneNumber: isPhoneNumber,
     isCnName: isCnName,
-    addOrRemoveErro: addOrRemoveErro
+    addOrRemoveErro: addOrRemoveErro,
+    isNum: isNum
 }

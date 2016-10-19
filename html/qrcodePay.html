@@ -13,18 +13,16 @@
     <meta name="description" content="通联商务">
     <title>二维码支付</title>
     <link rel="stylesheet" type="text/css" href="../css/qrcodePay.css">
+    <script type="text/javascript" src="../js/lfq/urlVar.js"></script>
     <script type="text/javascript" src="../js/lfq/zepto.min.js"></script>
+    <script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+    
     <script type="text/javascript" src="../js/lfq/JsBarcode.js"></script>
+    <script type="text/javascript" src="../js/lfq/CODE128.js"></script>
     <script type="text/javascript" src="../js/lfq/CODE39.js"></script>
     <script type="text/javascript" src="../js/lfq/jquery.qrcode-0.12.0.js"></script>
-    <script type="text/javascript" src="../js/lfq/common.js"></script> 
-    <script type="text/javascript" src="../js/lfq/qrcodePay.min.js"></script> 
-    <!--
-    <script type="text/javascript" src="../js/lfq/zepto.js"></script>
-    <script type="text/javascript" src="../js/lfq/zeptoCommon.js"></script>
-    <script type="text/javascript" src="../js/lfq/jquery.qrcode-0.12.0.js"></script>
-    <script type="text/javascript" src="../js/lfq/qrcodePay.js"></script>
-    -->
+
+    
 </head>
 
 <body>
@@ -37,7 +35,52 @@
         <div id="container"></div>
         <img id="img-photo" src="../images/photo.png">
         <p class="countdown-parent">有效时间<span id="countdown">120</span>秒</p>
+        <div id="tishiRefresh">
+            <img src="../images/qrcodeRefresh.png">
+            <p>
+                <span>二维码已失效，请点图片击刷新。</span>
+            </p>
+        </div>
+        <div id="tishijycg">
+            <img src="../images/jycg.png">
+        </div>
+        <div id="tishijysb">
+            <img src="../images/jysb.png">
+        </div>
+        <div id="tishisx">
+            <img src="../images/jysx.png">
+        </div>
     </section>
+    <div class="button_sp_area" id="">
+        <a id="searchA" href="" class="btn btn_plain_primary">分期交易查询</a>
+    </div>
+    <!-- 提示弹框 -->
+    <div class="modal" id="tishuModal">
+        <div id="back"></div>
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">提示</h4>
+                </div>
+                <div class="modal-body">
+                    
+                </div>
+                <div class="modal-footer">
+                    <a type="button" id="modalButton">确认</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script type="text/javascript" src="../js/lfq/common.min.js"></script> 
+    <script type="text/javascript" src="../js/lfq/qrcodePay.min.js"></script> 
+    
+<!--  
+    <script type="text/javascript" src="../jsDevelop/base/require.js"></script>
+    <script type="text/javascript" src="../jsDevelop/lfq/cmodal.js"></script>
+    <script type="text/javascript" src="../jsDevelop/components/winLocation.js"></script>
+    <script type="text/javascript" src="../jsDevelop/lfq/qrcodePay.js"></script>
+-->    
 </body>
 
 </html>

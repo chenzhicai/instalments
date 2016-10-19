@@ -1,0 +1,251 @@
+$weuiCellLineHeight:1.6;
+@import "../../../weui-sass/src/style/widget/weui_cell/weui_cell_global";
+@import "../../../weui-sass/src/style/widget/weui_cell/picker";
+@import "../../../weui-sass/src/style/widget/weui_cell/weui_form/weui_form_common";
+@import "../../../weui-sass/src/style/widget/weui_cell/weui_check";
+@import "../../../weui-sass/src/style/icon/weui_font";
+@import "../../../weui-sass/src/style/icon/weui_icon_font";
+@import "../../../weui-sass/src/style/widget/weui_button/weui_button";
+@import "../mixins/border-forge";
+@import "compass/css3/border-radius";
+
+.weui_cells {
+    margin-top: 0em;
+}
+
+.module-title {
+    padding: 10px 10px 5px 10px;
+}
+
+.input {
+    color: #222;
+}
+
+#applyInstalmentNum {
+    width: 88%;
+    text-align: right;
+}
+
+.f2 {
+    flex: 2;
+}
+
+.tishi {
+    color: red;
+    display: none;
+}
+
+.tar {
+    text-align: right;
+    font-size: 14px;
+}
+
+#stageNumberBox {
+    >span {
+        display: inline-block;
+        width: 86px;
+        height: 33px;
+        margin: 4px 0px 0px 7px;
+        padding-left: 2px;
+        line-height: 33px;
+        text-align: center;
+        font-size: 16px;
+    }
+    >span.checked {
+        background-image: url("../images/kuang_icon.png");
+        background-repeat: no-repeat;
+        background-size: 88px 33px;
+        color: #222;
+    }
+    >span:not(.checked) {
+        @include border-afterforge(88px,
+        35px,
+        #d7d7d7);
+        &:after {
+            height: 65px;
+            left: -45px;
+            top: -17px;
+        }
+    }
+}
+
+.weui_cell_prompt {
+    width: 100%;
+    color: #999999;
+}
+
+.bgb {
+    background-color: #1CB2ED;
+    margin-bottom: -1px;
+    color: #fff;
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+.bgb.bt0{
+    padding-bottom: 15px;
+}
+
+.pt {
+    padding-bottom: 8px;
+}
+
+.bt0:before {
+    border-width: 0px;
+}
+
+.fs14 {
+    font-size: 14px;
+    line-height: 15px;
+}
+
+.lh25_m15 {
+    line-height: 2.5em;
+    margin-top: 1.5em;
+    margin-bottom: 1em;
+}
+
+.lh20_m12 {
+    line-height: 2em;
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+.weui_cell_fl {
+    flex: 1;
+}
+
+.ts12 {
+    font-size: 16px;
+}
+
+#countMoney {
+    font-size: 20px;
+    text-align: right;
+}
+
+#eachMoney {
+    font-size: 2em;
+    text-align: right;
+}
+
+.plem {
+    text-align: right;
+}
+
+.weui_cells_title.bgb {
+    margin-top: 0;
+    padding-top: 15px;
+    padding-bottom: 7px;
+    font-size: 16px;
+}
+
+.weui_cell_f6 {
+    flex: 6;
+}
+
+.weui_cell_f2 {
+    flex: 1.6;
+}
+
+.weui_cell_f3 {
+    flex: 3;
+}
+
+.tc {
+    text-align: center;
+}
+
+.weui_cell_f4 {
+    flex: 3.5;
+}
+
+select {
+    font-size: 16px;
+    padding: 0px 10px;
+    option {
+        line-height: 30px;
+    }
+    option:before {
+        border-top: 1px solid #D9D9D9;
+    }
+    option:first-child:before {
+        border-top: 0px solid #D9D9D9;
+    }
+    option:nth-child(even) {
+        background-color: #f5f5f5;
+    }
+}
+
+#rate {
+    border: 0px;
+    text-align: right;
+    padding-right: 15px;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+#stageNumberBox {
+    &:after {
+        content: " ";
+        display: inline-block;
+        height: 6px;
+        width: 6px;
+        border-width: 2px 2px 0 0;
+        border-color: #C8C8CD;
+        border-style: solid;
+        transform: rotate(45deg);
+        position: relative;
+        top: -2px;
+        position: absolute;
+        top: 50%;
+        right: 15px;
+        margin-top: -3px;
+    }
+}
+
+.toolbar .toolbar-inner {
+    height: 2.2rem;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    text-align: center;
+}
+
+.toolbar .title {
+    position: absolute;
+    display: block;
+    width: 100%;
+    padding: 0;
+    font-size: .85rem;
+    font-weight: normal;
+    line-height: 2.2rem;
+    color: #3d4145;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.toolbar .picker-button {
+    position: absolute;
+    right: 0;
+    box-sizing: border-box;
+    height: 2.2rem;
+    line-height: 2.2rem;
+    color: #04BE02;
+    z-index: 1;
+    padding: 0 .5rem;
+}
+
+.weui_cells_radio .weui_check:checked + .weui_icon_checked:before {
+    display: block;
+    content: '\EA08';
+    color: #09BB07;
+    font-size: 16px;
+}
+
+.weui-picker-modal {
+    height: 14rem;
+}
+
+.weui-select-modal {
+    height: auto;
+}

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="keywords" content="通联卡">
+    <meta name="description" content="通联卡">
+    <title>提示信息</title>
+    <link rel="stylesheet" type="text/css" href="../css/positionPrompt.css">
+    <script type="text/javascript" src="../js/lfq/urlVar.js"></script>
+    <script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+    <script type="text/javascript" src="../js/lfq/zepto.min.js"></script>
+    
+</head>
+
+<body>
+    <div id="root">
+        <header>
+            <span id="billText">提示信息</span>
+        </header>
+        <article id="wrapper">
+            <div class="header"><i class="weui-icon-warn"></i><span>获取位置信息失败</span></div>
+            <p>尊敬的客户，为了保证分期交易的安全和真实性，"小通金服"需要取得您的位置信息来完成分期支付的申请，请您在公众号弹出的提示中同意"小通金服"获取您的位置信息，再进行分期申请操作。</p>
+            <p>如您已经同意"小通金服"获取您的位置信息，但仍出现此页面，可能是您在手机的系统设置中禁止了微信获取地理位置信息，请您在允许微信获取位置后再进行分期申请操作。</p>
+        </article>
+        <div class="button_sp_area">
+            <a id="close" href="javascript:;" class="weui-btn weui-btn_plain-primary">返回</a>
+        </div>
+    </div>
+    <script type="text/javascript">
+    $(function  () {
+        $("#close").on("touchstart",function  () {
+            wx.closeWindow();
+        });
+        
+    });
+    </script>
+</body>
+
+</html>

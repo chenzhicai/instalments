@@ -5,7 +5,9 @@
 input[type=number] {
     //  font-family: "Helvetica-Light,Regular-Light"; 
 }
-
+.module-title{
+    padding: 10px 15px 5px 15px;
+}
 .float-r {
     float: right;
     display: inline-block;
@@ -18,34 +20,36 @@ input[type=number] {
 #instalments-box,
 #personal-box {
     background-color: #fff;
-    >div {
+    >div,label {
         position: relative;
         &:after {
             @include setBottomLine(#d7d7d7);
         }
     }
-    >div.margin_rl10 {
+    >div.margin_rl10,label.margin_rl10 {
         margin: 0px 10px;
     }
-    >div:not(.margin_rl10) {
+    >div:not(.margin_rl10),label:not(.margin_rl10) {
         padding: 0px 10px;
     }
 }
-
 
 #instalments-box {
     .explain {
         font-size: 12px;
         margin-left: 5px;
     }
-    input{
-      text-align: right;  
+    input {
+        text-align: right;
     }
+    #user-name,
+    #user-id{
+        width: 100%;      
+    }
+
 }
 
 #personal-box {
-    #user-name,
-    #user-id,
     #verify-code {
         width: 100%;
     }
@@ -72,13 +76,17 @@ input[type=number] {
             border-color: #ccc;
         }
     }
+    #creditCard {
+        width: 100%;      
+    }
 }
 
 #applyNum-box {
-    width: 85%;
+    width: 80%;
     text-align: right;
     #applyInstalmentNum {
-        width: 85%;
+        width: 80%;
+        
     }
 }
 

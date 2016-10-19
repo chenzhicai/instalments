@@ -1,0 +1,25 @@
+@charset "utf-8";
+@import "./components/refresh";
+@import "./layout/all-init";
+@import "./components/header";
+@import "./mixins/border-forge";
+@import "compass/css3/border-radius";
+.ts-noNetwork {
+    text-align: center;
+    margin-top: 40px;
+    >p {
+        color: #8C8C8C;
+    }
+    >a {
+        color: #2792e4;
+        font-size: 16px;
+        display: inline-block;
+        padding: 10px 20px;
+        @include border-afterforge(100px, 30px, #2792e4);
+        &:after {
+            left: -51px;
+            top: -8px;
+            @include border-radius(3px);
+        }
+    }
+}

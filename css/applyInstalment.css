@@ -212,9 +212,10 @@ header {
   color: #fff;
   font-size: 18px;
   width: 100%;
+  font-family: medium;
 }
 
-/* line 9, ../sass/components/_header.scss */
+/* line 10, ../sass/components/_header.scss */
 .icons-fanhui {
   display: inline-block;
   width: 24px;
@@ -229,30 +230,37 @@ header {
   background-size: 24px 24px;
 }
 
-/* line 9, ../sass/layout/_instalments-root.scss */
+/* line 8, ../sass/layout/_instalments-root.scss */
+.module-title, .input-erro {
+  padding: 10px 15px 5px 15px;
+}
+
+/* line 11, ../sass/layout/_instalments-root.scss */
 .float-r {
   float: right;
   display: inline-block;
 }
 
-/* line 14, ../sass/layout/_instalments-root.scss */
+/* line 16, ../sass/layout/_instalments-root.scss */
 .prompt {
   color: #999;
 }
 
-/* line 18, ../sass/layout/_instalments-root.scss */
+/* line 20, ../sass/layout/_instalments-root.scss */
 #instalments-box,
 #personal-box {
   background-color: #fff;
 }
-/* line 21, ../sass/layout/_instalments-root.scss */
-#instalments-box > div,
-#personal-box > div {
+/* line 23, ../sass/layout/_instalments-root.scss */
+#instalments-box > div, #instalments-box label,
+#personal-box > div,
+#personal-box label {
   position: relative;
 }
-/* line 23, ../sass/layout/_instalments-root.scss */
-#instalments-box > div:after,
-#personal-box > div:after {
+/* line 25, ../sass/layout/_instalments-root.scss */
+#instalments-box > div:after, #instalments-box label:after,
+#personal-box > div:after,
+#personal-box label:after {
   content: " ";
   position: absolute;
   left: 0;
@@ -264,34 +272,39 @@ header {
   transform-origin: 0 100%;
   transform: scaleY(0.5);
 }
-/* line 27, ../sass/layout/_instalments-root.scss */
-#instalments-box > div.margin_rl10,
-#personal-box > div.margin_rl10 {
+/* line 29, ../sass/layout/_instalments-root.scss */
+#instalments-box > div.margin_rl10, #instalments-box label.margin_rl10,
+#personal-box > div.margin_rl10,
+#personal-box label.margin_rl10 {
   margin: 0px 10px;
 }
-/* line 30, ../sass/layout/_instalments-root.scss */
-#instalments-box > div:not(.margin_rl10),
-#personal-box > div:not(.margin_rl10) {
+/* line 32, ../sass/layout/_instalments-root.scss */
+#instalments-box > div:not(.margin_rl10), #instalments-box label:not(.margin_rl10),
+#personal-box > div:not(.margin_rl10),
+#personal-box label:not(.margin_rl10) {
   padding: 0px 10px;
 }
 
-/* line 37, ../sass/layout/_instalments-root.scss */
+/* line 38, ../sass/layout/_instalments-root.scss */
 #instalments-box .explain {
   font-size: 12px;
   margin-left: 5px;
 }
-/* line 41, ../sass/layout/_instalments-root.scss */
+/* line 42, ../sass/layout/_instalments-root.scss */
 #instalments-box input {
   text-align: right;
 }
+/* line 45, ../sass/layout/_instalments-root.scss */
+#instalments-box #user-name,
+#instalments-box #user-id {
+  width: 100%;
+}
 
-/* line 47, ../sass/layout/_instalments-root.scss */
-#personal-box #user-name,
-#personal-box #user-id,
+/* line 53, ../sass/layout/_instalments-root.scss */
 #personal-box #verify-code {
   width: 100%;
 }
-/* line 52, ../sass/layout/_instalments-root.scss */
+/* line 56, ../sass/layout/_instalments-root.scss */
 #personal-box .verifyBtn {
   height: 30px;
   width: 110px;
@@ -314,7 +327,7 @@ header {
   -webkit-transform: scale(0.5, 0.5);
   -o-transform: scale(0.5, 0.5);
 }
-/* line 62, ../sass/layout/_instalments-root.scss */
+/* line 66, ../sass/layout/_instalments-root.scss */
 #personal-box .verifyBtn:after {
   left: -57px;
   top: -8px;
@@ -322,27 +335,31 @@ header {
   -webkit-border-radius: 3px;
   border-radius: 3px;
 }
-/* line 68, ../sass/layout/_instalments-root.scss */
+/* line 72, ../sass/layout/_instalments-root.scss */
 #personal-box a.disabled {
   color: #d2d2d2;
   background: fff;
 }
-/* line 71, ../sass/layout/_instalments-root.scss */
+/* line 75, ../sass/layout/_instalments-root.scss */
 #personal-box a.disabled:after {
   border-color: #ccc;
 }
+/* line 79, ../sass/layout/_instalments-root.scss */
+#personal-box #creditCard {
+  width: 100%;
+}
 
-/* line 77, ../sass/layout/_instalments-root.scss */
+/* line 84, ../sass/layout/_instalments-root.scss */
 #applyNum-box {
-  width: 85%;
+  width: 80%;
   text-align: right;
 }
-/* line 80, ../sass/layout/_instalments-root.scss */
+/* line 87, ../sass/layout/_instalments-root.scss */
 #applyNum-box #applyInstalmentNum {
-  width: 85%;
+  width: 80%;
 }
 
-/* line 86, ../sass/layout/_instalments-root.scss */
+/* line 94, ../sass/layout/_instalments-root.scss */
 #stageNumberBox > span {
   display: inline-block;
   width: 78px;
@@ -351,13 +368,13 @@ header {
   padding-left: 10px;
   line-height: 33px;
 }
-/* line 94, ../sass/layout/_instalments-root.scss */
+/* line 102, ../sass/layout/_instalments-root.scss */
 #stageNumberBox > span.checked {
   background-image: url("../images/kuang_icon.png");
   background-repeat: no-repeat;
   background-size: 88px 33px;
 }
-/* line 99, ../sass/layout/_instalments-root.scss */
+/* line 107, ../sass/layout/_instalments-root.scss */
 #stageNumberBox > span:not(.checked) {
   position: relative;
 }
@@ -372,23 +389,23 @@ header {
   -webkit-transform: scale(0.5, 0.5);
   -o-transform: scale(0.5, 0.5);
 }
-/* line 103, ../sass/layout/_instalments-root.scss */
+/* line 111, ../sass/layout/_instalments-root.scss */
 #stageNumberBox > span:not(.checked):after {
   height: 65px;
   left: -45px;
   top: -17px;
 }
 
-/* line 111, ../sass/layout/_instalments-root.scss */
+/* line 119, ../sass/layout/_instalments-root.scss */
 .info-box {
   line-height: 44px;
 }
-/* line 113, ../sass/layout/_instalments-root.scss */
+/* line 121, ../sass/layout/_instalments-root.scss */
 .info-box > div {
   display: inline-block;
 }
 
-/* line 118, ../sass/layout/_instalments-root.scss */
+/* line 126, ../sass/layout/_instalments-root.scss */
 .module-title, .input-erro {
   font-size: 17px;
   line-height: 34px;
@@ -396,13 +413,13 @@ header {
   color: #666;
 }
 
-/* line 125, ../sass/layout/_instalments-root.scss */
+/* line 133, ../sass/layout/_instalments-root.scss */
 .input-erro {
   color: red;
   font-size: 15px;
 }
 
-/* line 131, ../sass/layout/_instalments-root.scss */
+/* line 139, ../sass/layout/_instalments-root.scss */
 #repayment-num {
   width: 100px;
 }
@@ -706,13 +723,27 @@ button.btn_plain_default, input.btn_plain_default {
   text-align: center;
 }
 
-/* line 45, ../sass/layout/_modals-mobile.scss */
+/* line 46, ../sass/layout/_modals-mobile.scss */
 .modal-header > h4 {
   margin: 0px;
   padding: 10px 0px;
 }
-
 /* line 50, ../sass/layout/_modals-mobile.scss */
+.modal-header .close_div {
+  position: absolute;
+  top: 0px;
+  padding-top: 15px;
+  right: 5px;
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+}
+/* line 58, ../sass/layout/_modals-mobile.scss */
+.modal-header .close_div img {
+  width: 16px;
+}
+
+/* line 64, ../sass/layout/_modals-mobile.scss */
 .modal-footer {
   position: relative;
 }
@@ -728,28 +759,28 @@ button.btn_plain_default, input.btn_plain_default {
   border-top: 1px solid #d7d7d7;
 }
 
-/* line 54, ../sass/layout/_modals-mobile.scss */
+/* line 68, ../sass/layout/_modals-mobile.scss */
 .modal-body {
   padding: 2px 0px 10px 0px;
   padding-top: 2px;
 }
 
-/* line 59, ../sass/layout/_modals-mobile.scss */
+/* line 73, ../sass/layout/_modals-mobile.scss */
 .modal-body P {
   line-height: 20px;
 }
 
-/* line 63, ../sass/layout/_modals-mobile.scss */
+/* line 77, ../sass/layout/_modals-mobile.scss */
 .modal-footer {
   line-height: 48px;
 }
-/* line 65, ../sass/layout/_modals-mobile.scss */
+/* line 79, ../sass/layout/_modals-mobile.scss */
 .modal-footer a {
   color: #2792e4;
   font-size: 18px;
 }
 
-/* line 71, ../sass/layout/_modals-mobile.scss */
+/* line 85, ../sass/layout/_modals-mobile.scss */
 .modal-footer > button {
   background-color: #fff;
   color: #00aaee;
@@ -759,25 +790,45 @@ button.btn_plain_default, input.btn_plain_default {
 }
 
 /* line 3, ../sass/layout/_applyNextStep.scss */
-#creditCard-box,
-#cvn2Num-box,
-#timeNum-box {
+#userId-box, #userNam-box {
   width: 70%;
 }
+/* line 5, ../sass/layout/_applyNextStep.scss */
+#userId-box input, #userNam-box input {
+  font-size: 14px;
+}
 
+/* line 10, ../sass/layout/_applyNextStep.scss */
+#cvn2Num-box {
+  width: 56%;
+}
 /* line 12, ../sass/layout/_applyNextStep.scss */
+#cvn2Num-box input {
+  font-size: 14px;
+}
+
+/* line 16, ../sass/layout/_applyNextStep.scss */
+#timeNum-box {
+  width: 63%;
+}
+/* line 18, ../sass/layout/_applyNextStep.scss */
+#timeNum-box input {
+  font-size: 14px;
+}
+
+/* line 27, ../sass/layout/_applyNextStep.scss */
 #creditCard-box > input,
 #cvn2Num-box > input,
 #timeNum-box > input {
   width: 100%;
 }
 
-/* line 17, ../sass/layout/_applyNextStep.scss */
+/* line 32, ../sass/layout/_applyNextStep.scss */
 #cvn2Num-box {
   padding-right: 40px;
 }
 
-/* line 21, ../sass/layout/_applyNextStep.scss */
+/* line 36, ../sass/layout/_applyNextStep.scss */
 .yanjing_icon {
   background-image: url("../images/yanjing_icon.png");
   background-size: 23px 14px;
@@ -791,7 +842,7 @@ button.btn_plain_default, input.btn_plain_default {
   right: 0px;
 }
 
-/* line 34, ../sass/layout/_applyNextStep.scss */
+/* line 49, ../sass/layout/_applyNextStep.scss */
 .modal-content2 {
   width: 200px;
   background-color: #000;
@@ -805,11 +856,11 @@ button.btn_plain_default, input.btn_plain_default {
   -webkit-border-radius: 8px;
   border-radius: 8px;
 }
-/* line 44, ../sass/layout/_applyNextStep.scss */
+/* line 59, ../sass/layout/_applyNextStep.scss */
 .modal-content2 p {
   padding: 5px 0px;
 }
-/* line 47, ../sass/layout/_applyNextStep.scss */
+/* line 62, ../sass/layout/_applyNextStep.scss */
 .modal-content2 p.small {
   font-size: 12px;
 }

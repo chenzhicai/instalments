@@ -167,7 +167,7 @@
 				ctx.textAlign = 'center';
 			}
 
-			ctx.fillText(encoder.getText(), x, y);
+			ctx.fillText(encoder.getText().replace(/(.{4})/g, "$1  "), x, y);
 		}
 
 		// Send a confirmation that the generation was successful to the valid function if it does exist

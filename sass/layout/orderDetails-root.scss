@@ -19,6 +19,9 @@ $module-title-color: #666;
     >div {
         padding: 0px 10px;
     }
+    #contract {
+        display: none;
+    }
 }
 
 .info-box {
@@ -63,6 +66,9 @@ $module-title-color: #666;
         padding: 0px 0px 50px 30px;
         /* margin-top: -3px; */
         .failed {
+            color: #E00C27;
+        }
+        .advance {
             color: #2792e4;
         }
     }

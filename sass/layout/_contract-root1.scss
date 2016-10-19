@@ -1,0 +1,117 @@
+#billText {
+    margin-left: -24px;
+}
+
+#contractBox {
+    color: #666666;
+    font-size: 13px;
+    margin: 0px 10px;
+    overflow-y: auto;
+}
+
+.title {
+    text-align: center;
+    font-size: 15px;
+    color: #222;
+    font-family: Normal;
+    margin: 15px 0px;
+}
+
+#contract-info {
+    >div {
+        margin: 10px 0;
+    }
+    .underline {
+        /*      text-decoration: underline; */
+        border-bottom: 1px solid #222;
+        padding-right: 20px;
+        padding-left: 10px;
+    }
+    .pl20 {
+        padding-left: 20px;
+    }
+    .strong {
+        color: #222;
+    }
+}
+
+#contract-clause {
+    line-height: 25px;
+    .list-title {
+        margin-top: 13px;
+        font-size: 14px;
+        color: #222;
+    }
+    .clause-content {
+        text-indent: 2em;
+    }
+    .strong {
+        color: #222;
+    }
+    img {
+        width: 34px;
+        height: 34px;
+        //        position: absolute;
+        position: absolute;
+        top: 300px;
+        right: 20px;
+    }
+}
+
+#agreeBox {
+    margin: 20px 0px 10px 0px;
+    .check {
+        position: absolute;
+        left: -9999em;
+    }
+    i.icon_checked {
+        width: 20px;
+        height: 20px;
+        display: inline-block;
+    }
+    label {
+        display: block;
+    }
+    .underline {
+        /*      text-decoration: underline; */
+        border-bottom: 1px solid #222;
+        display: inline-block;
+        width: 50px;
+        text-align: center;
+        height: 19px;
+        vertical-align: bottom;
+    }
+}
+
+.cell_bd,
+.cell_hd {
+    display: inline-block;
+}
+
+.cell_bd {
+    vertical-align: super;
+}
+
+.icon_checked {
+    &:before {
+        content: " ";
+        width: 19px;
+        height: 19px;
+        background: url(../images/blue@2x.png) no-repeat;
+        background-size: 56px 19px;
+        display: block;
+    }
+}
+
+.check {
+    // checkbox
+    .cells_checkbox & {
+        &:checked {
+            & + .icon_checked {
+                &:before {
+                    background-position: -38px 0;
+                }
+            }
+        }
+    }
+}

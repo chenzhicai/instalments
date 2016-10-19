@@ -1,0 +1,15 @@
+#tishiwudingdan {
+    position: absolute;
+    z-index: 2;
+    text-align: center;
+    width: 100%;
+    padding-top: 80px;
+    display: none;
+    >img {
+        width: 103px;
+    }
+    >p {
+        margin-top: 20px;
+        color: #ccc;
+    }
+}

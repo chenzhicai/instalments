@@ -8,12 +8,16 @@ sass_dir = "sass"
 images_dir = "images"
 javascripts_dir = "js"
 
+#sourcemap = true 为了产生map文件好定位scss 文件
 sourcemap = true
 
 # You can select your preferred output style here (can be overridden via the command line):
 # output_style = :expanded or :nested or :compact or :compressed
+#output_style = :compressed;
 
 # To enable relative paths to assets via compass helper functions. Uncomment:
+
+#true 为了产生map文件好定位scss 文件
  relative_assets = true
 
 # To disable debugging comments that display the original location of your selectors. Uncomment:

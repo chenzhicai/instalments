@@ -6,87 +6,114 @@
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="Expires" content="0">
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0, user-scalable=no" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+    <meta name="x5-orientation" content="portrait">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="format-detection" content="telephone=no" />
     <meta name="keywords" content="通联卡">
     <meta name="description" content="通联卡">
-    <title>汇分期</title>
-    <link rel="stylesheet" type="text/css" href="../css/applyInstalment.css">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="../css/applyInstalment2.css">
+    <script type="text/javascript" src="../js/lfq/urlVar.js"></script>
 </head>
 
 <body>
-    <form id="all-box">
+    <div id="all-box">
         <div id="root">
             <header>
                 <span>申请分期</span>
             </header>
-            <div id="instalments-box">
-                <div class="module-title">分期信息</div>
-                <div class="info-box">
-                    <span class="info-title">金额</span>
-                    <div id="applyNum-box" class="float-r">
-                        <input id="applyInstalmentNum" class="light" name="lfq_amt" type="number" placeholder="目前只支持600-20000" type="text">
+            <div class="weui_cells weui_cells_split">
+<!--               <div class="module-title">当前的分期商户：<span id="merName"></span></div>
+--> 
+                <label for="applyInstalmentNum" class="weui_cell check_label">
+                    <div class="weui_cell_hd"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAMAAADW3miqAAAAolBMVEUAAAD+7TX+7TX+7TX+7TX+7TX+7TX+7TX+7TX+7TX+7TX+7TX+7TX+7TX+7TX+7TX+7TX+7TX+7TX+7TX+7TX+7TX+7TX+7TX+7TX+7TX+7TX+7TX+7TX+7TX+7TX+7TX+7TX+7TX+7TX+7TX+7TX+7TX+7TX+7TX+7TX+7TX+7TX+7TX+7TX+7TX+7TX+7TX+7TX+7TX+7TX+7TX+7TX+7TXJAtksAAAANXRSTlMA/Ovi1tPBeBy8WxLxt6VJRRcE3wf35s20qpRXOS8ayK+GgWxoYUwnIQvz2ox7P5x1UDUNczWYveMAAAHcSURBVDjLbZOHcqswEEWXblMc917iHtfYee/8/69FgIXkDGeGQeXusg2xSWab7JKmXnjdf0k99+8Uw+RZI1mMKXD9wHPIWd3/aiIUvem90RfpLudrH8X0XfMJ+DP7pB0Co5MYMmAtf9jmhl3bj/NRE6anfOnNA/iRGjpK1SqXDaBdWE7b+vpreni7khCuxWIIh5ddCkm+mIErih/wpGAKfBQaF4IysRHs1aul7dUyV5Uav18eHZVcJBnkDi3V4qQ0o74+WsFc4jyiim8454mb8szgJptcKbYv862cDmTShKVYrGEsNj0u6nG17+4sjp83mLbjePZPi8YM5UxgOmgx1KoJZxkYUYBNYomGeF0d4/9bFE0gi6JbdDTdd/OmdMRiDrHY+PTkCgv77AN29j6BUPaw0fdZs9kM4NJU7IzRWhpVf2VQF/i4GJasmrhogOM44OS0+rrgXulvpNNrLJdb5b6zbCzNZD/K8Nm+Bb59y3VwKqYWMH91DJFouinsq/kY6lrpbKthWln96OkKt83nkhDcqtF9Hxxd513Uf8ldFZCJQ07KL825WBxbgKf9WxMZxi/DxuGz2CfyzrNHTi+bTMa+gyI1PTTp7kIsgiiRWu6PcTBMU/cSbg72+S8JzlDhN8EuEAAAAABJRU5ErkJggg==" alt="" style="width:20px;margin-right:5px;display:block"></div>
+                    <div class="weui_cell_bd">
+                        <p>商品金额</p>
+                    </div>
+                    <div class="weui_cell_ft f2">
+                        <input id="applyInstalmentNum" class="weui_input" name="lfq_amt" type="number" placeholder="目前只支持600-20000">
                         <span>元</span>
                     </div>
-                </div>
-                <div class="info-box margin_rl10">
-                    <span class="info-title">分期期数</span>
-                    <div id="stageNumberBox" class="float-r">
-                        <span data-number="6" class="checked"><span>6期免息</span></span>
-                        <span data-number="12"><span>12期免息</span></span>
+                </label>
+                <div class="weui_cell tishi">                   
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <p class="tar">该商户仅支持<span id="minApplyNum">600</span>—<span id="maxApplyNum">20000</span>元商品分期</p>
                     </div>
                 </div>
-                <div class="info-box margin_rl10">
-                    <span class="info-title">每期还款金额</span>
-                    <div class="float-r">
-                        <span id="eachPayNumber" class="prompt">预计0.00</span>
-                        <span class="prompt">元</span><span class="explain">(0手续费)</span>
+                <div class="weui_cell">
+                    <div class="weui_cell_hd"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACIAAAAcCAMAAAAz6Z0tAAAAdVBMVEUAAABazsJazsJazsJazsJazsJazsJazsJazsJazsJazsJazsJazsJazsJazsJazsJazsJazsJazsJazsJazsJazsJazsJazsJazsJazsJazsJazsJazsJazsJazsJazsJazsJazsJazsJazsJazsJazsJazsIJQAldAAAAJnRSTlMADef2S1lS9GHNx35F7d+naSIWPzgy8dnUuLOSix0GrZ42v4hxJy9WwhkAAAD6SURBVCjPjZLZjoMwDAAd7gQoR6En0HaP+f9P3FB42FYJ6khx/DCxbCvyCXsT+NGRNXq2KUQMOot9ZIaTSEoifjpKkYBC/IwEs3ItIh9Fzk5kxzZWCQi3WJRa+Yk5zEosfpqlSra5+8avRMP9Wo828SnJkSdXr1IDurqEYDxKAeZh7/Ybbm6lRNuo7Mlg71ISaGQ6pY3Nz5xdyjAXaaGbB6N0KRXVU9HnvfyCS7lzEVEAg/SELuWH0sZHXWdKck6uXzdCvqZTalONSV7o52bWd60BJR3v9DIdoYq7Ij9ANI/1lYbpP46NiLqwcFi7UC+s67uVYajzVj7iD/z2I0+ULhHVAAAAAElFTkSuQmCC" alt="" style="width:20px;margin-right:5px;display:block"></div>
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <p>分期期数</p>
+                    </div>
+                    <div id="stageNumberBox" class="weui_cell_ft">
+                        <input type="text" id="rate">
+                    </div>
+                </div>              
+                <div class="weui_cell">
+                    <div class="weui_cell_prompt">
+                        <p class="tar">分期手续费:每期仅需<span id="eachFee"></span>,共<span>0.00</span>元</p>
                     </div>
                 </div>
-            </div>
-            <div id="personal-box">
-                <div class="module-title">个人信息</div>
-                <div class="info-box">
-                    <input id="user-name" class="light" name="cust_name" type="text" placeholder="姓名">
+                
+                <div class="weui_cells_title bgb">还款测算(元)</div>
+                <div class="weui_cell bgb bt0">           
+                    <div class="weui_cell_f4 lh20_m12">
+                        <p id="eachPrincipal"></p>
+                        <p class="fs14">商品本金</p>
+                    </div>
+                    <div class="weui_cell_f2 lh20_m12">
+                        <p class="tc"> + </p>
+                    </div>
+                    <div class="weui_cell_f3 lh20_m12 tc">
+                        <p class="eachFeeNum"></p>
+                        <p class="fs14">手续费</p>
+                    </div>
+                    <div class="weui_cell_f2 lh20_m12">
+                        <p class="tc"> = </p>
+                    </div>
+                    <div class="weui_cell_f6 lh20_m12">
+                        <p id="eachMoney"></p>
+                        <p class="plem fs14">每期</p>
+                    </div>
                 </div>
-                <div class="info-box margin_rl10">
-                    <input id="user-id" class="light" name="id_no" type="text" placeholder="身份证号">
+                <!--
+                <div class="weui_cell bgb pt">
+                    <div class="weui_cell_bd lh20_m12">
+                        <p class="ts12">分期总额(元):</p>                        
+                    </div>
+                    <div class="weui_cell_fl lh20_m12">
+                        <p id="countMoney"></p>
+                    </div>
                 </div>
-                <div class="info-box margin_rl10">
-                    <input id="user-phone" class="light" name="hp_no" maxLength="11" onKeypress="if (event.keyCode < 48 || event.keyCode > 57) event.returnValue = false" placeholder="手机号">
-                    <div class="float-r"><a id="verifyBtn" class="verifyBtn disabled">获取验证码</a></div>
-                </div>
-                <div class="info-box margin_rl10">
-                    <input id="verify-code" class="light" name="verify_code" type="text" placeholder="验证码">
-                </div>
-            </div>
+                -->
+            </div>           
             <!--        <div id="root_footer"></div>  -->
         </div>
         <div id="footer">
             <div id="agreement-box">
                 <div id="checkButton">
-                    <div class="icheckbox-blue">
-                        <input type="checkbox" id="agreement-check" class="light" name="agreement" value="agreement" />
+                    <div class="icheckbox-blue checked">
+                        <input type="checkbox" id="agreement-check" class="light" name="agreement" value="agreement" checked />
                     </div>
                     <label>我已阅读并同意</label>
                 </div>
-                <a href="">《分期协议》</a>
+                <a id="contract" href="contract.html">《个人消费分期支付合同》</a>
             </div>
             <div>
-                <a id="next-step" class="btn btn_disabled btn_default" href="javascript:;">下一步</a>
+                <a id="next-step" class="weui_btn weui_btn_disabled weui_btn_default" href="javascript:;">下一步</a>
             </div>
         </div>
         <!-- 提示弹框 -->
         <div class="modal" id="tishuModal">
-            <div id="back"></div>
+            <div class="back"></div>
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h4 class="modal-title">提示</h4>
                     </div>
-                    <div class="modal-body">
-                        您输入的验证码错误
+                    <div id="msg_lable" class="modal-body">
+                        
                     </div>
                     <div class="modal-footer">
                         <a type="button" id="modalButton">确认</a>
@@ -94,15 +121,18 @@
                 </div>
             </div>
         </div>
-    </form>
+    </div>
+    
     <script type="text/javascript" src="../js/lfq/zepto.min.js"></script>
-    <script type="text/javascript" src="../js/lfq/common.js"></script> 
-    <script type="text/javascript" src="../js/lfq/apply.min.js"></script>  
-    <!-- 
-    <script type="text/javascript" src="../js/lfq/zeptoCommon.js"></script>
-    <script type="text/javascript" src="../js/lfq/myDialog.js"></script>
-    <script type="text/javascript" src="../js/lfq/authentication.js"></script>
-    <script type="text/javascript" src="../js/lfq/apply.js"></script>
+    <script src="../js/lfq/jquery-weui.min.js"></script>
+    <script type="text/javascript" src="../js/lfq/common.min.js"></script>
+    <script type="text/javascript" src="../js/lfq/apply.min.js"></script>
+    
+    <!--
+    <script type="text/javascript" src="../jsDevelop/base/require.js"></script>
+    <script type="text/javascript" src="../jsDevelop/components/winLocation.js"></script>
+    <script type="text/javascript" src="../jsDevelop/lfq/cmodal.js"></script>
+    <script type="text/javascript" src="../jsDevelop/lfq/apply1.js"></script>
     -->
 </body>
 

@@ -1,0 +1,13 @@
+
+# Dependency directory
+
+node_modules
+
+# scss 打包记录
+sass-cache
+
+# weui-sass 库
+scss/vendors
+
+# scss 库打包的
+css/vendors

@@ -1,0 +1,145 @@
+@import "../../../skinSass/sass/componets/cell/cell_global";
+@import "../../../skinSass/sass/componets/cell/form/form_common";
+@import "../../../skinSass/sass/componets/button/button";
+@import "../mixins/border-forge";
+@import "compass/css3/border-radius";
+.cells {
+    margin-top: 0em;
+}
+
+.module-title {
+    padding: 10px 10px 5px 10px;
+}
+.input{
+    color: #222;
+}
+#applyInstalmentNum {
+    width: 88%;
+    text-align: right;
+}
+
+.f2 {
+    flex: 2;
+}
+
+.tishi {
+    color: red;
+    display: none;
+}
+
+.tar {
+    text-align: right;
+    font-size: 14px;
+}
+
+#stageNumberBox {
+    >span {
+        display: inline-block;
+        width: 86px;
+        height: 33px;
+        margin: 4px 0px 0px 7px;
+        padding-left: 2px;
+        line-height: 33px;
+        text-align: center;
+        font-size: 16px;
+    }
+    >span.checked {
+        background-image: url("../images/kuang_icon.png");
+        background-repeat: no-repeat;
+        background-size: 88px 33px;
+        color: #222;
+    }
+    >span:not(.checked) {
+        @include border-afterforge(88px,
+        35px,
+        #d7d7d7);
+        &:after {
+            height: 65px;
+            left: -45px;
+            top: -17px;
+        }
+    }
+}
+
+.cell_prompt {
+    width: 100%;
+    color: #999999;
+}
+
+.bgb {
+    background-color: #1CB2ED;
+    margin-bottom: -1px;
+    color: #fff;
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+.pt{
+   padding-bottom: 8px; 
+}
+
+.bt0:before {
+    border-width: 0px;   
+}
+.fs14{
+    font-size: 14px; 
+    line-height: 15px;  
+}
+.lh25_m15 {
+    line-height: 2.5em;
+    margin-top: 1.5em;
+    margin-bottom: 1em;
+}
+
+.lh20_m12 {
+    line-height: 2em;
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+.cell_fl {
+    flex: 1;
+}
+
+.ts12 {
+    font-size: 16px;
+}
+
+#countMoney {
+    font-size: 20px;
+    text-align: right;
+}
+
+#eachMoney {
+    font-size: 2em;
+    text-align: right;
+}
+
+.plem {
+    text-align: right;
+}
+
+.cells_title.bgb {
+    margin-top: 0;
+    padding-top: 15px;
+    padding-bottom: 7px;
+    font-size: 16px;
+}
+
+.cell_f6 {
+    flex: 6;
+}
+
+.cell_f2 {
+    flex: 1.6;
+}
+.cell_f3{
+    flex: 3;
+}
+
+.tc {
+    text-align: center;
+}
+
+.cell_f4 {
+    flex: 3.5;
+}

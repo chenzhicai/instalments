@@ -9,10 +9,11 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0, user-scalable=no" />
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="format-detection" content="telephone=no" />
-    <meta name="keywords" content="通联卡">
-    <meta name="description" content="通联卡">
-    <title>汇分期</title>
-    <link rel="stylesheet" type="text/css" href="../css/applyInstalment.css">
+    <meta name="keywords" content="小通分期">
+    <meta name="description" content="小通分期">
+    <title>小通分期</title>
+    <link rel="stylesheet" type="text/css" href="../css/applyNextStep.css">
+    <script type="text/javascript" src="../js/lfq/urlVar.js"></script>
 </head>
 
 <body>
@@ -23,67 +24,173 @@
                 <span id="fanhui" class="icons-fanhui"></span>
             </header>
             <div id="instalments-box">
-                <div class="module-title">分期信用卡信息</div>
-                <div class="info-box">
-                    <span class="info-title">信用卡</span>
-                    <div id="creditCard-box" class="float-r">
-                        <input id="creditCard" class="light" type="number" placeholder="分期信用卡号">
+                <div class="cells cells_form mt0">
+                    <div class="cell">
+                        <div class="cell_hd">
+                            <lable class="lable">姓名</lable>
+                        </div>
+                        <div id="userNam-box" class="cell_bd cell_primary">
+                            <input id="user-name" class="input tar" name="cust_name" type="text" placeholder="持卡人姓名">
+                        </div>
                     </div>
-                </div>
-                <div class="info-box margin_rl10">
-                    <span class="info-title">CVN2</span>
-                    <div id="cvn2Num-box" class="float-r">
-                        <input id="cvn2Num" class="light" type="password" placeholder="卡片背面签名条的三位数字">
-                        <span class="yanjing_icon"></span>
+                    <div class="cell">
+                        <div class="cell_hd">
+                            <lable class="lable">身份证号</lable>
+                        </div>
+                        <div id="userId-box" class="cell_bd cell_primary">
+                            <input id="user-id" class="input tar" name="id_no" type="tel" maxlength="22" placeholder="18位证件号,末位X以*代替">
+                        </div>
                     </div>
-                </div>
-                <div class="info-box margin_rl10">
-                    <span class="info-title">有效期</span>
-                    <div id="timeNum-box" class="float-r">
-                        <input id="timeNum" class="light" type="number" placeholder="MMYY,2016年3月到期即0316">
+                    <div class="cell">
+                        <div class="cell_hd">
+                            <lable class="lable">信用卡号</lable>
+                        </div>
+                        <div id="userId-box" class="cell_bd cell_primary">
+                            <input id="creditCard" class="input tar" type="tel" maxlength="22" name="creditCard" oninput="if(value.length>22)value=value.slice(0,22)" placeholder="信用卡号">
+                        </div>
+                    </div>
+                    <div class="cell">
+                        <div class="cell_hd">
+                            <lable class="lable">CVN2</lable>
+                        </div>
+                        <div id="cvn2Num-box" class="cell_bd cell_primary">
+                            <input id="cvn2Num" name="cvn2Num" class="input tar" type="password" maxlength="3" placeholder="卡片背面签名条的三位数字">
+                        </div>
+                        <div style="width:30px;" class="cell_ft">
+                            <span class="yanjing_icon"></span>
+                        </div>
+                    </div>
+                    <div class="cell">
+                        <div class="cell_hd">
+                            <lable class="lable">有效期</lable>
+                        </div>
+                        <div id="timeNum-box" class="cell_bd cell_primary">
+                            <input id="timeNum" name="timeNum" class="input tar" type="tel" maxlength="4" placeholder="MMYY,2016年3月到期即0316">
+                        </div>
+                    </div>
+                    <div class="cell">
+                        <div class="cell_hd">
+                            <label class="lable">手机</label>
+                        </div>
+                        <div class="cell_bd cell_primary">
+                            <input id="user-phone" type="tel" class="input tar" name="hp_no" maxLength="15" onKeypress="if (event.keyCode < 48 || event.keyCode > 57) event.returnValue = false" placeholder="银行预留手机号">
+                        </div>
+                    </div>
+                    <div class="cell">
+                        <div class="cell_hd">
+                            <label class="lable">验证码</label>
+                        </div>
+                        <div class="cell_bd cell_primary">
+                            <input id="verify-code" class="input tar" name="verify_code" type="tel" maxlength="4" placeholder="验证码">
+                        </div>
+                        <div class="cell_ft">
+                            <a id="verifyBtn" class="verifyBtn disabled">获取验证码</a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div id="footer">
-            <div>
-                <a id="submitA" class="btn btn_disabled btn_default" href="javascript:;">提交申请</a>
-            </div>
+        <div class="btn_area">
+            <a id="submitA" class="btn btn_disabled btn_default" href="javascript:">提交申请</a>
         </div>
-
     </div>
     <!-- 提示弹框 -->
     <div class="modal" id="tishuModal">
-        <div id="back"></div>
+        <div class="back"></div>
         <div class="modal-dialog">
             <div class="modal-content">
-              <div class="modal-header">
-                <h4 class="modal-title">提示</h4>
-              </div>
-              <div class="modal-body">
-            <span id="msg_lable" class="prompt"></span> 
-              </div>
-              <div class="modal-footer">
-                <button type="button" id="modalButton">确认</button>
-              </div>
+                <div class="modal-header">
+                    <h4 class="modal-title">提示</h4>
+                </div>
+                <div class="modal-body">
+                    <span id="msg_lable" class="prompt"></span>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="modalButton">确认</button>
+                </div>
             </div>
             <div class="modal-content2">
-                <p>您的申请信息</p>
-                <P>已提交!</P>
-                <P class="small">将自动跳转到付款码</P>
+                <P><img src="../images/tjloading.gif"></P>
             </div>
         </div>
-    </div>   
+    </div>
+    <div class="modal" id="orderTiShi">
+        <div class="back"></div>
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">确认分期</h4>
+                    <div class="close_div">
+                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAdCAYAAAC5UQwxAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAudJREFUeNqsltFrT2EYx88OYRdKucCMRppyQcbUVpLN8SOL/QFWzNhM2WK5QrFy4UKxzDaMUWKRG0X9LGqaLUVr5MINF7uYbDM3LpSf78P3rOPxnPM7O35vfXt/5znn937e532e93nfvEwm40hLp9Pz0O2DPnqe98QxGr5xErTN0AT0DuM6LgeSvg66CLXgeYmTm1YJ3YF6oRTGne/yxTGoFZrDGXXj5docwK5BhdAaOnPCBzZAC/hboDtkAoAuTwjzoC6oKGBbDdX6wHqoX/1pF9QJaOkMYTLZTmilsj+Emn4DEcw+dGeg94EPZvHPpwAtmgHsMrRC2R9Ah8C5706vwR9oXYinbYCuzwJLQe2GZ/egRuiLPLh/LbznDaA7rTyVb6qYVMsiYB2GZwJrgj4HB3MU9Dm6/dCA4alk3Tpl32YkiA87Co05avaOAR1CdxJ6q15th84FPJVsvA7pbL6rPYsEEvpMAm3EVBKjm5ltwXoJG7PGzfNLW1hDslSguwIVq1ffoXwDJgkyHuJEuIeBJp7uhZ4qe74Rs/owWGwPA55Wcimt6vOIk5qKLD8xPQwWgrmGPUN7cZxBZsf0bie3xCJrlZitMqFa6FPUWG4MWBVhBeqVzsItrKEbEwMJ6zBgcsbVyKGqllwqznmjvGUHAlbN7bDUgB1h1tYY2SueXoXKYwMJa+PhGWy3ocPQVybLG9beYTWm7N2zPAOjgYDtCYHdYgX5puwveYDrC08FT/myUCBh7Qr2E+qBmqHJkAgMyrkJjajsTfGUWfUPELDdhBWoPSaeHcemncyS0EM8T/sMT+U02TRdaQjrMvbZTblg+bCY18RSZnaJUSIbXQxSxpJlweJ4ptsr6KAR061ybMmSboAWqpc99Gwi4a3tNWM6rOyLXd6mJMtGabwh2ZjAMyumcnN4zOcPULWLgUe5pJcYxxbYpnJ085Z9eoHxO4BxB/1r4g961vofyxjW+hnTF/LwS4ABAPkH3jozhp5YAAAAAElFTkSuQmCC">
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <div class="cells cells_split">
+                        <div class="cell">
+                            <div class="cell_hd">
+                                <p>商品金额</p>
+                            </div>
+                            <div id="ts_amt" class="cell_bd cell_primary tar"></div>
+                        </div>
+                        <div class="cell">
+                            <div class="cell_hd">
+                                <p>分期期数</p>
+                            </div>
+                            <div id="ts_cnt" class="cell_bd cell_primary tar"></div>
+                        </div>
+                        <div class="cell">
+                            <div class="cell_hd">
+                                <p>每期预计还款金额</p>
+                            </div>
+                            <div id="ts_mqhk" class="cell_bd cell_primary tar"></div>
+                        </div>
+                        <div class="cell" id="mqsxf">
+                            <div class="cell_ft cell_primary tar">
+                                包含每期手续费<span id="ts_mqsxf"></span>元
+                            </div>
+                        </div>
+                        <!-- <div class="cell">
+                            <div class="cell_hd">
+                                <p>分期银行卡</p>
+                            </div>
+                            <div id="ts_yhk" class="cell_bd cell_primary tar"></div>
+                        </div> 
+                        <div class="cell">
+                            <div class="cell_hd">
+                                <p>商品金额</p>
+                            </div>
+                            <div id="ts_amt" class="cell_bd cell_primary tar"></div>
+                        </div>
+                        <div class="cell">
+                            <div class="cell_hd">
+                                <p>分期手续费</p>
+                            </div>
+                            <div id="ts_sxf" class="cell_bd cell_primary tar"></div>
+                        </div> -->
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <!--  <button type="button" id="submitCancel" class="btn btn_default">取消</button>
+ -->
+                    <button type="button" id="submitApply" class="btn btn_default btn_primary">确认</button>
+                    <p class="ts_p">分期成功后，分期金额、期数无法修改或取消。还款金额截取至分，余额计入最后一期。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
     <script type="text/javascript" src="../js/lfq/zepto.min.js"></script>
-    <script type="text/javascript" src="../js/lfq/common.js"></script>
-    <script type="text/javascript" src="../js/lfq/applyNextStep.min.js"></script> 
-    <!--
-    <script type="text/javascript" src="../js/lfq/zepto.js"></script>
-    <script type="text/javascript" src="../js/lfq/authentication.js"></script>
-    <script type="text/javascript" src="../js/lfq/zeptoCommon.js"></script>
-    <script type="text/javascript" src="../js/lfq/myDialog.js"></script>
-    <script type="text/javascript" src="../js/lfq/applyNextStep.js"></script>
-    -->
+    <script type="text/javascript" src="../js/lfq/common.min.js"></script>
+    <script type="text/javascript" src="../js/lfq/applyNextStep.min.js"></script>
+    <!--  
+    <script type="text/javascript" src="../jsDevelop/lfq/zepto.js"></script>
+    <script type="text/javascript" src="../jsDevelop/base/require.js"></script>
+    <script type="text/javascript" src="../jsDevelop/lfq/authentication.js"></script>
+    <script type="text/javascript" src="../jsDevelop/lfq/views/applyView.js"></script>
+    <script type="text/javascript" src="../jsDevelop/components/winLocation.js"></script>
+    <script type="text/javascript" src="../jsDevelop/lfq/cmodal.js"></script>
+    <script type="text/javascript" src="../jsDevelop/lfq/applyNextStep1.js"></script>
+-->
 </body>
 
 </html>

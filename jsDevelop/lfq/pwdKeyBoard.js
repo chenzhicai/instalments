@@ -4,19 +4,17 @@
  */
 $("#clo_btn").click(function(e) {
 	$("#pay_Box").hide();
-	indexPwd = 0;
+//	indexPwd = 0;
 	restPwd();
 });
-$("#payBoxSure").on("touchend",function  () {
-	if($("#payBoxSure").hasClass("btn_disabled")){
+$("#payBoxSure").on("touchend", function() {
+	if ($("#payBoxSure").hasClass("btn_disabled")) {
 		return;
 	}
 	pwdVarify();
 });
-var PayBox = {
-	password: ""
-};
-var indexPwd = 0;
+var password;
+//var indexPwd = 0;
 var browser = {
 	versions: function() {
 		var u = navigator.userAgent,
@@ -57,46 +55,55 @@ touchEvents.initTouchEvents();
 $(function() {
 	$(".key").bind(touchEvents.touchstart, function(event) {
 		//		event.preventDefault();// 阻止浏览器默认事件，重要 
-		if (indexPwd >= 6) {
+		if (password.length >= 6) {
 			return;
 		} else {
-			PayBox.password += "" + $(this).html();
-			indexPwd = indexPwd + 1;
+			password += "" + $(this).html();
 		}
-		if (indexPwd == 1) {
+		if (password.length == 1) {
 			$("#pwdOne").html("●");
 		}
-		if (indexPwd == 2) {
+		if (password.length == 2) {
 			$("#pwdTwo").html("●");
 		}
-		if (indexPwd == 3) {
+		if (password.length == 3) {
 			$("#pwdThree").html("●");
 		}
-		if (indexPwd == 4) {
+		if (password.length == 4) {
 			$("#pwdFour").html("●");
 		}
-		if (indexPwd == 5) {
+		if (password.length == 5) {
 			$("#pwdFive").html("●");
 		}
-		if (indexPwd == 6) {
+		if (password.length == 6) {
 			$("#pwdSix").html("●");
-			$("#payBoxSure").removeClass("btn_disabled");
-			$("#payBoxSure").addClass("btn_primary")
+			shwoPayBoxSure();
 			winHide();
 			//			indexPwd = 0;
-		}else{
-			$("#payBoxSure").removeClass("btn_primary");
-			$("#payBoxSure").addClass("btn_disabled")
+		} else {
+			hidePayBoxSure();
 		}
 	});
 });
+
+// 禁用确定按钮
+function hidePayBoxSure() {
+	$("#payBoxSure").removeClass("btn_primary");
+	$("#payBoxSure").addClass("btn_disabled")
+}
+
+// 启用确定按钮
+function shwoPayBoxSure() {
+	$("#payBoxSure").removeClass("btn_disabled");
+	$("#payBoxSure").addClass("btn_primary")
+}
 
 function pwdVarify(param, callbackFunc) {
 
 	/*		getAjax(url, param, function(msg) {
 				callbackFunc(msg);
 			})*/
-	PayBox.callbackFunc(PayBox.password);
+	PayBox.callbackFunc(password);
 	if (true) {
 		$("#pay_Box").hide();
 	}
@@ -121,7 +128,8 @@ function restPwd() {
 	$("#pwdFour").html("&nbsp;");
 	$("#pwdFive").html("&nbsp;");
 	$("#pwdSix").html("&nbsp;");
-	PayBox.password = ""
+	password = "";
+	hidePayBoxSure();
 }
 
 function winHide() {
@@ -151,42 +159,54 @@ function show(argument) {
 }
 
 function delKey() {
-	if (indexPwd == 1) {
+	if (password.length == 1) {
 		$("#pwdOne").html("&nbsp;");
 	}
-	if (indexPwd == 2) {
+	if (password.length == 2) {
 		$("#pwdTwo").html("&nbsp;");
 	}
-	if (indexPwd == 3) {
+	if (password.length == 3) {
 		$("#pwdThree").html("&nbsp;");
 	}
-	if (indexPwd == 4) {
+	if (password.length == 4) {
 		$("#pwdFour").html("&nbsp;");
 	}
-	if (indexPwd == 5) {
+	if (password.length == 5) {
 		$("#pwdFive").html("&nbsp;");
 	}
-	if (indexPwd == 6) {
+	if (password.length == 6) {
 		$("#pwdSix").html("&nbsp;");
 	}
-	if (indexPwd > 0) {
+/*	if (indexPwd > 0) {
 		indexPwd = indexPwd - 1;
 	} else {
 		return;
+	}*/
+	if (password != "") {
+		password = password.substring(0, password.length - 1);
 	}
-	if (PayBox.password != "") {
-		PayBox.password = PayBox.password.substring(0, PayBox.password.length - 1);
-	}
-}
-function init(url,PayBoxCallbackFunc) {
-	PayBox.callbackFunc = PayBoxCallbackFunc;
 }
 
-module.exports = {
-	init: init,
-	restPwd: restPwd,
-	winShow: winShow,
-	winHide: winHide,
-	show: show,
-	delKey
+function init(url, PayBoxCallbackFunc) {
+	PayBox.callbackFunc = PayBoxCallbackFunc;
 }
+/*
+// 不打包形式
+window.PayBox = {
+		init: init,
+		restPwd: restPwd,
+		winShow: winShow,
+		winHide: winHide,
+		show: show,
+		delKey: delKey
+	}
+*/
+	// 打包形式
+	module.exports = PayBox = {
+		init: init,
+		restPwd: restPwd,
+		winShow: winShow,
+		winHide: winHide,
+		show: show,
+		delKey: delKey
+	}

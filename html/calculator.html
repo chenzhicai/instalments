@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="keywords" content="通联卡">
+    <meta name="description" content="通联卡">
+    <title>计算器</title>
+    <link rel="stylesheet" type="text/css" href="../css/calculator.css">
+    <script type="text/javascript" src="../js/lfq/zepto.min.js"></script>
+</head>
+
+<body>
+    <div id="root">
+        <header>
+            <span>计算器</span>
+        </header>
+        <div class="weui_cells weui_cells_split">
+            <div class="weui_cell weui_cell_select">
+                <div class="weui_cell_hd"><span>选择模式：</span>
+                </div>
+                <div class="weui_cell_bd weui_cell_primary">
+                    <select id="xzms" class="weui_select" name="select1">
+                        <option selected="" value="1">商户0费率A</option>
+                        <option value="2">商户0费率B</option>
+                        <option value="3">商户全额补贴</option>
+                        <option value="4">自主费率</option>
+                    </select>
+                </div>
+            </div>
+            <div class="weui_cell">
+                <div class="weui_cell_hd">商户扣率：</div>
+                <div id="ainputBox" class="weui_cell_bd weui_cell_primary bc">
+                    <input class="weui_input" type="number" placeholder="请输入">
+                </div>
+                <div class="weui_cell_ft">
+                    %
+                </div>
+            </div>
+            <div class="weui_cell">
+                <div class="weui_cell_hd">持卡人扣率：</div>
+                <div id="binputBox" class="weui_cell_bd weui_cell_primary">
+                    <input class="weui_input" type="number" placeholder="自动计算，不可修改" readonly="readonly">
+                </div>
+                <div class="weui_cell_ft">
+                    %
+                </div>
+            </div>
+        </div>
+        <div class="weui_cells weui_cells_split">
+            <div class="weui_cell">
+                <div class="weui_cell_hd">商品金额</div>
+                <div class="weui_cell_bd weui_cell_primary bc">
+                    <input id="spje" class="weui_input" type="number" value="10000.00" placeholder="请输入">
+                </div>
+                <div class="weui_cell_ft">
+                    元
+                </div>
+            </div>
+            <div class="weui_cell">
+                <div class="weui_cell_hd">分期总额</div>
+                <div class="weui_cell_bd weui_cell_primary">
+                    <p id="zje"></p>
+                </div>
+                <div class="weui_cell_ft">
+                    元
+                </div>
+            </div>
+            <div class="weui_cell">
+                <div class="weui_cell_hd">商户结算额</div>
+                <div class="weui_cell_bd weui_cell_primary">
+                    <p id="jsje"></p>
+                </div>
+                <div class="weui_cell_ft">
+                    元
+                </div>
+            </div>
+            <div class="weui_cell bc">
+                <div class="weui_cell_bd weui_cell_primary tc">
+                    <p>计算器结果仅供参考，实际金额以系统为准</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="../js/lfq/calculator.js"></script>
+</body>
+
+</html>

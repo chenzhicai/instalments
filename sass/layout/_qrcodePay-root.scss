@@ -1,4 +1,5 @@
 @charset "utf-8";
+@import "../../../skinSass/sass/componets/button/button";
 #billText {
     margin-left: -24px;
 }
@@ -8,6 +9,7 @@ section {
     text-align: center;
     background: #fff;
     margin: 26px auto;
+    border-radius: 10px;
     .barcodeBox {
         img {
             width: 280px;
@@ -18,9 +20,9 @@ section {
         display: none;
     }
     #container {
-//        background: url(../images/photo.png) no-repeat;
+        //        background: url(../images/photo.png) no-repeat;
         background-position: center;
-//        background-size: 74px;
+        //        background-size: 74px;
         position: absolute;
         -moz-transform: scale(0.5, 0.5);
         -webkit-transform: scale(0.5, 0.5);
@@ -30,5 +32,31 @@ section {
         font-size: 15px;
         color: #999999;
         padding-bottom: 10px;
+    }
+}
+
+
+/* 分期链接按*/
+
+.button_sp_area {
+    padding: 0px 0;
+    width: 60%;
+    margin: 0 auto;
+    text-align: justify;
+    text-justify: distribute-all-lines;
+    /*ie6-9*/
+    //text-align-last:justify;/* ie9*/
+    //-moz-text-align-last:justify;/*ff*/
+    //-webkit-text-align-last:justify;/*chrome 20+*/
+    font-size: 0;
+    &:after {
+        display: inline-block;
+        width: 100%;
+        height: 0;
+        font-size: 0;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        content: ".";
     }
 }

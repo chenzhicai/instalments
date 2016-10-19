@@ -10,4 +10,6 @@ header,section,article,nav,footer{margin: 0;padding: 0; }
 /*全局公用样式 start end*/
 @import "./components/header";
 @import "./layout/qrcodePay-root";
-
+@import "./layout/modals-mobile";
+@import "./components/refresh";
+@import "./layout/qrcode-tishiRefresh";

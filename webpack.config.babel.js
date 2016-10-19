@@ -5,10 +5,11 @@ module.exports = {
     plugins: [commonsPlugin],
 	//页面入口文件配置
     entry: {
-        apply : './jsDevelop/lfq/apply.js',
-        applyNextStep: './jsDevelop/lfq/applyNextStep.js',
+        apply : './jsDevelop/lfq/apply1.js',
+        applyNextStep: './jsDevelop/lfq/applyNextStep1.js',
         instalmentsSearch: './jsDevelop/lfq/instalmentsSearch.js',
-        qrcodePay: './jsDevelop/lfq/qrcodePay.js'
+        qrcodePay: './jsDevelop/lfq/qrcodePay.js',
+        orderDetails: './jsDevelop/lfq/orderDetails.js'
     },
 	//入口文件输出配置
     output: {

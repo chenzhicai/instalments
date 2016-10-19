@@ -1,0 +1,11 @@
+@charset "utf-8";
+@import "../../skinSass/sass/base/reset.scss";
+@import "./components/header";
+@import "./layout/instalments1-root";
+@import "./layout/instalments-footer";
+@import "./layout/modals-mobile";
+
+
+.cell:before {
+    width: 93%;
+}

@@ -1,0 +1,39 @@
+@charset "utf-8";
+article {
+    color: #666;
+    line-height: 30px;
+    padding: 15px;
+    .header {
+        text-align: center;
+        font-size: 23px;
+    }
+    p {
+        margin-top: 20px;
+        text-indent: 2em;
+        font-size: 17px;
+    }
+}
+
+.button_sp_area {
+    padding: 10px 0;
+    width: 60%;
+    margin: 0 auto;
+    text-align: justify;
+    text-justify: distribute-all-lines;
+    font-size: 0;
+}
+
+.weui-btn_plain-primary:not(.weui-btn_plain-disabled):active {
+    color: rgba(27, 132, 243, 0.6);
+    border-color: rgba(45, 152, 204, 0.6);
+}
+.weui-btn_plain-primary {
+    color: #2a8de4;
+    border: 1px solid #4facc1;
+}
+.button_sp_area{
+    margin-top: 50px;
+}
+.weui-icon-warn{
+    vertical-align: text-top;
+}

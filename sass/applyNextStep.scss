@@ -1,0 +1,8 @@
+@charset "utf-8";
+@import "../../skinSass/sass/base/reset.scss";
+@import "./components/header";
+@import "./layout/modals-mobile";
+@import "./layout/applyNextStep-root";
+.cell:before {
+    width: 93%;
+}
