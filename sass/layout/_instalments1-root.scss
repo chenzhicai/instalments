@@ -21,6 +21,14 @@
 .f2 {
     flex: 2;
 }
+label[for=applyInstalmentNum]{
+    .weui_cell_ft{
+        span{
+            color:#000;
+        }
+    }
+}
+
 
 .tishi {
     color: red;

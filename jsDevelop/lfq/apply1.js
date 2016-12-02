@@ -68,8 +68,8 @@ function parameterCallBack(retn) {
     if (retn.lfq_merinfo_response) {
         lfq_mer_no = retn.lfq_merinfo_response.lfq_mer_no;
         var merinfo = retn.lfq_merinfo_response;
-        merName = merinfo.mer_name;
-        if (merName) {
+        merName = merinfo.mer_short_name ? merinfo.mer_short_name : merinfo.mer_name;
+        if (merinfo.mer_name) {
             document.title = decodeURI(merName);
         }
         merId = merinfo.mer_id;
@@ -204,7 +204,7 @@ function computesEachPayNumber() {
     $(".eachFeeNum").text(eachFeeNum.toFixed(2));
     $("#eachPrincipal").text(eachPrincipal);
     $("#eachMoney").text(eachMoney);
-//    $("#countMoney").text(contentMonet);
+    //    $("#countMoney").text(contentMonet);
 }
 
 function setEachFee() {
@@ -257,7 +257,7 @@ function agreementCheckChange() {
 function isDisabledNext(argument) {
 
     var agreementValue = $("#agreement-check").is(":checked");
-    if (agreementValue && isAllow && selectItems.length != 0 && lfq_mer_no == "1") {
+    if (agreementValue && isAllow && selectItems.length != 0 /* && lfq_mer_no == "1"*/ ) {
         $("#next-step").attr("class", "weui_btn weui_btn_primary");
     } else {
         $("#next-step").attr("class", "weui_btn weui_btn_disabled weui_btn_default");

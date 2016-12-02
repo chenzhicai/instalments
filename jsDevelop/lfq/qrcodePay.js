@@ -201,7 +201,7 @@ function searchOrderStatus() {
 }
 
 function changeHistoryBack() {
-    historyPushState();
+//    historyPushState();
     // 监听返回按钮并跳转到查询页面
     window.addEventListener("popstate", function() {
         wx.closeWindow();

@@ -144,9 +144,9 @@ function retnFunc(retn) {
     if (resmsg == 'B00002') { //表示该手机号已开某通联卡，但是未有绑定微信号
         //直接跳转到绑定通联卡页面
         var parameters = getParameters();
-        for(var i=0,l=parameters.length;i<l;i++){
-            if(parameters[i].name == "lfq_amt"){
-                parameters[i].value=parameters[i+1].value;
+        for (var i = 0, l = parameters.length; i < l; i++) {
+            if (parameters[i].name == "lfq_amt") {
+                parameters[i].value = parameters[i + 1].value;
             }
         }
         parameters.lfq_amt = parameters.goods_amount;
@@ -157,6 +157,7 @@ function retnFunc(retn) {
 
     if (tipmsg != "init") {
         if (tipmsg == "经度不能为空") {
+            location.href = "./positionPrompt.html";
             tipmsg = "请授权微信和小通金服获得地理位置</br>功能后再办理该业务。"
         }
         $("#msg_lable").html(tipmsg);
@@ -168,7 +169,7 @@ function retnFunc(retn) {
 
 // 拼接请求参数
 function getParameters() {
-    var userName = $("#user-name").val();
+    var userName = $("#user-name").val().replace(/ /g,"");
     var userId = $("#user-id").val().replace(/ /g, "");
     var CardNum = $("#creditCard").val().replace(/ /g, "");
     var parameters = [{
@@ -241,7 +242,7 @@ function getLocation() {
     wx.ready(function() {
 
         wx.getLocation({
-            type:"gcj02",
+            type: "gcj02",
             success: function(res) {
 
                 console.log("getLocation data");
@@ -251,7 +252,7 @@ function getLocation() {
                 //               alert(res.latitude + " " + res.longitude);
 
             },
-            fail: function  () {
+            fail: function() {
                 location.href = "./positionPrompt.html";
             },
             cancel: function(res) {
@@ -299,12 +300,13 @@ function changUserName() {
     $userName = $("#user-name");
     var $eventTargetParentNode = $userName.parent().parent();
     var isCnName = authentication.isCnName($userName.val());
-    authentication.addOrRemoveErro(true, "userName-erro", "中文名字错误", $eventTargetParentNode);
-    if (!isCnName || $userName.val().length > 8) {
-        if ($userName.val().length > 8) {
-            authentication.addOrRemoveErro(false, "userName-erro", "中文名字长度必须小于8个字", $eventTargetParentNode);
+    var userNameLength = authentication.strLen($userName.val());
+    authentication.addOrRemoveErro(true, "userName-erro", "名字错误", $eventTargetParentNode);
+    if (!isCnName || userNameLength > 20) {
+        if (userNameLength > 20 || userNameLength < 4) {
+            authentication.addOrRemoveErro(false, "userName-erro", "名字长度不符合要求", $eventTargetParentNode);
         } else {
-            authentication.addOrRemoveErro(isCnName, "userName-erro", "中文名字错误", $eventTargetParentNode);
+            authentication.addOrRemoveErro(isCnName, "userName-erro", "名字错误", $eventTargetParentNode);
         }
     }
 

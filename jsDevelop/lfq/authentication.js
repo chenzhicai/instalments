@@ -97,13 +97,26 @@ function isPhoneNumber(phoneNumber) {
 
 // 检查中文名，不能包含非中文字符
 function isCnName(cnName) {
-    var cnNameLength = cnName.length;
-    var mathArrayLength = cnName.match(/[\u4e00-\u9fa5]/g) ? cnName.match(/[\u4e00-\u9fa5]/g).length : 0;
-    if (cnNameLength == mathArrayLength && cnNameLength != 0 && mathArrayLength < 9) {
+    var cnNameLength = len(cnName);
+    if (cnNameLength > 4 && cnNameLength < 20) {
         return true;
     } else {
         return false;
     }
+}
+
+//取字符串长度，中文算2位
+function len(s) {
+    var l = 0;
+    var a = s.split("");
+    for (var i = 0; i < a.length; i++) {
+        if (a[i].charCodeAt(0) < 299) {
+            l++;
+        } else {
+            l += 2;
+        }
+    }
+    return l;
 }
 
 // 验证输入是否为整数
@@ -150,5 +163,6 @@ module.exports = {
     isPhoneNumber: isPhoneNumber,
     isCnName: isCnName,
     addOrRemoveErro: addOrRemoveErro,
-    isNum: isNum
+    isNum: isNum,
+    strLen:len
 }

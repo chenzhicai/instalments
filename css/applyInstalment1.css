@@ -449,19 +449,24 @@ button.btn_plain_default, input.btn_plain_default {
   flex: 2;
 }
 
-/* line 25, ../sass/layout/_instalments1-root.scss */
+/* line 26, ../sass/layout/_instalments1-root.scss */
+label[for=applyInstalmentNum] .weui_cell_ft span {
+  color: #000;
+}
+
+/* line 33, ../sass/layout/_instalments1-root.scss */
 .tishi {
   color: red;
   display: none;
 }
 
-/* line 30, ../sass/layout/_instalments1-root.scss */
+/* line 38, ../sass/layout/_instalments1-root.scss */
 .tar {
   text-align: right;
   font-size: 14px;
 }
 
-/* line 36, ../sass/layout/_instalments1-root.scss */
+/* line 44, ../sass/layout/_instalments1-root.scss */
 #stageNumberBox > span {
   display: inline-block;
   width: 86px;
@@ -472,14 +477,14 @@ button.btn_plain_default, input.btn_plain_default {
   text-align: center;
   font-size: 16px;
 }
-/* line 46, ../sass/layout/_instalments1-root.scss */
+/* line 54, ../sass/layout/_instalments1-root.scss */
 #stageNumberBox > span.checked {
   background-image: url("../images/kuang_icon.png");
   background-repeat: no-repeat;
   background-size: 88px 33px;
   color: #222;
 }
-/* line 52, ../sass/layout/_instalments1-root.scss */
+/* line 60, ../sass/layout/_instalments1-root.scss */
 #stageNumberBox > span:not(.checked) {
   position: relative;
 }
@@ -494,20 +499,20 @@ button.btn_plain_default, input.btn_plain_default {
   -webkit-transform: scale(0.5, 0.5);
   -o-transform: scale(0.5, 0.5);
 }
-/* line 56, ../sass/layout/_instalments1-root.scss */
+/* line 64, ../sass/layout/_instalments1-root.scss */
 #stageNumberBox > span:not(.checked):after {
   height: 65px;
   left: -45px;
   top: -17px;
 }
 
-/* line 64, ../sass/layout/_instalments1-root.scss */
+/* line 72, ../sass/layout/_instalments1-root.scss */
 .cell_prompt {
   width: 100%;
   color: #999999;
 }
 
-/* line 69, ../sass/layout/_instalments1-root.scss */
+/* line 77, ../sass/layout/_instalments1-root.scss */
 .bgb {
   background-color: #1CB2ED;
   margin-bottom: -1px;
@@ -516,64 +521,64 @@ button.btn_plain_default, input.btn_plain_default {
   padding-bottom: 0px;
 }
 
-/* line 76, ../sass/layout/_instalments1-root.scss */
+/* line 84, ../sass/layout/_instalments1-root.scss */
 .pt {
   padding-bottom: 8px;
 }
 
-/* line 80, ../sass/layout/_instalments1-root.scss */
+/* line 88, ../sass/layout/_instalments1-root.scss */
 .bt0:before {
   border-width: 0px;
 }
 
-/* line 83, ../sass/layout/_instalments1-root.scss */
+/* line 91, ../sass/layout/_instalments1-root.scss */
 .fs14 {
   font-size: 14px;
   line-height: 15px;
 }
 
-/* line 87, ../sass/layout/_instalments1-root.scss */
+/* line 95, ../sass/layout/_instalments1-root.scss */
 .lh25_m15 {
   line-height: 2.5em;
   margin-top: 1.5em;
   margin-bottom: 1em;
 }
 
-/* line 93, ../sass/layout/_instalments1-root.scss */
+/* line 101, ../sass/layout/_instalments1-root.scss */
 .lh20_m12 {
   line-height: 2em;
   margin-top: 1em;
   margin-bottom: 1em;
 }
 
-/* line 99, ../sass/layout/_instalments1-root.scss */
+/* line 107, ../sass/layout/_instalments1-root.scss */
 .cell_fl {
   flex: 1;
 }
 
-/* line 103, ../sass/layout/_instalments1-root.scss */
+/* line 111, ../sass/layout/_instalments1-root.scss */
 .ts12 {
   font-size: 16px;
 }
 
-/* line 107, ../sass/layout/_instalments1-root.scss */
+/* line 115, ../sass/layout/_instalments1-root.scss */
 #countMoney {
   font-size: 20px;
   text-align: right;
 }
 
-/* line 112, ../sass/layout/_instalments1-root.scss */
+/* line 120, ../sass/layout/_instalments1-root.scss */
 #eachMoney {
   font-size: 2em;
   text-align: right;
 }
 
-/* line 117, ../sass/layout/_instalments1-root.scss */
+/* line 125, ../sass/layout/_instalments1-root.scss */
 .plem {
   text-align: right;
 }
 
-/* line 121, ../sass/layout/_instalments1-root.scss */
+/* line 129, ../sass/layout/_instalments1-root.scss */
 .cells_title.bgb {
   margin-top: 0;
   padding-top: 15px;
@@ -581,27 +586,27 @@ button.btn_plain_default, input.btn_plain_default {
   font-size: 16px;
 }
 
-/* line 128, ../sass/layout/_instalments1-root.scss */
+/* line 136, ../sass/layout/_instalments1-root.scss */
 .cell_f6 {
   flex: 6;
 }
 
-/* line 132, ../sass/layout/_instalments1-root.scss */
+/* line 140, ../sass/layout/_instalments1-root.scss */
 .cell_f2 {
   flex: 1.6;
 }
 
-/* line 135, ../sass/layout/_instalments1-root.scss */
+/* line 143, ../sass/layout/_instalments1-root.scss */
 .cell_f3 {
   flex: 3;
 }
 
-/* line 139, ../sass/layout/_instalments1-root.scss */
+/* line 147, ../sass/layout/_instalments1-root.scss */
 .tc {
   text-align: center;
 }
 
-/* line 143, ../sass/layout/_instalments1-root.scss */
+/* line 151, ../sass/layout/_instalments1-root.scss */
 .cell_f4 {
   flex: 3.5;
 }

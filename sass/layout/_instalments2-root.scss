@@ -24,6 +24,15 @@ $weuiCellLineHeight:1.6;
 #applyInstalmentNum {
     width: 88%;
     text-align: right;
+    color: #000;
+}
+
+label[for=applyInstalmentNum]{
+    .weui_cell_ft{
+        span{
+            color:#000;
+        }
+    }
 }
 
 .f2 {
@@ -41,6 +50,11 @@ $weuiCellLineHeight:1.6;
 }
 
 #stageNumberBox {
+    flex:1;
+    >div{
+       padding-right: 15px; 
+    }
+    
     >span {
         display: inline-block;
         width: 86px;
@@ -82,16 +96,14 @@ $weuiCellLineHeight:1.6;
     padding-bottom: 0px;
 }
 .bgb.bt0{
-    padding-bottom: 15px;
+    padding-bottom: 17px;
+    padding-top: 4px;
 }
 
 .pt {
     padding-bottom: 8px;
 }
 
-.bt0:before {
-    border-width: 0px;
-}
 
 .fs14 {
     font-size: 14px;
@@ -134,9 +146,10 @@ $weuiCellLineHeight:1.6;
 
 .weui_cells_title.bgb {
     margin-top: 0;
-    padding-top: 15px;
-    padding-bottom: 7px;
+    padding-top: 23px;
+    padding-bottom: 15px;
     font-size: 16px;
+
 }
 
 .weui_cell_f6 {
@@ -179,9 +192,10 @@ select {
 #rate {
     border: 0px;
     text-align: right;
-    padding-right: 15px;
-    font-size: 16px;
+    font-size: 17px;
     line-height: 1.6;
+    display: block;
+    width: 100%;
 }
 
 #stageNumberBox {

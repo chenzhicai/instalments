@@ -31,7 +31,7 @@ function getConfig(param) {
 function setConfig(msg) {
     wx.config({
         debug: false,
-        appId: appIdValue, //'wxf8b4f85f3a794e77',
+        appId: msg.appid, //'wxf8b4f85f3a794e77',
         timestamp: msg.timestamp,
         nonceStr: msg.nonceStr,
         signature: msg.signature,

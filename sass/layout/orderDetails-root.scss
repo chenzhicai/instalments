@@ -1,6 +1,6 @@
 @charset "utf-8";
 @import "../mixins/border-forge";
-$module-title-fontSzie: 17px;
+$module-title-fontSzie: 15px;
 $module-title-color: #666;
 #root {
     position: absolute;
@@ -38,19 +38,32 @@ $module-title-color: #666;
 .module-title {
     font-size: $module-title-fontSzie;
     line-height: 34px;
-    background-color: #f6f6f9;
+    background-color: #fff;
     color: $module-title-color;
     a {
         color: #2792e4;
         font-size: 15px;
+        &:before {
+            position: absolute;
+            content: '';
+            width: 150px;
+            height: 48px;
+            top: -8px;
+            right: -35px;
+            border-radius: 4px;
+            border: 1px solid #2792e4;
+            transform: scale(0.5, 0.5);
+            -moz-transform: scale(0.5, 0.5);
+            -webkit-transform: scale(0.5, 0.5);
+            -o-transform: scale(0.5, 0.5);
+        }
     }
 }
 
 #record-box {
-    background-color: #fff;
-    padding-top: 15px;
+    background-color: #efefef;
+    padding-top: 10px;
     .module-title {
-        margin-bottom: 16px;
         padding: 0px 10px;
         color: #222;
     }
@@ -62,7 +75,7 @@ $module-title-color: #666;
         padding-left: 10px;
     }
     .oneRecord-box {
-        margin-left: 13px;
+        background-color: #fff;
         padding: 0px 0px 50px 30px;
         /* margin-top: -3px; */
         .failed {
@@ -73,7 +86,20 @@ $module-title-color: #666;
         }
     }
     .oneRecord-box:not(:last-child) {
-        border-left: 2px solid #2792e4;
+        /* border-left: 2px solid #2792e4; */
+        &:after {
+            position: absolute;
+            content: '';
+            width: 4px;
+            height: 130px;
+            left: 10px;
+            margin-top: -53px;
+            border: 1px solid #2792e4;
+            transform: scale(0.5, 0.5);
+            -moz-transform: scale(0.5, 0.5);
+            -webkit-transform: scale(0.5, 0.5);
+            -o-transform: scale(0.5, 0.5);
+        }
     }
     .icon-circle,
     .icon-circle2 {
@@ -81,7 +107,7 @@ $module-title-color: #666;
         width: 16px;
         display: inline-block;
         float: left;
-        margin-left: -38px;
+        margin-left: -25px;
         background-repeat: no-repeat;
         background-size: 16px;
         background-position: 0px 3px;

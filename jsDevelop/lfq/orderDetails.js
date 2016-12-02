@@ -1,4 +1,5 @@
 var zcom = require("./zeptoCommon.js");
+var num = require("../components/number.js");
 $(function() {
     init();
     doQuerySingle();
@@ -15,81 +16,7 @@ function init() {
     });
 }
 //  取数据
-/*function getData() {
-    //模拟订单详情数据
-    var msg = {
-        "lft_orderinfo_response": {
-            "res_timestamp": 20160504180911,
-            "res_sign": "941A51C35294087FD0C5B929B6A78B5F",
-            "resp_msg": "查询成功",
-            "resp_code": "0000",
-            "lfqRepayNotices_arrays": {
-                "lfqRepayNotices": [{
-                    "stageCount": 1,
-                    "instalmentTime": 20160427091212,
-                    "respcode": "0003",
-                    "instalmentTimeString": 20160427091212,
-                    "noticeCount": 0,
-                    "respmsg": "好的1",
-                    "nextAcctDate": 20160507,
-                    "transAmt": 101,
-                    "respState": "01",
-                    "contractsNo": 2016050417070001
-                }, {
-                    "stageCount": 2,
-                    "instalmentTime": 20160427091612,
-                    "respcode": "0003",  
-                    "instalmentTimeString": 20160427091612,
-                    "noticeCount": 0,
-                    "respmsg": "好的2",
-                    "nextAcctDate": 20160504,
-                    "transAmt": 102,
-                    "respState": "01",
-                    "contractsNo": 2016050417070001
-                }, {
-                    "stageCount": 3,
-                    "instalmentTime": 20160427091912,
-                    "respcode": "0003",
-                    "instalmentTimeString": 20160427091912,
-                    "noticeCount": 0,
-                    "respmsg": "好的3",
-                    "nextAcctDate": 20160506,
-                    "transAmt": 103,
-                    "respState": "01",
-                    "contractsNo": 2016050417070001
-                }]
-            },
-            "serial_no": "011462331235479859",
-            "lfqorderInfo_arrays": {
-                "lfqorderInfo": [{
-                    "apply_time": 104726,
-                    "out_stage_count": 0,
-                    "open_id": "oUhu9uI4SJHJQvl27oQc_NqsoRz4",
-                    "order_state": "01",
-                    "stage_count": 0,
-                    "order_id": "011462330046796069017",
-                    "total_stage_count": 6,
-                    "credit_card_no": 11111111111111,
-                    "serial_no": "011462331235479859",
-                    "cust_name": "程序员",
-                    "contracts_no": 2016050417070001,
-                    "apply_date": 20160504,
-                    "serial_no_time": 20160504110715,
-                    "stage_amt": 600.0
-                }]
-            }
-        }
-    };
 
-    setOrder(msg.lft_orderinfo_response.lfqorderInfo_arrays.lfqorderInfo[0]);
-
-    // 每期出账记录数据模拟
-    if (msg.lft_orderinfo_response.lfqRepayNotices_arrays.lfqRepayNotices && msg.lft_orderinfo_response.lfqRepayNotices_arrays.lfqRepayNotices != "") {
-        showRecord(msg.lft_orderinfo_response.lfqRepayNotices_arrays.lfqRepayNotices);
-    }
-
-}
-*/
 function doQuerySingle(openid, serial_no) {
     QueryString.Initial();
     openid = QueryString.GetValue("open_id");
@@ -116,7 +43,13 @@ function doQuerySingle(openid, serial_no) {
         if (msg.lft_orderinfo_response.resp_code == "0000") { //如果成功 
             reserial_no = msg.serial_no;
             if (msg.lft_orderinfo_response.lfqorderInfo_arrays.lfqorderInfo) {
-                setOrder(msg.lft_orderinfo_response.lfqorderInfo_arrays.lfqorderInfo[0]);
+                var lfqorderInfo = msg.lft_orderinfo_response.lfqorderInfo_arrays.lfqorderInfo[0];
+                var orderState = lfqorderInfo.order_state;
+                if(orderState == "04" || orderState == "05"){ // 已撤销和已退货 出账期数改为0
+                    lfqorderInfo.out_stage_count = "0";
+                    delete msg.lft_orderinfo_response.lfqRepayNotices_arrays.lfqRepayNotices;
+                }
+                setOrder(lfqorderInfo);
             }
             if (msg.lft_orderinfo_response.lfqRepayNotices_arrays && msg.lft_orderinfo_response.lfqRepayNotices_arrays.lfqRepayNotices && msg.lft_orderinfo_response.lfqRepayNotices_arrays.lfqRepayNotices != "") {
                 showRecord(msg.lft_orderinfo_response.lfqRepayNotices_arrays.lfqRepayNotices);
@@ -136,15 +69,34 @@ function setOrder(orderDate) {
     showContract(orderDate.order_state);
     var stateText = changeStateToText(orderDate.order_state);
     $("#order-state").text(stateText); //分期状态
-//    $("#instalments-num").text(parseFloat(orderDate.stage_amt).toFixed(2) + "元"); //分期总金额
+    //    $("#instalments-num").text(parseFloat(orderDate.stage_amt).toFixed(2) + "元"); //分期总金额
     $("#instalments-date").text(changeTimeFormat(orderDate.serial_no_time)); //订单时间
     $("#card-number").text(orderDate.credit_card_no); //信用卡号
-    $("#merchant-name").text(orderDate.tl_mer_name); //消费商户
+    if (orderDate.t_mer_name) {
+        $("#merchant-name").text(orderDate.t_mer_name); //消费商户 
+    } else {
+        $("#merchant-name").text(orderDate.tl_mer_name); //消费商户
+    }
+
     $("#stage-number").text(orderDate.total_stage_count + "期"); //总期数
     $("#paied-number").text(orderDate.out_stage_count + "期"); //已出账期数
-    $("#card_fee").text(parseFloat(orderDate.card_fee).toFixed(2) + "元");   // 分期手续费
-    $("#goods_amount").text(parseFloat(orderDate.goods_amount).toFixed(2) + "元");   // 商品金额
-    document.title = decodeURI(orderDate.lfq_mer_name);
+    
+    $("#goods_amount").text(parseFloat(orderDate.goods_amount).toFixed(2) + "元"); // 商品金额
+    var mqFee = alculationRcate(orderDate.stage_amt,orderDate.goods_amount,orderDate.total_stage_count);
+    $("#card_fee").text(mqFee + "元"); // 分期手续费
+    if (orderDate.t_mer_name) {
+        document.title = decodeURI(orderDate.t_mer_name);
+    }
+
+}
+
+// 计算每期费率
+function alculationRcate(contentMonet, applyNum, stageNumber) {
+    var eachMoney = num.hold2bit(parseFloat(contentMonet) / parseInt(stageNumber));
+    var eachPrincipal = num.hold2bit(parseFloat(applyNum) / parseInt(stageNumber));
+    var eachFeeNum = (parseFloat(eachMoney) - parseFloat(eachPrincipal)).toFixed(2);
+
+    return eachFeeNum;
 }
 
 // 显示分期记录
@@ -199,7 +151,9 @@ function changeStateToText(orderState) {
         stateText = "分期成功";
     } else if (orderState == '04') {
         stateText = "已退货";
-    } else if (orderState == "99") {
+    } else if (orderState == '05') {
+        stateText = "已撤销";
+    }  else if (orderState == "99") {
         stateText = "分期失败";
     }
 
@@ -214,9 +168,10 @@ function showContract(orderState) {
 }
 // 设置合同链接
 function setContractHref(orderDate) {
+    var mer_name = orderDate.t_mer_name ? orderDate.t_mer_name : orderDate.lfq_mer_name;
     var theHref = "contract.html?htId=" + orderDate.contracts_no + "&order_id=" + orderDate.order_id + "&serial_no=" + orderDate.serial_no + "&tl_mer_name=" +
         orderDate.tl_mer_name + "&user_name=" + orderDate.cust_name + "&user_no=" + orderDate.id_no.replace("s", "") + "&user_phone=" +
-        orderDate.hp_no + "&ty_name=" + orderDate.lfq_mer_name + "&instalmentNum=" + orderDate.stage_amt + "&stageNumber=" +
+        orderDate.hp_no + "&ty_name=" + mer_name + "&instalmentNum=" + orderDate.stage_amt + "&stageNumber=" +
         orderDate.total_stage_count + "&trans_date=" + orderDate.trans_date + "&open_id=" + QueryString.GetValue("open_id") + "&lastPage=orderDetails";
     $("#contract").attr("href", encodeURI(theHref));
 }

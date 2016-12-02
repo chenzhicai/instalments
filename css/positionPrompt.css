@@ -732,6 +732,7 @@ article p {
 /* line 37, ../sass/layout/_positionPrompt_root.scss */
 .weui-icon-warn {
   vertical-align: text-top;
+  line-height: 28px;
 }
 
 /*# sourceMappingURL=positionPrompt.css.map */

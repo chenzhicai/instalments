@@ -10,7 +10,7 @@ var max_cnt = 20;
 var openid = "";
 var serial_no = '';
 var dataLength = 0;
-var latitude, longitude;
+var latitude, longitude,xykh6;
 $(function() {
     zcom.checkBrowser();
     initSize();
@@ -21,9 +21,13 @@ $(function() {
     iscrollObj.refresh();
     changePullupLabelText();
     initOneRcordReallyClick();
-    PayBox.init("", PayBoxCallbackFunc);
+    PayBox.init("", function(PayBoxPassword) {
+        xykh6 = PayBoxPassword;
+        getConfig();
+        
+        
+    });
     changeHistoryBack();
-    getConfig();
 });
 
 function initSize(argument) {
@@ -78,9 +82,9 @@ function hideWuDingDang() {
 }
 
 // 信用卡输入后六后回调函数
-function PayBoxCallbackFunc(PayBoxPassword) {
+function PayBoxCallbackFunc() {
     //fkmdata 跳转到付款码参数
-    reCreateOrder(openid, serial_no, PayBoxPassword);
+    reCreateOrder(openid, serial_no, xykh6);
 }
 
 // 请求数据后回调
@@ -98,7 +102,7 @@ function callbackFunc(data) {
     }
     $("#detail").append(pjHtml);
     $("#scroller").css("height", $("#detail").height() + 102 + "px");
-    
+
 }
 
 // 拼接HTML
@@ -106,6 +110,9 @@ function pinjieHtml(data) {
     var pjHtml = '';
     for (var i = 0, l = data.length; i < l; i++) {
         var orderState = changeOrderState(data[i].order_state);
+        if(data[i].order_state == "04" || data[i].order_state == "05"){
+            data[i].out_stage_count = "0";
+        }
         var lastDateTime = data[i].apply_date + "" + data[i].apply_time;
         // 如果有更新时间显示更新时间
         if (data[i].lfq_trans_date) {
@@ -136,7 +143,10 @@ function changeOrderState(orderState) {
     } else if (orderState == '04') {
         stateObject.iconClass = 'failed';
         stateObject.name = "已退货";
-    } else if (orderState == "99") {
+    } else if (orderState == '05') {
+        stateObject.iconClass = 'failed';
+        stateObject.name = "已撤销";
+    }  else if (orderState == "99") {
         stateObject.iconClass = 'failed';
         stateObject.name = "分期失败";
     }
@@ -158,6 +168,7 @@ function initOneRcordReallyClick() {
             if ($target.hasClass("unpaid")) {
                 PayBox.restPwd();
                 PayBox.show();
+                
             } else {
                 linkOrderDetails(serial_no);
             }
@@ -185,7 +196,7 @@ function getConfig() {
 // 配置成功获取经纬度
 function getLocation() {
     wx.ready(function() {
-        type:"gcj02",
+        type: "gcj02",
         wx.getLocation({
             success: function(res) {
 
@@ -193,8 +204,10 @@ function getLocation() {
                 console.dir(res);
                 latitude = res.latitude;
                 longitude = res.longitude;
-                //               alert(res.latitude + " " + res.longitude);
-
+                PayBoxCallbackFunc();
+            },
+            fail: function(datas) {
+                location.href = "./positionPrompt.html";
             },
             cancel: function(res) {
                 alert('用户拒绝授权获取地理位置');
@@ -207,18 +220,22 @@ function getLocation() {
 
 //重新生成该订单
 function reCreateOrder(openid, serial_no, card_6_th) {
+    
     var param = {
         open_id: openid,
         serial_no: serial_no,
         card_6th: card_6_th,
-        lat:latitude,
-        lng:longitude,
+        lat: latitude,
+        lng: longitude,
         servlet_type: "recreate_order"
     };
 
     var url = LFQ_ORDER_CREATE_URL;
     zcom.getAjax(url, param, function(msg) {
         if (msg.error_response != undefined) {
+            if(msg.error_response.sub_code == 3015){
+                location.href = "./positionPrompt.html";
+            }
             cmodal.showBodalBody(msg.error_response.sub_msg);
             return;
         }
@@ -269,8 +286,8 @@ function doQuerySingle(openid, serial_no) {
 function changePullupLabelText() {
     if (dataLength < 19) {
         $("#pullup-label").text("没有更多数据");
-    }else{
-        $("#pullup-label").text("上拉加载更多...");    
+    } else {
+        $("#pullup-label").text("上拉加载更多...");
     }
 }
 
@@ -309,7 +326,7 @@ function changeTimeFormat(cxinfo_trans_time) {
         trans_time_date = trans_time.substr(6, 2),
         trans_time_hour = trans_time.substr(8, 2),
         trans_time_minutes = trans_time.substr(10, 2);
-        trans_time_seconds = trans_time.substr(12, 2);
+    trans_time_seconds = trans_time.substr(12, 2);
     var trans_time = trans_time_year + "-" + trans_time_month + "-" + trans_time_date + " " + trans_time_hour + ":" + trans_time_minutes + ":" + trans_time_seconds;
     return trans_time;
 }
