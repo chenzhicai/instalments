@@ -98,7 +98,7 @@ function isPhoneNumber(phoneNumber) {
 // 检查中文名，不能包含非中文字符
 function isCnName(cnName) {
     var cnNameLength = len(cnName);
-    if (cnNameLength > 4 && cnNameLength < 20) {
+    if (cnNameLength > 3 && cnNameLength < 20) {
         return true;
     } else {
         return false;

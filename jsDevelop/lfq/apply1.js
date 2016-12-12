@@ -273,6 +273,19 @@ function nextStepFunc() {
     }
     var agreementValue = $("#agreement-check").is(":checked");
     if (agreementValue && isAllow) {
-        window.location.href = "applyNextStep.html?lfq_amt=" + applyNum + "&lfq_cnt=" + stageNumber + "&openid=" + openid + "&sceneId=" + sceneId + "&merId=" + merId + "&cardFeeRate=" + cardFeeRate + "&merName=" + merName + "&prdt_no=" + prdt_no;
+        setApplySessionStorage();
+        window.location.href = "applyNextStep.html"+location.search;
     }
+}
+
+// 设置本地存储SessionStorage
+function setApplySessionStorage() {
+    sessionStorage.setItem("lfq_amt", applyNum);
+    sessionStorage.setItem("lfq_cnt", stageNumber);
+    sessionStorage.setItem("openid", openid);
+    sessionStorage.setItem("sceneId", sceneId);
+    sessionStorage.setItem("merId", merId);
+    sessionStorage.setItem("cardFeeRate", cardFeeRate);
+    sessionStorage.setItem("merName", merName);
+    sessionStorage.setItem("prdt_no", prdt_no);
 }
