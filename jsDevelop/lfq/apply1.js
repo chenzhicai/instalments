@@ -15,6 +15,10 @@ var lfq_mer_no = 0;
 
 var merName, merId, sceneId, prdt_no;
 $(function() {
+    document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
+        // 通过下面这个API隐藏右上角按钮
+        wx.hideOptionMenu();
+    });
     wl.QueryString.Initial();
     initVale();
     getParameter();
@@ -76,6 +80,7 @@ function parameterCallBack(retn) {
         if (merinfo.mer_prdt_rate_arrays) { // 过渡先取6期12期
             rateArrays = merinfo.mer_prdt_rate_arrays.mer_prdt_rate;
             var rateArrays0 = rateArrays[0];
+            sessionStorage.setItem("prdtNo",rateArrays[0].prdtNo);
             for (var i = 0, l = rateArrays.length; i < l; i++) {
                 if (parseInt(rateArrays[i].stageCount) == parseInt(stageNumber)) {
                     rateArrays0 = rateArrays[i];
@@ -259,6 +264,7 @@ function isDisabledNext(argument) {
     var agreementValue = $("#agreement-check").is(":checked");
     if (agreementValue && isAllow && selectItems.length != 0 /* && lfq_mer_no == "1"*/ ) {
         $("#next-step").attr("class", "weui_btn weui_btn_primary");
+        setApplySessionStorage();
     } else {
         $("#next-step").attr("class", "weui_btn weui_btn_disabled weui_btn_default");
     }
@@ -272,8 +278,7 @@ function nextStepFunc() {
         return;
     }
     var agreementValue = $("#agreement-check").is(":checked");
-    if (agreementValue && isAllow) {
-        setApplySessionStorage();
+    if (agreementValue && isAllow) {        
         window.location.href = "applyNextStep.html"+location.search;
     }
 }

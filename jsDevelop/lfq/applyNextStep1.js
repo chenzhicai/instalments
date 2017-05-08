@@ -11,10 +11,14 @@ var cardFeeRate, merName, merId, prdt_no, lfq_amt, lfq_cnt, stageNumber, latitud
 var creditCard, userId, cvn2Num, userName, timeNum, hp_no, verify_code;
 var $userName, $userId, $cvn2Num, $timeNum, $userPhone, $verifyCode;
 var dlsq = 'wxn'; // wxn:
+var wxReady = 0; // 0 wx.js没初始化好 1 初始化好了
 $verifyBtn = $("#verifyBtn");
 $(function() {
     zcom.checkBrowser();
-
+    document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
+        // 通过下面这个API隐藏右上角按钮
+        wx.hideOptionMenu();
+    });
     inintUserNameEvent();
     initUserIdEvent();
     inintCreditCardEvent();
@@ -57,6 +61,11 @@ function initVale() {
         document.title = decodeURI(merName);
     }
     getSessionStorage();
+    if (!lfq_amt || lfq_amt == "" || !stageNumber || stageNumber == "") {
+        location.href = "./applyInstalment.html" + location.search;
+        $("#msg_lable").html("请填写分期金额");
+        myDialog.showModals();
+    }
 }
 
 // 根据设备计算一些样式
@@ -103,7 +112,7 @@ function applyLfqOrder2() {
 
 
     try {
-        zcom.postAjax(LFQ_ORDER_CREATE_URL, param, retnFunc);
+        $.post(LFQ_ORDER_CREATE_URL, param, retnFunc);
     } catch (e) {
         $("#msg_lable").text("网络无法连接");
         $(".modal-content").show();
@@ -115,6 +124,7 @@ function applyLfqOrder2() {
 
 // 回调函数
 function retnFunc(retn) {
+    retn =  JSON.parse(retn);
     var tipmsg = "init";
     var resmsg = "";
     var des_openid = "";
@@ -235,34 +245,41 @@ function getParameters() {
 // 配置config
 function getConfig() {
     console.log("getLocation.....");
+    wx.ready(function() {
+        wxReady = 1;
+    });
     map.getConfig({
         mapUrl: "/lfq/applyNextStep.html" + location.search
     });
+
     getLocation();
+
 }
 // 配置成功获取经纬度
 function getLocation() {
-    wx.ready(function() {
+    var locationhandle = setInterval(function() {
+        if (wxReady == 1) {
+            clearInterval(locationhandle);
+            wx.getLocation({
+                type: "gcj02",
+                success: function(res) {
 
-        wx.getLocation({
-            type: "gcj02",
-            success: function(res) {
+                    console.log("getLocation data");
+                    console.dir(res);
+                    latitude = res.latitude;
+                    longitude = res.longitude;
+                    //               alert(res.latitude + " " + res.longitude);
 
-                console.log("getLocation data");
-                console.dir(res);
-                latitude = res.latitude;
-                longitude = res.longitude;
-                //               alert(res.latitude + " " + res.longitude);
-
-            },
-            fail: function() {
-                location.href = "./positionPrompt.html";
-            },
-            cancel: function(res) {
-                location.href = "./positionPrompt.html";
-            }
-        });
-    });
+                },
+                fail: function() {
+                    location.href = "./positionPrompt.html";
+                },
+                cancel: function(res) {
+                    location.href = "./positionPrompt.html";
+                }
+            });
+        }
+    }, 500);
 }
 
 
@@ -374,7 +391,7 @@ function inintCreditCardEvent() {
     });
     $creditCard.on("input", function() {
         isDisabledSubmit();
-    })
+    });
 }
 
 // 信用卡输入完毕验证
@@ -515,7 +532,7 @@ function getAjaxCode() {
         openid: openid,
         prdt_no: prdt_no
     };
-    zcom.getAjax(url, param, function(retn) {
+    $.post(url, param, function(retn) {
         console.log("验证码请求结果");
         console.dir(retn);
     });
@@ -625,7 +642,9 @@ function setInfo() {
             $("#verifyBtn").removeClass("disabled");
         }
     }
-
+    view.spaceCardNum();
+    view.spacePhoneNum();
+    view.spaceuserId();
     isDisabledSubmit();
 }
 

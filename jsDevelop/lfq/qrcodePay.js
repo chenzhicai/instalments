@@ -4,12 +4,20 @@ var map = require("../components/map.js");
 var searchStatusHandle;
 var innerWidth = window.innerWidth > 400 ? 400 : window.innerWidth;
 var latitude, longitude;
+var prdtNo = "0200";
 $(function() {
     zcom.checkBrowser();
+    document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
+        // 通过下面这个API隐藏右上角按钮
+        wx.hideOptionMenu();
+    });
     zcom.QueryString.Initial();
     payCode = zcom.QueryString.GetValue("payCode");
     open_id = zcom.QueryString.GetValue("open_id");
     card_6th = zcom.QueryString.GetValue("card_6th");
+    if(sessionStorage.getItem("prdtNo")){
+        prdtNo = sessionStorage.getItem("prdtNo");
+    }
     $("section").css({
         "width": innerWidth * 0.9 + "px",
         "height": (innerWidth * 1.05 + 10) + "px"
@@ -32,10 +40,10 @@ $(function() {
     }, 200);
 
     $("#fanhui").on('touchstart', function() {
-        location.href = 'instalmentsSearch.html?openid=' + open_id;
+        location.href = 'instalmentsSearch.html?openid=' + open_id +"&prdtNo=" + prdtNo;
 
     });
-    $("#searchA").attr("href", 'instalmentsSearch.html?openid=' + open_id);
+    $("#searchA").attr("href", 'instalmentsSearch.html?openid=' + open_id +"&prdtNo=" + prdtNo);
 
     $(".countdown-parent").css("margin-top", innerWidth * 0.65 + "px");
 
@@ -129,11 +137,11 @@ function updateQrCode(payCode) {
         }
         $("#countdown").text(countdownValue);
         if (countdownValue == 0) {
-            $("#tishiRefresh").show()
+            $("#tishiRefresh").show();
             clearInterval(sihadle);
             clearInterval(searchStatusHandle);
         }
-    }, 1000)
+    }, 1000);
 }
 
 // 刷新 重新生成该订单
@@ -160,7 +168,7 @@ function reCreateOrder() {
         }
 
         if (msg.lft_orderinfo_response.resp_code == "0000") { //如果成功
-            $("#tishiRefresh").hide()
+            $("#tishiRefresh").hide();
             createTXcode(msg.lft_orderinfo_response.serial_no);
             updateQrCode(msg.lft_orderinfo_response.serial_no);
             payCode = msg.lft_orderinfo_response.serial_no;
@@ -181,7 +189,7 @@ function searchOrderStatus() {
         serial_no: payCode,
         nowTime: new Date().getTime()
     };
-    zcom.getAjax(LFQ_QRCODEPAY_RESULT_URL, param, function(data) {
+    $.post(LFQ_QRCODEPAY_RESULT_URL, param, function(data) {
         console.log("扫码结果");
         console.dir(data);
         if (data.msg == "03") {
@@ -216,7 +224,7 @@ function historyPushState() {
             title: "小通分期查询"
         },
         "小通分期查询",
-        BASE_URL + "/FuLiBao/lfq/instalmentsSearch.html?openid=" + zcom.QueryString.GetValue("open_id"));
+        BASE_URL + "/FuLiBao/lfq/instalmentsSearch.html?openid=" + zcom.QueryString.GetValue("open_id")) + "&prdtNo="+prdtNo;
 }
 
 // 配置config

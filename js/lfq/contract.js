@@ -17,13 +17,15 @@ var QueryString = {
 
 $(function() {
     //    $("#contractBox").css("height", window.innerHeight - 44 + "px");   
+    document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
+        // 通过下面这个API隐藏右上角按钮
+        wx.hideOptionMenu();
+    });
     $("#wrapper").css("height", window.innerHeight - 44 + "px");
     QueryString.Initial();
     if (QueryString.GetValue("lastPage") == "orderDetails") {
         setInfo();
     }
-    $("#fanhui").on("touchstart", fanhuiClick);
-
 
     /*    $(".check_label").on("touchstart", function() {
             if ($("#agreeInput").attr("checked")) {
@@ -36,6 +38,7 @@ $(function() {
     setUpImgPosition();
     $("#wrapper").on("touchmove", showUpimge);
     $("#upImg").on("touchstart", toTop);
+    $("#fanhui").on("touchend",fanhuiClick);
     theIScroll = new IScroll("#wrapper");
 });
 

@@ -11,11 +11,20 @@ var openid = "";
 var serial_no = '';
 var dataLength = 0;
 var latitude, longitude,xykh6;
+var prdtNo = "0200";
 $(function() {
+    document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
+        // 通过下面这个API隐藏右上角按钮
+        wx.hideOptionMenu();
+    });
     zcom.checkBrowser();
     initSize();
     QueryString.Initial();
     openid = QueryString.GetValue("openid");
+    if(QueryString.GetValue("prdtNo")){
+        prdtNo = QueryString.GetValue("prdtNo");
+    }
+    
     iscrollObj = iscrollAssist.newVerScrollForPull($("#wrapper"), pullDownAction, pullUpAction);
     var data = refreshRecord(iscrollObj);
     iscrollObj.refresh();
@@ -50,12 +59,14 @@ function getData() {
         min_count: min_cnt,
         max_count: max_cnt,
         servlet_type: "query_order",
+        prdtNo:prdtNo,
         now: new Date().getTime()
     };
 
     var url = LFQ_ORDER_CREATE_URL;
 
-    zcom.getAjax(url, param, function(msg) {
+    $.post(url, param, function(msg) {
+        msg = JSON.parse(msg);
         if (msg.error_response != undefined) {
             cmodal.showBodalBody(msg.error_response.sub_msg);
             return;
@@ -232,6 +243,7 @@ function reCreateOrder(openid, serial_no, card_6_th) {
 
     var url = LFQ_ORDER_CREATE_URL;
     zcom.getAjax(url, param, function(msg) {
+        msg = JSON.parse(msg);
         if (msg.error_response != undefined) {
             if(msg.error_response.sub_code == 3015){
                 location.href = "./positionPrompt.html";
@@ -347,5 +359,5 @@ function historyPushState() {
             title: "小通分期查询"
         },
         "小通分期查询",
-        BASE_URL + "FuLiBao/lfq/instalmentsSearch.html?openid=" + QueryString.GetValue("openid"));
+        BASE_URL + "FuLiBao/lfq/instalmentsSearch.html" + location.search);
 }

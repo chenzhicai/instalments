@@ -7,6 +7,10 @@ $(function() {
 
 function init() {
     zcom.checkBrowser();
+    document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
+        // 通过下面这个API隐藏右上角按钮
+        WeixinJSBridge.call('hideOptionMenu');
+    });
     QueryString.Initial();
     var rootHeight = ($("body")[0].scrollHeight - 44) + "px";
     $("#root").css("height", rootHeight);

@@ -1,7 +1,7 @@
 //当前动作状态(下拉:0,上拉:1,不动:2),默认为不动
 var flag = 2;
 var min_cnt = 0;
-var max_cnt = 10;
+var max_cnt = 7;
 var openid = "";
 var serial_no = '';
 $(function() {

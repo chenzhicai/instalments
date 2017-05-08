@@ -1,5 +1,6 @@
 //调用服务器链接
-window.BASE_URL = window.location.protocol + "//wxtest.ulinkpay.com/";
+// window.BASE_URL = window.location.protocol + "//wxtest.ulinkpay.com/";
+window.BASE_URL = window.location.protocol + "//192.168.1.122:9082/";
 
 //调用服务器链接
 //var BASE_URL = window.location.protocol + "//www.allinpaycard.com/";
