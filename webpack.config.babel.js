@@ -28,15 +28,5 @@ module.exports = {
             //图片文件使用 url-loader 来处理，小于8kb的直接转为base64
             { test: /\.(png|jpg)$/, loader: 'url-loader?limit=8192'}
         ]
-    },
-	resolve: {
-        //查找module的话从这里开始查找
-        root: 'F:/caiWork/mobileWeb/instalments', //绝对路径
-        //自动扩展文件后缀名，意味着我们require模块可以省略不写后缀名
-        extensions: ['', '.js', '.json', '.scss'],
-        //模块别名定义，方便后续直接引用别名，无须多写长长的地址
-        alias: {
-//            iscrollAssist : path.join('js/iscrollAssist.js'),//后续直接 require('iscrollAssist') 即可
-        }
     }
 }

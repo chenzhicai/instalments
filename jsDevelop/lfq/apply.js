@@ -116,14 +116,14 @@ function nextStepFunc() {
         return;
     };
 
-    if (resmsg == 'B00002') { //表示该手机号已开某通联卡，但是未有绑定微信号
+/*    if (resmsg == 'B00002') { //表示该手机号已开某通联卡，但是未有绑定微信号
         //直接跳转到绑定通联卡页面
         window.location.href = BASE_URL + "FuLiBao/protocol_members.html?" + paramStr + "&lfq_cnt=" + stageNumber +"&jm_openid=" + openid + "&openid=" + des_openid;
 
-    } else {
+    } else {*/
         window.location.href = "applyNextStep.html?" + paramStr + "&lfq_cnt=" + stageNumber + "&open_id=" + openid + "&merId=" + merId + "&cardFeeRate=" + cardFeeRate;
 
-    }
+/*    }*/
 }
 
 function verifyPromptAll() {

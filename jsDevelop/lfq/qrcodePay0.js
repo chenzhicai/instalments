@@ -3,7 +3,7 @@ var cmodal = require("./cmodal.js");
 var map = require("../components/map.js");
 var searchStatusHandle;
 var innerWidth = window.innerWidth > 400 ? 400 : window.innerWidth;
-var latitude = "120.34", longitude = "34.45",payCode,open_id,card_6th;
+var latitude, longitude;
 var prdtNo = "0200";
 $(function() {
     zcom.checkBrowser();
@@ -12,8 +12,7 @@ $(function() {
         wx.hideOptionMenu();
     });
     zcom.QueryString.Initial();
-    payCode =sessionStorage.getItem("payCode")?sessionStorage.getItem("payCode"): QueryString.GetValue("payCode");
-//    payCode = zcom.QueryString.GetValue("payCode");
+    payCode = zcom.QueryString.GetValue("payCode");
     open_id = zcom.QueryString.GetValue("open_id");
     card_6th = zcom.QueryString.GetValue("card_6th");
     if(sessionStorage.getItem("prdtNo")){
@@ -39,12 +38,12 @@ $(function() {
         updateQrCode(payCode);
         changeHistoryBack();
     }, 200);
-    
+
     $("#fanhui").on('touchstart', function() {
-        location.href = '../bjhf/instalmentSearch.html?openid=' + open_id;
+        location.href = 'instalmentsSearch.html?openid=' + open_id +"&prdtNo=" + prdtNo;
 
     });
-    $("#searchA").attr("href", '../bjhf/instalmentSearch.html?openid=' + open_id);
+    $("#searchA").attr("href", 'instalmentsSearch.html?openid=' + open_id +"&prdtNo=" + prdtNo);
 
     $(".countdown-parent").css("margin-top", innerWidth * 0.65 + "px");
 
@@ -127,12 +126,7 @@ function updateQrCode(payCode) {
     };
 
     $('#container').empty().qrcode(options);
-//    var countdownValue = 120;
-    if(sessionStorage.getItem("countdownValue")){
-        var countdownValue = sessionStorage.getItem("countdownValue");
-    }else{
-        var countdownValue = 120;
-    }
+    var countdownValue = 120;
     var lastTime = new Date().getTime();
     var sihadle = setInterval(function() {
         var nowTime = new Date().getTime();
@@ -147,13 +141,11 @@ function updateQrCode(payCode) {
             clearInterval(sihadle);
             clearInterval(searchStatusHandle);
         }
-        sessionStorage.setItem("countdownValue",countdownValue);
     }, 1000);
 }
 
 // 刷新 重新生成该订单
 function reCreateOrder() {
-    sessionStorage.clear();
     var param = {
         open_id: open_id,
         serial_no: payCode,
@@ -164,7 +156,7 @@ function reCreateOrder() {
     };
 
     var url = LFQ_ORDER_CREATE_URL;
-    $.post(url, param, function(msg) {
+    zcom.getAjax(url, param, function(msg) {
         if (msg.error_response != undefined) {
             cmodal.showBodalBody(msg.error_response.sub_msg);
             return;
@@ -181,7 +173,6 @@ function reCreateOrder() {
             updateQrCode(msg.lft_orderinfo_response.serial_no);
             payCode = msg.lft_orderinfo_response.serial_no;
             searchStatusHandle = setInterval(searchOrderStatus, 3000)
-            sessionStorage.setItem("payCode",payCode);
         } else {
             cmodal.showBodalBody(msg.lft_orderinfo_response.resp_msg);
             return;
@@ -212,7 +203,6 @@ function searchOrderStatus() {
         }
         if (data.msg == "03" || data.msg == "04" || data.msg == "99" || data.msg == "订单不存在") {
             clearInterval(searchStatusHandle);
-            sessionStorage.clear();
         }
 
     });
@@ -234,7 +224,7 @@ function historyPushState() {
             title: "小通分期查询"
         },
         "小通分期查询",
-        BASE_URL + "/FuLiBao/bjhf/instalmentSearch.html?openid=" + zcom.QueryString.GetValue("open_id"));
+        BASE_URL + "/FuLiBao/lfq/instalmentsSearch.html?openid=" + zcom.QueryString.GetValue("open_id")) + "&prdtNo="+prdtNo;
 }
 
 // 配置config

@@ -1,6 +1,5 @@
 var zcom = require("./zeptoCommon.js");
 var num = require("../components/number.js");
-var openid,serial_no;
 $(function() {
     init();
     doQuerySingle();
@@ -16,13 +15,13 @@ function init() {
     var rootHeight = ($("body")[0].scrollHeight - 44) + "px";
     $("#root").css("height", rootHeight);
     $("#fanhui").on('touchstart', function() {
-        location.href = '../bjhf/instalmentSearch.html?openid=' + QueryString.GetValue("open_id");
+        location.href = 'instalmentsSearch.html?openid=' + QueryString.GetValue("open_id");
 
     });
 }
 //  取数据
 
-function doQuerySingle() {
+function doQuerySingle(openid, serial_no) {
     QueryString.Initial();
     openid = QueryString.GetValue("open_id");
     serial_no = QueryString.GetValue("serial_no");
@@ -56,9 +55,9 @@ function doQuerySingle() {
                 }
                 setOrder(lfqorderInfo);
             }
-//          if (msg.lft_orderinfo_response.lfqRepayNotices_arrays && msg.lft_orderinfo_response.lfqRepayNotices_arrays.lfqRepayNotices && msg.lft_orderinfo_response.lfqRepayNotices_arrays.lfqRepayNotices != "") {
-//              showRecord(msg.lft_orderinfo_response.lfqRepayNotices_arrays.lfqRepayNotices);
-//          }
+            if (msg.lft_orderinfo_response.lfqRepayNotices_arrays && msg.lft_orderinfo_response.lfqRepayNotices_arrays.lfqRepayNotices && msg.lft_orderinfo_response.lfqRepayNotices_arrays.lfqRepayNotices != "") {
+                showRecord(msg.lft_orderinfo_response.lfqRepayNotices_arrays.lfqRepayNotices);
+            }
         }
     });
 
