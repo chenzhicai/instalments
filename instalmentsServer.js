@@ -35,6 +35,9 @@ app.get('/html/applyNextStep.html', function(req, res) {
 app.get('/html/applyInstalment.html', function(req, res) {
     res.sendFile(__dirname + "/html/applyInstalment.html");
 });
+app.get('/html/instalmentSearch.html', function(req, res) {
+    res.sendFile(__dirname + "/html/instalmentsSearch.html");
+});
 
 app.get('/html/calculator.html', function(req, res) {
     res.sendFile(__dirname + "/html/calculator.html");
@@ -50,6 +53,9 @@ app.get('/html/instalmentsSearch.html', function(req, res) {
 });
 app.get('/html/qrpay.html', function(req, res) {
     res.sendFile(__dirname + "/html/qrpay.html");
+});
+app.get('/html/orderDetails.html', function(req, res) {
+    res.sendFile(__dirname + "/html/orderDetails.html");
 });
 
 
@@ -74,8 +80,18 @@ app.get('/js/libs/jquery.mobile-1.4.5.min.js', function(req, res) {
 app.get('/js/libs/zepto.js', function(req, res) {
     res.sendFile(__dirname + "/js/libs/zepto.js");
 });
-
-
+app.get('/js/lfq/jquery-weui.min.js', function(req, res) {
+    res.sendFile(__dirname + "/js/lfq/jquery-weui.min.js");
+});
+app.get('/js/lfq/apply.min.js', function(req, res) {
+    res.sendFile(__dirname + "/js/lfq/apply.min.js");
+});
+app.get('/js/lfq/jquery-weui.min.js', function(req, res) {
+    res.sendFile(__dirname + "/js/lfq/jquery-weui.min.jss");
+});
+app.get('/js/lfq/jquery-weui.min.js', function(req, res) {
+    res.sendFile(__dirname + "/js/lfq/jquery-weui.min.jss");
+});
 
 
 app.get('/js/lfq/zepto.min.js', function(req, res) {
@@ -109,12 +125,13 @@ app.get('/js/lfq/applyNextStep.min.js', function(req, res) {
 app.get('/js/lfq/common.min.js', function(req, res) {
     res.sendFile(__dirname + "/js/lfq/common.min.js");
 });
+app.get('/js/lfq/orderDetails.min.js', function(req, res) {
+    res.sendFile(__dirname + "/js/lfq/orderDetails.min.js");
+});
 app.get('/js/lfq/instalmentsSearch.min.js', function(req, res) {
     res.sendFile(__dirname + "/js/lfq/instalmentsSearch.min.js");
 });
-app.get('/js/lfq/orderDetails.min.js', function(req, res) {
-    res.sendFile(__dirname + "js/lfq/orderDetails.min.js");
-});
+
 app.get('/js/lfq/qrcodePay.min.js', function(req, res) {
     res.sendFile(__dirname + "/js/lfq/qrcodePay.min.js");
 });
@@ -127,13 +144,24 @@ app.get('/js/lfq/JsBarcode.js', function(req, res) {
 app.get('/js/lfq/jquery.qrcode-0.12.0.js', function(req, res) {
     res.sendFile(__dirname + "/js/lfq/jquery.qrcode-0.12.0.js");
 });
+app.get('/js/lfq/iscroll5.js', function(req, res) {
+    res.sendFile(__dirname + "/js/lfq/iscroll5.js");
+});
 
 
 
 app.get('/css/qrcodePay.css', function(req, res) {
     res.sendFile(__dirname + "/css/qrcodePay.css");
 });
-
+app.get('/css/applyInstalment2.css', function(req, res) {
+    res.sendFile(__dirname + "/css/applyInstalment2.css");
+});
+app.get('/css/instalmentsSearch.css', function(req, res) {
+    res.sendFile(__dirname + "/css/instalmentsSearch.css");
+});
+app.get('/css/orderDetails.css', function(req, res) {
+    res.sendFile(__dirname + "/css/orderDetails.css");
+});
 
 
 app.get('/dist/fonts/fontawesome-webfont.eot', function(req, res) {
@@ -210,6 +238,18 @@ app.get('/images/jysx.png', function(req, res) {
 app.get('/images/jysx.png', function(req, res) {
     res.sendFile(__dirname + "/images/jysx.png");
 });
+app.get('/images/wudingdan.png', function(req, res) {
+    res.sendFile(__dirname + "/images/wudingdan.png");
+});
+app.get('/images/open_bottom.jpg', function(req, res) {
+    res.sendFile(__dirname + "/images/open_bottom.jpg");
+});
+app.get('/images/key_del.png', function(req, res) {
+    res.sendFile(__dirname + "/images/key_del.png");
+});
+app.get('/images/pull-icon@2x.png', function(req, res) {
+    res.sendFile(__dirname + "/images/pull-icon@2x.png");
+});
 
 
 
@@ -262,6 +302,32 @@ app.post('/FuLiBao/LFQSearchOrderServlet', urlencodedParser, function(req, res) 
     console.log(JSON.stringify(queryRecord));
     res.end(JSON.stringify(queryRecord));*/
 });
+
+app.post('/FuLiBao/LFQCreateOrderServlet', urlencodedParser, function(req, res) {
+    /*    res.writeHead(200, {
+            'Content-Type': 'text/html;charset=utf-8'
+        }); //设置response编码为utf-8*/
+    // application/json  接口返回json数据
+    // charset=utf-8 解决json数据中中文乱码
+    res.writeHead(200, {
+        "Content-Type": "application/json;charset=utf-8"
+    });
+    console.log("请求条件" + util.inspect(req.body));
+    //   res.end(mndata.signIn);
+    var agentObjet = dataAgent.getAgent({
+        "path":"/FuLiBao/LFQCreateOrderServlet"
+    }, req.body);
+    agentObjet.on("databack", function(data) {
+        console.log("datback......");
+        console.log('data: ' + data);
+        res.end(data);
+    });
+    agentObjet.request();
+/*    var queryRecord = monidata.getQueryRecordServlet(req.body);
+    console.log(JSON.stringify(queryRecord));
+    res.end(JSON.stringify(queryRecord));*/
+});
+
 app.post('/wjttest/pkg/log/detail', urlencodedParser, function(req, res) {
     /*    res.writeHead(200, {
             'Content-Type': 'text/html;charset=utf-8'

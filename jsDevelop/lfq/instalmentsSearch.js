@@ -59,14 +59,14 @@ function getData() {
         min_count: min_cnt,
         max_count: max_cnt,
         servlet_type: "query_order",
-        prdtNo:prdtNo,
+        prdt_no:prdtNo,
         now: new Date().getTime()
     };
 
     var url = LFQ_ORDER_CREATE_URL;
 
     $.post(url, param, function(msg) {
-        msg = JSON.parse(msg);
+//        msg = JSON.parse(msg);
         if (msg.error_response != undefined) {
             cmodal.showBodalBody(msg.error_response.sub_msg);
             return;
@@ -243,7 +243,7 @@ function reCreateOrder(openid, serial_no, card_6_th) {
 
     var url = LFQ_ORDER_CREATE_URL;
     zcom.getAjax(url, param, function(msg) {
-        msg = JSON.parse(msg);
+//        msg = JSON.parse(msg);
         if (msg.error_response != undefined) {
             if(msg.error_response.sub_code == 3015){
                 location.href = "./positionPrompt.html";

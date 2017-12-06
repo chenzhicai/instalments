@@ -29,25 +29,26 @@
   display: inline-block;
   padding: 6px 0px 3px 0px;
   font-size: 14px;
+  max-width: 240px;
 }
-/* line 33, ../../sass/layout/orderDetails-root.scss */
+/* line 34, ../../sass/layout/orderDetails-root.scss */
 .info-box .info-title {
   width: 100px;
 }
 
-/* line 38, ../../sass/layout/orderDetails-root.scss */
+/* line 39, ../../sass/layout/orderDetails-root.scss */
 .module-title {
   font-size: 15px;
   line-height: 34px;
   background-color: #fff;
   color: #666;
 }
-/* line 43, ../../sass/layout/orderDetails-root.scss */
+/* line 44, ../../sass/layout/orderDetails-root.scss */
 .module-title a {
   color: #2792e4;
   font-size: 15px;
 }
-/* line 46, ../../sass/layout/orderDetails-root.scss */
+/* line 47, ../../sass/layout/orderDetails-root.scss */
 .module-title a:before {
   position: absolute;
   content: '';
@@ -63,44 +64,44 @@
   -o-transform: scale(0.5, 0.5);
 }
 
-/* line 63, ../../sass/layout/orderDetails-root.scss */
+/* line 64, ../../sass/layout/orderDetails-root.scss */
 #record-box {
   background-color: #efefef;
   padding-top: 10px;
 }
-/* line 66, ../../sass/layout/orderDetails-root.scss */
+/* line 67, ../../sass/layout/orderDetails-root.scss */
 #record-box .module-title {
   padding: 0px 10px;
   color: #222;
 }
-/* line 70, ../../sass/layout/orderDetails-root.scss */
+/* line 71, ../../sass/layout/orderDetails-root.scss */
 #record-box .nextData-box {
   font-size: 11px;
   color: #999;
 }
-/* line 74, ../../sass/layout/orderDetails-root.scss */
+/* line 75, ../../sass/layout/orderDetails-root.scss */
 #record-box > div {
   padding-left: 10px;
 }
-/* line 77, ../../sass/layout/orderDetails-root.scss */
+/* line 78, ../../sass/layout/orderDetails-root.scss */
 #record-box .oneRecord-box {
   background-color: #fff;
   padding: 0px 0px 50px 30px;
   /* margin-top: -3px; */
 }
-/* line 81, ../../sass/layout/orderDetails-root.scss */
+/* line 82, ../../sass/layout/orderDetails-root.scss */
 #record-box .oneRecord-box .failed {
   color: #E00C27;
 }
-/* line 84, ../../sass/layout/orderDetails-root.scss */
+/* line 85, ../../sass/layout/orderDetails-root.scss */
 #record-box .oneRecord-box .advance {
   color: #2792e4;
 }
-/* line 88, ../../sass/layout/orderDetails-root.scss */
+/* line 89, ../../sass/layout/orderDetails-root.scss */
 #record-box .oneRecord-box:not(:last-child) {
   /* border-left: 2px solid #2792e4; */
 }
-/* line 90, ../../sass/layout/orderDetails-root.scss */
+/* line 91, ../../sass/layout/orderDetails-root.scss */
 #record-box .oneRecord-box:not(:last-child):after {
   position: absolute;
   content: '';
@@ -114,7 +115,7 @@
   -webkit-transform: scale(0.5, 0.5);
   -o-transform: scale(0.5, 0.5);
 }
-/* line 104, ../../sass/layout/orderDetails-root.scss */
+/* line 105, ../../sass/layout/orderDetails-root.scss */
 #record-box .icon-circle,
 #record-box .icon-circle2 {
   height: 18px;
@@ -127,15 +128,15 @@
   background-position: 0px 3px;
   background-color: #fff;
 }
-/* line 116, ../../sass/layout/orderDetails-root.scss */
+/* line 117, ../../sass/layout/orderDetails-root.scss */
 #record-box .icon-circle {
   background-image: url("../images/yuan_icon.jpg");
 }
-/* line 119, ../../sass/layout/orderDetails-root.scss */
+/* line 120, ../../sass/layout/orderDetails-root.scss */
 #record-box .icon-circle2 {
   background-image: url("../images/yuan2_icon.jpg");
 }
-/* line 122, ../../sass/layout/orderDetails-root.scss */
+/* line 123, ../../sass/layout/orderDetails-root.scss */
 #record-box .recordDate-box {
   font-size: 16px;
   color: #222;

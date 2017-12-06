@@ -4,7 +4,7 @@ var post_data = {
 };
 
 var options = {
-    hostname: 'wxtest.ulinkpay.com',  //'10.2.235.41',  //
+    hostname: 'wxtest.allinpaycard.com',  //'10.2.235.41',  //
 //    hostname: '10.2.235.45',
 //    port: '8080',
 //    port: '18001',
