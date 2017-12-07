@@ -51,9 +51,6 @@ app.get('/html/flbHome.html', function(req, res) {
 app.get('/html/instalmentsSearch.html', function(req, res) {
     res.sendFile(__dirname + "/html/instalmentsSearch.html");
 });
-app.get('/html/qrpay.html', function(req, res) {
-    res.sendFile(__dirname + "/html/qrpay.html");
-});
 app.get('/html/orderDetails.html', function(req, res) {
     res.sendFile(__dirname + "/html/orderDetails.html");
 });

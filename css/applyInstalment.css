@@ -424,6 +424,16 @@ header {
   width: 100px;
 }
 
+/* line 143, ../sass/layout/_instalments-root.scss */
+#repaymentPlan {
+  display: block;
+}
+/* line 145, ../sass/layout/_instalments-root.scss */
+#repaymentPlan .modal-dialog {
+  max-width: 100%;
+  min-width: 100%;
+}
+
 /* line 5, ../sass/components/_btn_disabled.scss */
 .btn_disabled {
   color: #fff;

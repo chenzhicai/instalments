@@ -60,7 +60,15 @@
                     </div>
                 </div>
                 
-                <div class="weui_cells_title bgb">还款测算(元)</div>
+                <div class="weui_cells_title bgb">
+                    <span>还款测算(元)</span>
+                    <span class="fr num-plan ui-flexbox ui-acenter" id="paymentPlan">
+                        <i class="icon-left">
+                            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAMAAABEpIrGAAAAk1BMVEUAAAD////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////ROyVeAAAAMHRSTlMA8/ffBtvMtYdwMRb79e7Xsaabe0wbEuXRuq2UjjciHw3p4b+LdmtmUUE9KlRFRAvWSV2rAAABFklEQVQ4y33S566DMAwF4BOgjFLKKnQDt3vc4fd/uishEXIA9fsV21ECsWH4OSSxUjNvv2owVua2aMtLgYFACVn4VP5LZMStoYUzmaDmXd05yaQoBFpbzl+ybmWjdeO6D1jdOmsvEBbgtdBBBeAqzNpFfZACWMonIX7lowD7YcqiyINH8fpWl7aZ2IAeMW0A0IY1IrrwnOLN7w3zyqsrT+SDDTbFX4DLiUEjMoRCYmQUr3AXssWK5siBJySHY9FfO5GQCjhQq48is0WfOAMopfcNX+5H48x26vw+rvF4FrbZiVasEyXoo1WDVqHPdA/UGj3W8+mheUAr4nF5eYTBGc3NLgSbp2Y5eWGsCnbuSan1Jsnf0P4BTqmIWZQK75MAAAAASUVORK5CYII=">
+                        </i>
+                        <span class="pl-5">查看扣款计划表</span>
+                    </span>
+                </div>
                 <div class="weui_cell bgb bt0">           
                     <div class="weui_cell_f4 lh20_m12">
                         <p id="eachPrincipal"></p>
@@ -121,6 +129,59 @@
                     </div>
                     <div class="modal-footer">
                         <a type="button" id="modalButton">确认</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal" id="repaymentPlan">
+            <div class="back"></div>
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <div class="plan_close"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAdCAMAAACOj/wDAAAAclBMVEUAAAC6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urqHNsWPAAAAJXRSTlMAvEc44+ZDEt7AnjUW2NK4MB0PqLSjT00i+LCqb2c+KAbuyXxUPspa+QAAAO1JREFUKM910el2gyAQBeAL1LZGUTBdNJtZyvu/YsmN1uNMww9RPufMBQCcjxZ6nEZOh8HUyl5fvO2yXdLQBmnvKfkbkKeUdnFllotF/qm8v7SVst0Psnq+9sL2b/xwrP0IK9vWc2xPjdpYe2XfwD0Iy0vNVGulLX3NkbZf2V/mYcopR2XSY2w7ZYzCxjQ5bEE01TOjRmXfND7aShobflrut+xX9vWwDoGZjfvPANdQR2nTHRn2dbMxxoa21PZzTpo4q7LSRr1SR7iLMkyZGxykLX0LxHyFG33WoU3eAecb69Qdlaf7VEdNuaYHfgGUmCRRLCuSzAAAAABJRU5ErkJggg=="></div>
+                        <h4 class="modal-title">扣款计划表</h4>
+                        
+                    </div>
+                    <div class="modal-body">
+                        <div class="repayment_body1">
+                            <div class="modal-row">
+                                <div class="fr co99">手续费率<span id="modal-rate">0.00</span>%</div>
+                                <div class="row_content"><span class="title">申请金额</span>￥<span id="planApplyNum">800</span></div>
+                            </div>
+                            <div class="modal-row">
+                                <div class="row_content">
+                                    <span class="title">选择期数</span> 
+                                    <span id="qishu-box">
+                                        <span class="qishu checked">6期</span><span class="qishu">12期</span><span class="qishu">24期</span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="repayment_body2">
+                            <div class="modal-row">
+                                <div>扣款计划表</div>
+                            </div>
+                            <div class="table_box">
+                                <table class="gridtable">
+                                    <thead>
+                                      <tr><th class="w70">期数</th><th class="w90">记账日期</th><th class="w90">扣款金额</th></tr>  
+                                    </thead>
+                                    <tbody id="repayplan-tbody">
+                                        <tr><td class="w70">1</td><td class="w90">2017-11-12</td><td class="w90">100.00</td></tr>
+                                        <tr><td>2</td><td>2017-11-12</td><td>100.00</td></tr>
+                                        <tr><td>3</td><td>2017-11-12</td><td>100.00</td></tr>
+                                        <tr><td>4</td><td>2017-11-12</td><td>100.00</td></tr>
+                                        <tr><td>5</td><td>2017-11-12</td><td>100.00</td></tr>
+                                        <tr><td>6</td><td>2017-11-12</td><td>100.00</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <ul>
+                                <li>每期为25天</li>
+                                <li>扣款计划表仅供参考,请以实际扣款日期及金额为准</li>
+                                <li>记账日期：记入信用卡账单的日期</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>

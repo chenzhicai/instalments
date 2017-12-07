@@ -29,7 +29,123 @@ $(function() {
         nextStepFunc();
     });
     setContractHref();
+    initRepayPlan();
 });
+
+
+/****设置还款计划开始****/
+// 初始化还款计划
+function initRepayPlan() {
+    var tbodyHeight = $("body")[0].scrollHeight - 400 + "px";
+    $("#repayplan-tbody").css({"height":tbodyHeight})
+    $("#paymentPlan").on("touchstart",function () {
+        var applyNum = $("#applyInstalmentNum").val();
+        if(applyNum){
+            $("#repaymentPlan").show();
+            setRepayPlan();
+        }
+    })
+    $(".plan_close").on("click",function () {
+        $("#repaymentPlan").hide();
+    })
+    $("#qishu-box").on("touchstart",function (event) {
+        var qishu = $(event.target).data("qishu");
+        if(qishu){
+            $("#qishu-box span").removeClass("checked")
+            $(event.target).addClass("checked");
+            setRepayEeach();
+            setPlanApplyNum();
+        }
+    })
+}
+
+
+// 设置还款计划数据
+function setRepayPlan() {
+//    stageNumber
+      setRepayPlanStageNum();
+      setRepayEeach();
+      setPlanApplyNum();
+}
+
+// 设置借款金额和费率
+function setPlanApplyNum(argument) {
+    $("#planApplyNum").text(applyNum);
+    var $qishuSpan = $(".qishu.checked");
+    var thecustRate = $qishuSpan.data("custrate");
+    $("#modal-rate").text(thecustRate)
+}
+
+// 设置还款期数
+function setRepayPlanStageNum() {
+    // body... rateArrays stageNumber
+    console.log("setRepayPlanStageNum......")
+    console.dir(rateArrays);
+    var qishuHtmlStr = ''
+    for(var i=0,l=rateArrays.length;i<l;i++){
+        qishuHtmlStr += '<span data-qishu="'+ parseInt(rateArrays[i].stageCount) +'" data-custrate="' + rateArrays[i].custRate+ '" class="qishu';
+        if (parseInt(rateArrays[i].stageCount) == parseInt(stageNumber)) {
+            qishuHtmlStr += ' checked';
+        }
+         qishuHtmlStr += '">' + parseInt(rateArrays[i].stageCount) +'期</span>';
+    }
+    $("#qishu-box").html(qishuHtmlStr)
+}
+
+// 设置还款计划每一期
+function setRepayEeach() {
+    // body...  <tr><td class="w70">1</td><td class="w90">2017-11-12</td><td class="w90">100.00</td></tr>
+    var $qishuSpan = $(".qishu.checked");
+    var qs = parseInt($qishuSpan.text());
+    var thecustRate = $qishuSpan.data("custrate")
+    var contentMonet = parseFloat(applyNum * (parseFloat(thecustRate) / 100) + 0.00001 + applyNum).toFixed(2);
+    var eachMoney = num.hold2bit(parseFloat(contentMonet.replace(".", "")) / qs / 100);
+    var trstr = '';
+    var nowDate = new Date();
+    for(var i=0;i<qs;i++){
+        trstr += '<tr><td class="w70">' + (i+1) + '</td><td class="w90">' + getDateStrFormate2("yyyy-mm-dd",nowDate) + '</td><td class="w90">' + eachMoney + '</td></tr>';
+    }
+    $("#repayplan-tbody").html(trstr)
+}
+
+/*
+
+format :"yyyy-mm-dd hh:ii:ss"; return 2015-11-05 17:39:23
+format :"yyyy-mm-dd"; return 2015-11-05
+format :"yyyy/mm/dd hh/ii/ss"; return 2015/11/05 17/39/23
+format :"yyyy/mm/dd"; return 2015/11/05
+ */
+function getDateStrFormate2(formart, newDate) {
+    var dateSty = arguments[0].split(' '),
+        separatorFirst = '',
+        separatorSecond = '',
+        realDate = '';
+    var yyyy = newDate.getFullYear(),
+        mm = newDate.getMonth() + 1,
+        dd = newDate.getDate(),
+        hh = newDate.getHours(),
+        ii = newDate.getMinutes(),
+        ss = newDate.getSeconds();
+    mm = mm < 10 ? '0' + mm : mm;
+    dd = dd < 10 ? '0' + dd : dd;
+    hh = hh < 10 ? '0' + hh : hh;
+    ii = ii < 10 ? '0' + ii : ii;
+    ss = ss < 10 ? '0' + ss : ss;
+
+    if (dateSty.length > 1) {
+        console.log(dateSty);
+        separatorFirst = dateSty[0].charAt(4);
+        separatorSecond = dateSty[1].charAt(2);
+        realDate = yyyy + separatorFirst + mm + separatorFirst + dd + ' ' + hh + separatorSecond + ii + separatorSecond + ss;
+    } else {
+        separatorFirst = dateSty[0].charAt(4);
+        realDate = yyyy + separatorFirst + mm + separatorFirst + dd;
+    }
+
+    return realDate;
+}
+
+/****设置还款计划结束****/
 
 //  设置合同的连接
 function setContractHref() {
@@ -202,8 +318,8 @@ function computesEachPayNumber() {
     setEachFee();
     var contentMonet = parseFloat(applyNum * (parseFloat(cardFeeRate) / 100) + 0.00001 + applyNum).toFixed(2);
 
-    var eachMoney = num.hold2bit(parseFloat(contentMonet) / stageNumber);
-    var eachPrincipal = num.hold2bit(applyNum / stageNumber);
+    var eachMoney = num.hold2bit(parseFloat(contentMonet.replace(".", "")) / stageNumber / 100);
+    var eachPrincipal = num.hold2bit(parseFloat(num.hold2bit(applyNum).replace(".", "")) / stageNumber / 100);
     var eachFeeNum = parseFloat(eachMoney) - parseFloat(eachPrincipal);
     $("#eachFee").next().text(Math.round(parseFloat(applyNum) * parseFloat(cardFeeRate)) / 100);
     $(".eachFeeNum").text(eachFeeNum.toFixed(2));

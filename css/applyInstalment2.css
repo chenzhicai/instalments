@@ -1242,6 +1242,173 @@ select option:nth-child(even) {
   height: auto;
 }
 
+/* line 267, ../sass/layout/_instalments2-root.scss */
+.fr {
+  float: right;
+}
+
+/* line 271, ../sass/layout/_instalments2-root.scss */
+.icon-left img {
+  width: 18px;
+  vertical-align: text-top;
+}
+
+/* line 276, ../sass/layout/_instalments2-root.scss */
+#repaymentPlan {
+  color: #333;
+  font-size: 14px;
+}
+/* line 279, ../sass/layout/_instalments2-root.scss */
+#repaymentPlan .modal-row {
+  padding: 9px 15px;
+  text-align: left;
+}
+/* line 284, ../sass/layout/_instalments2-root.scss */
+#repaymentPlan .plan_close {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+/* line 288, ../sass/layout/_instalments2-root.scss */
+#repaymentPlan .plan_close img {
+  height: 21px;
+  margin: 10px;
+}
+/* line 293, ../sass/layout/_instalments2-root.scss */
+#repaymentPlan .qishu {
+  display: inline-block;
+  border: 1px solid #9a9a9a;
+  line-height: 28px;
+  width: 50px;
+  text-align: center;
+  margin-right: 10px;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+}
+/* line 303, ../sass/layout/_instalments2-root.scss */
+#repaymentPlan .qishu.checked {
+  color: #2792e4;
+  border: 1px solid #2792e4;
+}
+/* line 307, ../sass/layout/_instalments2-root.scss */
+#repaymentPlan .title {
+  display: inline-block;
+  margin-right: 10px;
+}
+/* line 311, ../sass/layout/_instalments2-root.scss */
+#repaymentPlan .modal-header > h4 {
+  margin: 0px;
+  padding: 20px 0px 10px 0px;
+}
+/* line 316, ../sass/layout/_instalments2-root.scss */
+#repaymentPlan .modal-header:before {
+  position: absolute;
+  left: 0;
+  content: '';
+  width: 100%;
+  height: 55px;
+  border-bottom: 3px solid #2792e4;
+  width: 94%;
+  margin-left: 3%;
+}
+/* line 328, ../sass/layout/_instalments2-root.scss */
+#repaymentPlan .modal-dialog {
+  max-width: 100%;
+  min-width: 100%;
+  margin-top: 80px;
+}
+/* line 333, ../sass/layout/_instalments2-root.scss */
+#repaymentPlan .modal-content {
+  border-radius: 0px;
+}
+/* line 336, ../sass/layout/_instalments2-root.scss */
+#repaymentPlan .repayment_body1 {
+  padding: 5px 0px;
+}
+/* line 339, ../sass/layout/_instalments2-root.scss */
+#repaymentPlan .repayment_body2 {
+  position: relative;
+}
+/* line 341, ../sass/layout/_instalments2-root.scss */
+#repaymentPlan .repayment_body2:before {
+  content: " ";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 1px;
+  border-top: 1px solid #D9D9D9;
+  color: #D9D9D9;
+  transform-origin: 0 0;
+  transform: scaleY(0.5);
+}
+/* line 357, ../sass/layout/_instalments2-root.scss */
+#repaymentPlan .table_box {
+  text-align: center;
+  background: #ffeeee;
+  padding: 10px 0 10px 0;
+}
+/* line 362, ../sass/layout/_instalments2-root.scss */
+#repaymentPlan table.gridtable {
+  margin: auto;
+  font-family: verdana,arial,sans-serif;
+  font-size: 11px;
+  color: #333333;
+  border-width: 1px;
+  border-color: #666666;
+  border-collapse: collapse;
+}
+/* line 363, ../sass/layout/_instalments2-root.scss */
+#repaymentPlan table.gridtable .w70 {
+  width: 40px;
+  min-width: 40px;
+  max-width: 40px;
+}
+/* line 368, ../sass/layout/_instalments2-root.scss */
+#repaymentPlan table.gridtable .w90 {
+  width: 80px;
+  min-width: 80px;
+  max-width: 80px;
+}
+/* line 373, ../sass/layout/_instalments2-root.scss */
+#repaymentPlan table.gridtable thead tr {
+  display: block;
+}
+/* line 383, ../sass/layout/_instalments2-root.scss */
+#repaymentPlan table.gridtable tbody {
+  display: block;
+  height: 110px;
+  overflow: auto;
+}
+/* line 390, ../sass/layout/_instalments2-root.scss */
+#repaymentPlan table.gridtable th {
+  border-width: 1px;
+  padding: 8px 10px;
+  color: #333;
+  border-style: solid;
+  border-color: #666666;
+  background-color: #c4c4c4;
+}
+/* line 398, ../sass/layout/_instalments2-root.scss */
+#repaymentPlan table.gridtable td {
+  border-width: 1px;
+  padding: 8px 10px;
+  border-style: solid;
+  border-color: #666666;
+  background-color: #ffffff00;
+}
+/* line 405, ../sass/layout/_instalments2-root.scss */
+#repaymentPlan ul {
+  font-size: 12px;
+  text-align: left;
+  padding: 8px 25px;
+}
+/* line 410, ../sass/layout/_instalments2-root.scss */
+#repaymentPlan .co99 {
+  color: #999;
+}
+
 /* line 5, ../sass/components/_btn_disabled.scss */
 .btn_disabled {
   color: #fff;

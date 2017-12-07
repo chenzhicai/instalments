@@ -139,3 +139,11 @@ input[type=number] {
 #repayment-num {
     width: 100px;
 }
+
+#repaymentPlan{
+    display: block;
+    .modal-dialog{
+        max-width: 100%; 
+        min-width: 100%; 
+    }
+}
