@@ -72,7 +72,7 @@ function setRepayPlan() {
 function setPlanApplyNum(argument) {
     $("#planApplyNum").text(applyNum);
     var $qishuSpan = $(".qishu.checked");
-    var thecustRate = $qishuSpan.data("custrate");
+    var thecustRate = num.hold2bit($qishuSpan.data("custrate"));
     $("#modal-rate").text(thecustRate)
 }
 
@@ -100,10 +100,18 @@ function setRepayEeach() {
     var thecustRate = $qishuSpan.data("custrate")
     var contentMonet = parseFloat(applyNum * (parseFloat(thecustRate) / 100) + 0.00001 + applyNum).toFixed(2);
     var eachMoney = num.hold2bit(parseFloat(contentMonet.replace(".", "")) / qs / 100);
+    var lastMoney = (parseFloat(contentMonet) - (eachMoney * (qs-1))).toFixed(2)
     var trstr = '';
     var nowDate = new Date();
     for(var i=0;i<qs;i++){
-        trstr += '<tr><td class="w70">' + (i+1) + '</td><td class="w90">' + getDateStrFormate2("yyyy-mm-dd",nowDate) + '</td><td class="w90">' + eachMoney + '</td></tr>';
+        trstr += '<tr><td class="w70">' + (i+1) + '</td><td class="w90">' + getDateStrFormate2("yyyy-mm-dd",nowDate) + '</td><td class="w90">';
+        if(i==(qs-1)){
+            trstr += lastMoney
+        } else {
+            trstr += eachMoney
+        }
+        trstr += '</td></tr>';
+        nowDate.setDate(nowDate.getDate()+25);
     }
     $("#repayplan-tbody").html(trstr)
 }

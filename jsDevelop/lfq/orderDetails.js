@@ -76,7 +76,7 @@ function setOrder(orderDate) {
     var stateText = changeStateToText(orderDate.order_state);
     $("#order-state").text(stateText); //分期状态
     if(orderDate.order_state == '99' && orderDate.nt && orderDate.nt.split(":")[1]){
-        $("#fail-details").text(orderDate.nt.split(":")[1].replace("，交易失败","")) 
+        $("#fail-details").text(orderDate.nt.replace("，交易失败","")) 
     } else {
         $("#fail_details-box").hide()
     }

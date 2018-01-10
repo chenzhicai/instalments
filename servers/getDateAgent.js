@@ -23,12 +23,22 @@ function getAgent(theoptions,postData) {
         options.path = theoptions.path;
         console.log("path----" + options.path);
     }
+    console.log("###########*******__________")
     console.log(options);
+    console.log(post_data)
     var theAgent = new Agent(options, post_data);
 
     return theAgent;
 }
 
+var agentObjet = getAgent({ hostname: 'wxtest.allinpaycard.com',
+  path: '/FuLiBao/LFQCreateOrderServlet',
+  method: 'POST',
+  headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+} },{ open_id: '6FNIUDMNr%2BaEvk9at%2BxbZNHbOmdtSGJjXfTYwKJ6Ogg%3D',
+  serial_no: '011478656467580916',
+  servlet_type: 'query_orderByOrderId' })
+agentObjet.request();
 module.exports = {
     getAgent: getAgent
 };

@@ -142,4 +142,9 @@
   color: #222;
 }
 
+/* line 129, ../../sass/layout/orderDetails-root.scss */
+#fail-details {
+  max-width: 65%;
+}
+
 /*# sourceMappingURL=orderDetails-root.css.map */
