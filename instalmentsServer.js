@@ -113,7 +113,9 @@ app.get('/js/lfq/jquery.qrcode-0.12.0.js ', function(req, res) {
 app.get('/js/lfq/CODE39.js', function(req, res) {
     res.sendFile(__dirname + "/js/lfq/CODE39.js");
 });
-
+app.get('/js/lfq/contract.js', function(req, res) {
+    res.sendFile(__dirname + "/js/lfq/contract.js");
+});
 
 
 app.get('/js/lfq/applyNextStep.min.js', function(req, res) {
@@ -144,7 +146,9 @@ app.get('/js/lfq/jquery.qrcode-0.12.0.js', function(req, res) {
 app.get('/js/lfq/iscroll5.js', function(req, res) {
     res.sendFile(__dirname + "/js/lfq/iscroll5.js");
 });
-
+app.get('/js/lfq/contract.js ', function(req, res) {
+    res.sendFile(__dirname + "/js/lfq/contract.js ");
+});
 
 
 app.get('/css/qrcodePay.css', function(req, res) {
@@ -158,6 +162,9 @@ app.get('/css/instalmentsSearch.css', function(req, res) {
 });
 app.get('/css/orderDetails.css', function(req, res) {
     res.sendFile(__dirname + "/css/orderDetails.css");
+});
+app.get('/css/contract.css', function(req, res) {
+    res.sendFile(__dirname + "/css/contract.css");
 });
 
 
@@ -246,6 +253,12 @@ app.get('/images/key_del.png', function(req, res) {
 });
 app.get('/images/pull-icon@2x.png', function(req, res) {
     res.sendFile(__dirname + "/images/pull-icon@2x.png");
+});
+app.get('/images/tmup.png', function(req, res) {
+    res.sendFile(__dirname + "/images/tmup.png");
+});
+app.get('/images/blue@2x.png', function(req, res) {
+    res.sendFile(__dirname + "/images/blue@2x.png");
 });
 
 

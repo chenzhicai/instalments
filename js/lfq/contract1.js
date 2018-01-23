@@ -27,20 +27,19 @@ $(function() {
         setInfo();
     }
 
-        $(".check_label").on("touchstart", function() {
+    /*    $(".check_label").on("touchstart", function() {
             if ($("#agreeInput").attr("checked")) {
                 $("#agreeInput").removeAttr("checked");
             } else {
                 $("#agreeInput").attr("checked", true);
             }
             setAgreeDate()
-        });
+        });*/
     setUpImgPosition();
     $("#wrapper").on("touchmove", showUpimge);
     $("#upImg").on("touchstart", toTop);
     $("#fanhui").on("touchend",fanhuiClick);
     theIScroll = new IScroll("#wrapper");
-    setAgreeDate()
 });
 
 // 设置数字每3位加，
@@ -78,15 +77,13 @@ function formatNum(str) {
 // 填写合同内容
 function setInfo() {
     console.log(QueryString.GetValue("htId"));
-    var keyArray = ["htId", "order_id", "user_name", "user_phone", "ty_name", "stageNumber","card_fee"]
+    var keyArray = ["htId", "order_id", "user_name", "user_phone", "ty_name", "stageNumber"]
     for (var i = 0, l = keyArray.length; i < l; i++) {
         var key = keyArray[i];
-        if (QueryString.GetValue(key)) { 
+        if (QueryString.GetValue(key)) {
             $("#" + key).text(QueryString.GetValue(key));
         }
     }
-    $("#firstPayNumber").text(setAverageNumber(QueryString.GetValue("instalmentNum"),QueryString.GetValue("stageNumber")));
-    $("#averageNumber").text(setAverageNumber(QueryString.GetValue("instalmentNum"),QueryString.GetValue("stageNumber")));
     if (QueryString.GetValue("user_no")) {
         $("#user_no").text(QueryString.GetValue("user_no").toUpperCase());
     }
@@ -100,19 +97,14 @@ function setInfo() {
         setAgreeDate(QueryString.GetValue("trans_date"));
     }
 }
-//   设置每期支付金额
-function setAverageNumber(instalmentNum,stageNumber){
-    return instalmentNum?(instalmentNum/stageNumber).toFixed(2):'';
-}
+
 //  设置分期交易时间
-function setAgreeDate() {
+function setAgreeDate(trans_date) {
     if ($("#agreeInput").attr("checked")) {
         var theDate = new Date();
-        var agreeMonth = theDate.getMonth()+1>9?theDate.getMonth()+1:'0'+(theDate.getMonth()+1)
-        var agreeDate = theDate.getDate()
-        $("#agreeYear").text(theDate.getFullYear());
-        $("#agreeMonth").text(agreeMonth);
-        $("#agreeDate").text(agreeDate);
+        $("#agreeYear").text(trans_date.substr(0, 4));
+        $("#agreeMonth").text(trans_date.substr(4, 2));
+        $("#agreeDate").text(trans_date.substr(6, 2));
     } else {
         $("#agreeYear").text(" ");
         $("#agreeMonth").text(" ");

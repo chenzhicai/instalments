@@ -99,6 +99,11 @@ function setOrder(orderDate) {
     if (orderDate.t_mer_name) {
         document.title = decodeURI(orderDate.t_mer_name);
     }
+    if(orderDate.refund_amt && orderDate.refund_amt != "null" && orderDate.refund_amt !=0 && orderDate.refund_amt !="undefine"){
+        $("#refund_amt").text(orderDate.refund_amt)
+    } else {
+        $("#refund_amt-cell").hide()
+    }
 
 }
 
